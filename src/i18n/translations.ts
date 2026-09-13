@@ -27,18 +27,18 @@ export const translations = {
     publicPlacesOnly: "শুধুমাত্র পাবলিক স্থানে মিটিং",
     platonicGuarantee: "১০০% প্ল্যাটোনিক ও নিরাপদ",
 
-    // Navigation
+    // Navigation - Short, simple & clear
     navHome: "হোম",
-    navAbout: "আমাদের সম্পর্কে",
-    navHowItWorks: "কীভাবে কাজ করে",
-    navServices: "সার্ভিস ও উপলক্ষ",
-    navBrowse: "কম্প্যানিয়ন ব্রাউজ",
-    navBecomeCompanion: "কম্প্যানিয়ন হোন",
-    navPricing: "মূল্য ও প্যাকেজ",
-    navSafety: "নিরাপত্তা ও ট্রাস্ট",
-    navTerms: "ব্যবহারের শর্তাবলী",
-    navFAQ: "সাধারণ প্রশ্ন",
+    navBrowse: "সঙ্গী",
+    navServices: "সার্ভিস",
+    navHowItWorks: "পদ্ধতি",
+    navSafety: "নিরাপত্তা",
+    navPricing: "মূল্য",
+    navAbout: "আমাদের কথা",
+    navFAQ: "প্রশ্নোত্তর",
     navContact: "যোগাযোগ",
+    navTerms: "শর্তাবলী",
+    navBecomeCompanion: "যোগ দিন",
 
     // Platonic Warning Banner
     platonicNoticeTitle: "কঠোরভাবে অ-রোমান্টিক ও অ-যৌন প্ল্যাটফর্ম",
@@ -97,18 +97,18 @@ export const translations = {
     publicPlacesOnly: "Public Places Only",
     platonicGuarantee: "100% Platonic & Safe",
 
-    // Navigation
+    // Navigation - Short, simple & clear
     navHome: "Home",
-    navAbout: "About Us",
+    navBrowse: "Companions",
+    navServices: "Services",
     navHowItWorks: "How It Works",
-    navServices: "Services / Occasions",
-    navBrowse: "Browse Companions",
-    navBecomeCompanion: "Become a Companion",
+    navSafety: "Safety",
     navPricing: "Pricing",
-    navSafety: "Safety & Trust",
-    navTerms: "Terms of Service",
+    navAbout: "About Us",
     navFAQ: "FAQ",
-    navContact: "Contact & Support",
+    navContact: "Contact",
+    navTerms: "Terms",
+    navBecomeCompanion: "Join",
 
     // Platonic Warning Banner
     platonicNoticeTitle: "Strictly Non-Romantic & Non-Sexual Platform",

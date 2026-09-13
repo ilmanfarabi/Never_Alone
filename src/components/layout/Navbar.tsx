@@ -14,7 +14,6 @@ import {
   MessageSquare,
   Shield
 } from 'lucide-react';
-
 import { useLanguage } from '../../i18n/LanguageContext';
 
 interface NavbarProps {
@@ -28,6 +27,7 @@ interface NavItem {
   id: string;
   label: string;
   badge?: string;
+  hideOnLg?: boolean; // Hidden on 1024px-1279px to prevent overflow, shown on xl (1280px+)
 }
 
 interface MoreNavItem {
@@ -35,7 +35,6 @@ interface MoreNavItem {
   label: string;
   desc: string;
   icon: React.ElementType;
-  highlight?: boolean;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ 
@@ -60,38 +59,46 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Primary navigation links - simple, short and crisp words
   const primaryNavLinks: NavItem[] = [
     { id: 'home', label: t.navHome },
-    { id: 'companions', label: t.navBrowse, badge: language === 'bn' ? 'জনপ্রিয়' : 'Hot' },
+    { id: 'companions', label: t.navBrowse, badge: language === 'bn' ? 'ভেরিফায়েড' : 'Verified' },
     { id: 'services', label: t.navServices },
-    { id: 'how-it-works', label: t.navHowItWorks },
-    { id: 'pricing', label: t.navPricing },
+    { id: 'safety', label: t.navSafety },
+    { id: 'how-it-works', label: t.navHowItWorks, hideOnLg: true },
+    { id: 'pricing', label: t.navPricing, hideOnLg: true },
   ];
 
+  // Secondary pages inside the "More" dropdown
   const moreNavLinks: MoreNavItem[] = [
     { 
-      id: 'safety', 
-      label: t.navSafety, 
-      desc: language === 'bn' ? 'নিরাপত্তা ব্যবস্থা ও প্রোটোকল' : 'Safety rules & protocols',
-      icon: Shield,
-      highlight: true
+      id: 'how-it-works', 
+      label: t.navHowItWorks, 
+      desc: language === 'bn' ? 'বুকিং করার সহজ নিয়ম ও ধাপ' : 'Easy step-by-step booking guide',
+      icon: HelpCircle 
+    },
+    { 
+      id: 'pricing', 
+      label: t.navPricing, 
+      desc: language === 'bn' ? 'স্বচ্ছ ও সাশ্রয়ী ফি পলিসি' : 'Transparent pricing policy',
+      icon: Info 
     },
     { 
       id: 'about', 
       label: t.navAbout, 
-      desc: language === 'bn' ? 'আমাদের উদ্দেশ্য ও নীতিমালা' : 'Our mission and story',
+      desc: language === 'bn' ? 'আমাদের উদ্দেশ্য ও সামাজিক লক্ষ্য' : 'Our mission and story',
       icon: Info 
     },
     { 
       id: 'faq', 
       label: t.navFAQ, 
-      desc: language === 'bn' ? 'সাধারণ প্রশ্ন ও উত্তর' : 'Common questions answered',
+      desc: language === 'bn' ? 'বুকিং ও নিরাপত্তা বিষয়ক প্রশ্নোত্তর' : 'Booking, safety & payment FAQ',
       icon: HelpCircle 
     },
     { 
       id: 'contact', 
       label: t.navContact, 
-      desc: language === 'bn' ? '২৪/৭ সাপোর্ট ও সহায়তা' : '24/7 Support and hotline',
+      desc: language === 'bn' ? '২৪/৭ কাস্টমার সাপোর্ট ও হেল্পলাইন' : '24/7 Support and hotline',
       icon: MessageSquare 
     },
   ];
@@ -107,61 +114,63 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-slate-950/85 backdrop-blur-2xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.5)] transition-all">
-        {/* Top subtle ambient light line */}
-        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent pointer-events-none" />
+      <header className="sticky top-0 z-40 w-full bg-slate-950/95 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+        {/* Top ambient color accent line */}
+        <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20">
-            {/* Brand Logo */}
+        <div className="max-w-7xl mx-auto px-2.5 sm:px-4 lg:px-6 w-full">
+          <div className="flex items-center justify-between h-16 sm:h-18 gap-1.5 sm:gap-3">
+            
+            {/* 1. Brand Logo: Clean, compact & crisp */}
             <div 
               onClick={() => handleLinkClick('home')}
-              className="flex items-center gap-2.5 sm:gap-3.5 cursor-pointer group select-none shrink-0"
+              className="flex items-center gap-2 sm:gap-2.5 cursor-pointer group select-none shrink-0"
+              title="NeverAlone Home"
             >
-              <div className="relative">
-                {/* Outer soft glowing backdrop */}
-                <div className="absolute -inset-1 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-rose-500 opacity-70 blur-md group-hover:opacity-100 group-hover:blur-lg transition-all duration-500" />
-                
-                <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-rose-500 p-[1.5px] shadow-lg group-hover:scale-105 transition-transform duration-300">
-                  <div className="w-full h-full bg-slate-950 rounded-[10px] sm:rounded-[14px] flex items-center justify-center">
-                    <HeartHandshake className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-400 group-hover:text-rose-400 transition-colors duration-300" />
+              {/* Logo Icon */}
+              <div className="relative shrink-0">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-rose-500 p-[1.5px] shadow-md shadow-indigo-600/20 group-hover:shadow-indigo-500/40 transition-all duration-300 group-hover:scale-105">
+                  <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                    <HeartHandshake className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-400 group-hover:text-rose-400 transition-colors duration-300" />
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-col">
-                <div className="flex items-center gap-1.5 sm:gap-2">
-                  <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-white flex items-center">
-                    Never<span className="bg-gradient-to-r from-indigo-400 via-indigo-300 to-rose-400 bg-clip-text text-transparent">Alone</span>
-                  </span>
-                  <span className="text-[9px] sm:text-[10px] tracking-wider uppercase px-1.5 sm:px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 font-bold flex items-center gap-1 shadow-sm">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    Platonic
-                  </span>
-                </div>
-                <span className="text-[10px] sm:text-[11px] text-slate-400 font-medium tracking-tight hidden md:inline-block">
-                  {language === 'bn' ? 'বিশ্বস্ত সামাজিক সঙ্গ • নিরাপদ ও নির্ভরযোগ্য' : 'Safe, Verified Platonic Companionship'}
+              {/* Logo Text */}
+              <div className="flex items-center gap-1.5">
+                <span className="text-lg sm:text-xl font-black tracking-tight text-white flex items-center">
+                  Never<span className="text-indigo-400">Alone</span>
+                </span>
+                <span className="hidden xs:inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 shrink-0">
+                  <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+                  Platonic
                 </span>
               </div>
             </div>
 
-            {/* Desktop Navigation Links (Visible on Large Screens) */}
-            <nav className="hidden lg:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-2xl border border-white/[0.06] backdrop-blur-md shadow-inner">
+            {/* 2. Desktop Navigation Menu: Compact, simple short words */}
+            <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 bg-slate-900/70 p-1 rounded-2xl border border-white/[0.06] backdrop-blur-md shrink-0">
               {primaryNavLinks.map((link) => {
                 const isActive = currentPage === link.id;
                 return (
                   <button
                     key={link.id}
                     onClick={() => handleLinkClick(link.id)}
-                    className={`relative px-3 xl:px-3.5 py-2 text-xs font-semibold rounded-xl transition-all duration-200 flex items-center gap-1.5 ${
+                    className={`relative px-2.5 xl:px-3 py-1.5 text-xs font-semibold rounded-xl transition-all duration-200 flex items-center gap-1 shrink-0 ${
+                      link.hideOnLg ? 'hidden xl:flex' : 'flex'
+                    } ${
                       isActive 
-                        ? 'text-white bg-gradient-to-r from-indigo-600/90 to-indigo-700 text-indigo-100 shadow-[0_2px_12px_rgba(99,102,241,0.35)] border border-indigo-400/30' 
+                        ? 'text-white bg-indigo-600 shadow-[0_2px_10px_rgba(99,102,241,0.35)]' 
                         : 'text-slate-300 hover:text-white hover:bg-slate-800/80'
                     }`}
                   >
                     <span>{link.label}</span>
                     {link.badge && (
-                      <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold">
+                      <span className={`text-[8px] xl:text-[9px] px-1 xl:px-1.5 py-0.2 rounded-full font-bold hidden xl:inline ${
+                        isActive 
+                          ? 'bg-indigo-700 text-white' 
+                          : 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/20'
+                      }`}>
                         {link.badge}
                       </span>
                     )}
@@ -169,15 +178,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                 );
               })}
 
-              {/* "More" dropdown menu */}
-              <div className="relative" ref={dropdownRef}>
+              {/* "More" Dropdown Menu */}
+              <div className="relative shrink-0" ref={dropdownRef}>
                 <button
                   onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}
-                  className={`px-3 xl:px-3.5 py-2 text-xs font-semibold rounded-xl transition-all duration-200 flex items-center gap-1.5 ${
+                  className={`px-2.5 xl:px-3 py-1.5 text-xs font-semibold rounded-xl transition-all duration-200 flex items-center gap-1 ${
                     isMoreActive 
                       ? 'text-indigo-300 bg-indigo-600/20 border border-indigo-500/30' 
                       : 'text-slate-300 hover:text-white hover:bg-slate-800/80'
                   }`}
+                  aria-expanded={moreDropdownOpen}
+                  aria-haspopup="true"
                 >
                   <span>{language === 'bn' ? 'আরও' : 'More'}</span>
                   <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${moreDropdownOpen ? 'rotate-180 text-indigo-400' : ''}`} />
@@ -185,7 +196,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                 {/* Dropdown Card */}
                 {moreDropdownOpen && (
-                  <div className="absolute right-0 top-full mt-2.5 w-72 p-2 bg-slate-900/95 backdrop-blur-2xl rounded-2xl border border-slate-700/70 shadow-[0_20px_40px_rgba(0,0,0,0.6)] animate-in fade-in zoom-in-95 duration-150 z-50">
+                  <div className="absolute right-0 top-full mt-2 w-72 p-2 bg-slate-900/98 backdrop-blur-2xl rounded-2xl border border-slate-700/80 shadow-[0_16px_36px_rgba(0,0,0,0.6)] animate-in fade-in zoom-in-95 duration-150 z-50">
+                    <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3 py-1">
+                      {language === 'bn' ? 'অতিরিক্ত পেজ ও তথ্য' : 'More Pages & Info'}
+                    </div>
                     <div className="space-y-1">
                       {moreNavLinks.map((item) => {
                         const Icon = item.icon;
@@ -194,29 +208,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                           <button
                             key={item.id}
                             onClick={() => handleLinkClick(item.id)}
-                            className={`w-full flex items-start gap-3 p-2.5 rounded-xl text-left transition-all ${
+                            className={`w-full flex items-start gap-2.5 p-2 rounded-xl text-left transition-all ${
                               isActive 
                                 ? 'bg-indigo-600/20 text-white border border-indigo-500/30' 
-                                : item.highlight
-                                ? 'hover:bg-rose-950/30 group text-slate-200 hover:text-white'
-                                : 'hover:bg-slate-800/70 text-slate-200 hover:text-white'
+                                : 'hover:bg-slate-800 text-slate-200 hover:text-white'
                             }`}
                           >
-                            <div className={`p-2 rounded-lg shrink-0 ${
-                              item.highlight 
-                                ? 'bg-rose-500/15 text-rose-400 border border-rose-500/20' 
-                                : 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20'
-                            }`}>
-                              <Icon className="w-4 h-4" />
+                            <div className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 shrink-0 mt-0.5">
+                              <Icon className="w-3.5 h-3.5" />
                             </div>
                             <div>
-                              <div className="text-xs font-semibold flex items-center gap-1.5">
+                              <div className="text-xs font-semibold text-white">
                                 {item.label}
-                                {item.highlight && (
-                                  <span className="text-[9px] px-1 rounded bg-rose-500/20 text-rose-300 font-bold">
-                                    Safety
-                                  </span>
-                                )}
                               </div>
                               <div className="text-[11px] text-slate-400 font-normal leading-tight mt-0.5">
                                 {item.desc}
@@ -231,55 +234,57 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             </nav>
 
-            {/* Right Action Cluster (Desktop lg+) */}
-            <div className="hidden lg:flex items-center gap-2 xl:gap-2.5">
+            {/* 3. Right Action Cluster: Clean, compact & perfectly fitted */}
+            <div className="hidden lg:flex items-center gap-1.5 xl:gap-2 shrink-0">
               {/* Language Switcher */}
               <button
                 onClick={toggleLanguage}
-                className="group flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-white/[0.08] hover:border-slate-600 transition-all shadow-sm"
-                title="Toggle Language"
+                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 hover:border-slate-600 transition-all shadow-sm"
+                title={language === 'bn' ? 'Switch to English' : 'বাংলায় দেখুন'}
               >
-                <Globe className="w-3.5 h-3.5 text-indigo-400 group-hover:rotate-12 transition-transform" />
-                <span className="font-mono text-[11px]">{language === 'bn' ? 'English' : 'বাংলা'}</span>
+                <Globe className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                <span className="text-[11px] font-sans">
+                  {language === 'bn' ? 'EN' : 'বাং'}
+                </span>
               </button>
 
               {/* Emergency SOS Button */}
               <button
                 onClick={onOpenSOS}
-                className="relative flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-rose-950/80 to-rose-900/80 hover:from-rose-900 hover:to-rose-800 text-rose-200 border border-rose-500/40 hover:border-rose-400 shadow-[0_0_15px_rgba(244,63,94,0.15)] hover:shadow-[0_0_20px_rgba(244,63,94,0.3)] transition-all active:scale-95"
+                className="relative flex items-center gap-1 px-2.5 sm:px-3 py-1.5 text-xs font-bold rounded-xl bg-rose-950/70 hover:bg-rose-900 text-rose-200 border border-rose-500/40 shadow-sm hover:shadow-[0_0_12px_rgba(244,63,94,0.3)] transition-all active:scale-95 shrink-0"
+                title={t.emergencySOS}
               >
-                <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping absolute -top-0.5 -right-0.5" />
-                <ShieldCheck className="w-4 h-4 text-rose-400" />
+                <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping absolute -top-0.5 -right-0.5" />
+                <ShieldCheck className="w-3.5 h-3.5 text-rose-400 shrink-0" />
                 <span>SOS</span>
               </button>
 
-              {/* Become a Companion */}
+              {/* Become a Companion (Join) */}
               <button
                 onClick={onOpenApply}
-                className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 hover:border-indigo-500/50 hover:text-white transition-all shadow-sm active:scale-95"
+                className="hidden xl:flex items-center gap-1 px-3 py-1.5 text-xs font-semibold rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 hover:border-indigo-500/50 hover:text-white transition-all shadow-sm active:scale-95 shrink-0"
               >
-                <UserPlus className="w-3.5 h-3.5 text-indigo-400" />
-                <span>{t.becomeCompanionBtn}</span>
+                <UserPlus className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                <span>{language === 'bn' ? 'যোগ দিন' : 'Join'}</span>
               </button>
 
-              {/* Main Primary CTA */}
+              {/* Main Primary Action CTA */}
               <button
                 onClick={() => handleLinkClick('companions')}
-                className="relative group overflow-hidden flex items-center gap-2 px-3.5 xl:px-4 py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-rose-500 hover:from-indigo-500 hover:to-rose-400 text-white shadow-[0_0_20px_rgba(99,102,241,0.35)] hover:shadow-[0_0_25px_rgba(244,63,94,0.45)] transition-all duration-300 active:scale-95"
+                className="flex items-center gap-1.5 px-3.5 xl:px-4 py-1.5 text-xs font-bold rounded-xl bg-gradient-to-r from-indigo-600 to-rose-500 hover:from-indigo-500 hover:to-rose-400 text-white shadow-md shadow-indigo-600/25 hover:shadow-indigo-600/40 transition-all active:scale-95 shrink-0"
               >
-                <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <Sparkles className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
-                <span className="relative tracking-wide">{t.browseCompanions}</span>
+                <Sparkles className="w-3.5 h-3.5 shrink-0" />
+                <span>{language === 'bn' ? 'সঙ্গী খুঁজুন' : 'Find Companion'}</span>
               </button>
             </div>
 
-            {/* Mobile & Tablet Action Cluster (< lg) */}
-            <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
+            {/* 4. Mobile & Tablet Navigation Bar (< lg) */}
+            <div className="flex items-center gap-1.5 lg:hidden shrink-0">
               {/* Language Switch */}
               <button
                 onClick={toggleLanguage}
-                className="px-2.5 py-1.5 text-xs font-semibold rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 font-mono transition-colors"
-                title="Toggle Language"
+                className="px-2 py-1.5 text-xs font-bold rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 transition-colors"
+                title="Language"
               >
                 {language === 'bn' ? 'EN' : 'বাং'}
               </button>
@@ -287,7 +292,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               {/* Emergency SOS */}
               <button
                 onClick={onOpenSOS}
-                className="relative flex items-center gap-1 px-2.5 sm:px-3 py-1.5 text-xs font-bold rounded-xl bg-rose-950/90 hover:bg-rose-900 text-rose-200 border border-rose-500/40 shadow-sm active:scale-95 transition-all"
+                className="relative flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold rounded-xl bg-rose-950/80 text-rose-200 border border-rose-500/40 active:scale-95 transition-all"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping absolute -top-0.5 -right-0.5" />
                 <ShieldCheck className="w-3.5 h-3.5 text-rose-400" />
@@ -297,45 +302,51 @@ export const Navbar: React.FC<NavbarProps> = ({
               {/* Hamburger Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-xl text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 focus:outline-none transition-colors"
-                aria-label="Toggle menu"
+                className="p-1.5 sm:p-2 rounded-xl text-slate-200 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-700/80 focus:outline-none transition-colors"
+                aria-label="Toggle Navigation Menu"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5 text-rose-400" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
+
           </div>
         </div>
 
-        {/* Mobile & Tablet Drawer Menu */}
+        {/* 5. Mobile & Tablet Drawer Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-b border-slate-800/80 bg-slate-950/95 backdrop-blur-2xl px-4 pt-3 pb-6 space-y-3.5 animate-in slide-in-from-top duration-200 shadow-2xl max-h-[calc(100vh-4.5rem)] overflow-y-auto">
-            {/* Quick CTA Actions */}
-            <div className="grid grid-cols-2 gap-2.5">
+          <div className="lg:hidden border-b border-slate-800 bg-slate-950/98 backdrop-blur-2xl px-4 pt-3 pb-6 space-y-3.5 animate-in slide-in-from-top-4 duration-200 shadow-2xl max-h-[calc(100vh-4rem)] overflow-y-auto">
+            
+            {/* Quick Primary Actions */}
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                onClick={() => {
+                  handleLinkClick('companions');
+                }}
+                className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-indigo-600 to-rose-500 text-white text-xs font-bold shadow-md shadow-indigo-600/30 active:scale-98"
+              >
+                <Sparkles className="w-4 h-4" />
+                <span>{language === 'bn' ? 'সঙ্গী খুঁজুন' : 'Find Companion'}</span>
+              </button>
+
               <button
                 onClick={() => {
                   onOpenApply();
                   setMobileMenuOpen(false);
                 }}
-                className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-100 border border-slate-700/80 text-xs font-semibold shadow-sm transition-colors"
+                className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-100 border border-slate-700/80 text-xs font-semibold active:scale-98"
               >
                 <UserPlus className="w-4 h-4 text-indigo-400" />
-                <span>{t.becomeCompanionBtn}</span>
-              </button>
-              <button
-                onClick={() => handleLinkClick('companions')}
-                className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-gradient-to-r from-indigo-600 to-rose-500 hover:opacity-95 text-white text-xs font-bold shadow-md shadow-indigo-600/30 transition-opacity"
-              >
-                <Sparkles className="w-4 h-4" />
-                <span>{t.browseCompanions}</span>
+                <span>{language === 'bn' ? 'হোস্ট হিসেবে যোগ দিন' : 'Join as Host'}</span>
               </button>
             </div>
 
-            {/* Nav Links List */}
-            <div className="bg-slate-900/70 rounded-2xl border border-white/[0.06] p-2 space-y-1">
+            {/* Navigation List */}
+            <div className="bg-slate-900/80 rounded-2xl border border-white/[0.08] p-2 space-y-1">
               <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3 py-1">
                 {language === 'bn' ? 'মেনু নেভিগেশন' : 'Navigation Menu'}
               </div>
-              {[...primaryNavLinks, ...moreNavLinks].map((link) => {
+              
+              {[...primaryNavLinks, ...moreNavLinks.slice(2)].map((link) => {
                 const isActive = currentPage === link.id;
                 const hasBadge = 'badge' in link && Boolean(link.badge);
                 return (
@@ -350,7 +361,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   >
                     <span>{link.label}</span>
                     {hasBadge && (
-                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold">
+                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold">
                         {'badge' in link ? link.badge : ''}
                       </span>
                     )}
@@ -359,28 +370,30 @@ export const Navbar: React.FC<NavbarProps> = ({
               })}
             </div>
 
-            {/* Hotline & Safety Guarantee */}
-            <div className="pt-1 flex flex-col gap-2 text-xs text-slate-400">
+            {/* 24/7 Hotline Support & Safety Guarantee */}
+            <div className="space-y-2 pt-1">
               <a 
                 href="tel:09612345678"
-                className="flex items-center justify-between p-3 rounded-xl bg-emerald-950/30 hover:bg-emerald-950/50 border border-emerald-500/20 text-emerald-300 font-medium transition-colors"
+                className="flex items-center justify-between p-3 rounded-xl bg-emerald-950/40 hover:bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 font-medium transition-colors"
               >
-                <span className="flex items-center gap-2">
+                <span className="flex items-center gap-2 text-xs">
                   <PhoneCall className="w-4 h-4 text-emerald-400" />
-                  <span>{language === 'bn' ? '২৪/৭ সাপোর্ট হেল্পলাইন' : '24/7 Helpline'}</span>
+                  <span>{language === 'bn' ? '২৪/৭ হেল্পলাইন হটলাইন' : '24/7 Support Hotline'}</span>
                 </span>
                 <span className="font-mono text-xs font-bold">০৯৬১২-৩৪৫৬৭৮</span>
               </a>
-              
-              <div className="text-center text-[11px] text-slate-400 py-0.5">
-                {language === 'bn' ? '১০০% প্ল্যাটোনিক ও পাবলিক প্লেস ভেরিফাইড সার্ভিস' : '100% Strictly Platonic & Public Place Policy'}
+
+              <div className="text-center text-[11px] text-slate-400 py-1 flex items-center justify-center gap-1.5">
+                <Shield className="w-3.5 h-3.5 text-emerald-400" />
+                <span>{language === 'bn' ? '১০০% প্ল্যাটোনিক ও নিরাপদ পাবলিক প্লেস পলিসি' : '100% Platonic & Public Place Policy'}</span>
               </div>
             </div>
+
           </div>
         )}
       </header>
 
-      {/* Backdrop overlay for mobile drawer */}
+      {/* Backdrop overlay for mobile menu */}
       {mobileMenuOpen && (
         <div 
           onClick={() => setMobileMenuOpen(false)}
@@ -391,5 +404,3 @@ export const Navbar: React.FC<NavbarProps> = ({
     </>
   );
 };
-
-

@@ -8,6 +8,7 @@ import {
   MapPin
 } from 'lucide-react';
 import { useLanguage } from '../../i18n/LanguageContext';
+import { SocialIcons } from '../common/SocialIcons';
 
 interface FooterProps {
   onNavigate: (page: string) => void;
@@ -53,32 +54,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenReport }) => {
               </span>
             </div>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-3 pt-2">
-              <a 
-                href="#facebook" 
-                onClick={(e) => { e.preventDefault(); }}
-                className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors text-slate-300 font-bold text-xs"
-                title="Facebook"
-              >
-                fb
-              </a>
-              <a 
-                href="#instagram" 
-                onClick={(e) => { e.preventDefault(); }}
-                className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-rose-600 hover:text-white transition-colors text-slate-300 font-bold text-xs"
-                title="Instagram"
-              >
-                ig
-              </a>
-              <a 
-                href="#linkedin" 
-                onClick={(e) => { e.preventDefault(); }}
-                className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors text-slate-300 font-bold text-xs"
-                title="LinkedIn"
-              >
-                in
-              </a>
+            {/* Official Social Media Links */}
+            <div className="pt-2">
+              <div className="text-xs font-semibold text-slate-300 mb-2">
+                {language === 'bn' ? 'সোশ্যাল মিডিয়ায় যুক্ত থাকুন:' : 'Connect on Social Media:'}
+              </div>
+              <SocialIcons size="md" />
             </div>
           </div>
 
@@ -192,10 +173,21 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenReport }) => {
 
         {/* Bottom Payment Methods & Copyright */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <span>© {new Date().getFullYear()} NeverAlone Inc.</span>
             <span>•</span>
             <span>{language === 'bn' ? 'সকল অধিকার সংরক্ষিত' : 'All Rights Reserved.'}</span>
+            <span>•</span>
+            <button
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.location.hash = 'admin';
+                }
+              }}
+              className="text-slate-500 hover:text-indigo-400 underline transition"
+            >
+              Staff Portal
+            </button>
           </div>
 
           {/* Payment Methods Badges */}

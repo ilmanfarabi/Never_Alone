@@ -22,9 +22,32 @@ import { TermsOfService } from './pages/TermsOfService';
 import { FAQ } from './pages/FAQ';
 import { Contact } from './pages/Contact';
 import type { Companion } from './types';
+import { AdminApp } from './admin/AdminApp';
 
 const MainApp: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<string>('home');
+  const [isAdminMode, setIsAdminMode] = useState<boolean>(() => {
+    return typeof window !== 'undefined' && window.location.hash === '#admin';
+  });
+
+  React.useEffect(() => {
+    const handleHashChange = () => {
+      setIsAdminMode(window.location.hash === '#admin');
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  if (isAdminMode) {
+    return (
+      <AdminApp 
+        onExitAdmin={() => {
+          window.location.hash = '';
+          setIsAdminMode(false);
+        }} 
+      />
+    );
+  }
   
   // Modal states
   const [selectedCompanion, setSelectedCompanion] = useState<Companion | null>(null);

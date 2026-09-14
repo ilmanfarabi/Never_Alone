@@ -105,7 +105,7 @@ export const AdminSettings: React.FC = () => {
       accessorKey: 'timestamp' as keyof AuditLogEntry,
       sortable: true,
       cell: (log: AuditLogEntry) => (
-        <span className="text-xs text-slate-500 whitespace-nowrap">
+        <span className="text-sm text-slate-500 whitespace-nowrap">
           {log.timestamp}
         </span>
       )
@@ -116,8 +116,8 @@ export const AdminSettings: React.FC = () => {
       sortable: true,
       cell: (log: AuditLogEntry) => (
         <div>
-          <p className="text-xs font-bold text-slate-900">{log.adminName}</p>
-          <span className="text-[10px] font-mono text-slate-400 capitalize">{log.adminRole.replace('_', ' ')}</span>
+          <p className="text-sm font-bold text-slate-900">{log.adminName}</p>
+          <span className="text-sm font-mono text-slate-400 capitalize">{log.adminRole.replace('_', ' ')}</span>
         </div>
       )
     },
@@ -126,7 +126,7 @@ export const AdminSettings: React.FC = () => {
       accessorKey: 'action' as keyof AuditLogEntry,
       sortable: true,
       cell: (log: AuditLogEntry) => (
-        <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-blue-50 text-blue-800 uppercase tracking-wide">
+        <span className="inline-flex items-center px-2 py-0.5 rounded text-sm font-bold bg-blue-50 text-blue-800 uppercase tracking-wide">
           {log.action.replace(/_/g, ' ')}
         </span>
       )
@@ -135,14 +135,14 @@ export const AdminSettings: React.FC = () => {
       header: 'Target Entity',
       accessorKey: 'targetId' as keyof AuditLogEntry,
       cell: (log: AuditLogEntry) => (
-        <span className="text-xs font-mono text-slate-700">{log.targetType}: {log.targetName}</span>
+        <span className="text-sm font-mono text-slate-700">{log.targetType}: {log.targetName}</span>
       )
     },
     {
       header: 'Mandatory Reason / Audit Note',
       accessorKey: 'reasonOrNote' as keyof AuditLogEntry,
       cell: (log: AuditLogEntry) => (
-        <p className="text-xs text-slate-700 italic max-w-xs truncate" title={log.reasonOrNote}>
+        <p className="text-sm text-slate-700 italic max-w-xs truncate" title={log.reasonOrNote}>
           "{log.reasonOrNote || 'N/A'}"
         </p>
       )
@@ -151,7 +151,7 @@ export const AdminSettings: React.FC = () => {
       header: 'IP Address',
       accessorKey: 'ipAddress' as keyof AuditLogEntry,
       cell: (log: AuditLogEntry) => (
-        <span className="text-[11px] font-mono text-slate-400">{log.ipAddress}</span>
+        <span className="text-sm font-mono text-slate-400">{log.ipAddress}</span>
       )
     }
   ];
@@ -171,7 +171,7 @@ export const AdminSettings: React.FC = () => {
         <div className="flex bg-slate-100 p-1 rounded-xl border border-slate-200">
           <button
             onClick={() => setActiveTab('staff')}
-            className={`px-4 py-2 text-xs font-semibold rounded-lg transition flex items-center space-x-1.5 ${
+            className={`px-4 py-2 text-sm font-semibold rounded-lg transition flex items-center space-x-1.5 ${
               activeTab === 'staff' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -181,7 +181,7 @@ export const AdminSettings: React.FC = () => {
 
           <button
             onClick={() => setActiveTab('platform')}
-            className={`px-4 py-2 text-xs font-semibold rounded-lg transition flex items-center space-x-1.5 ${
+            className={`px-4 py-2 text-sm font-semibold rounded-lg transition flex items-center space-x-1.5 ${
               activeTab === 'platform' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -191,7 +191,7 @@ export const AdminSettings: React.FC = () => {
 
           <button
             onClick={() => setActiveTab('keywords')}
-            className={`px-4 py-2 text-xs font-semibold rounded-lg transition flex items-center space-x-1.5 ${
+            className={`px-4 py-2 text-sm font-semibold rounded-lg transition flex items-center space-x-1.5 ${
               activeTab === 'keywords' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -201,7 +201,7 @@ export const AdminSettings: React.FC = () => {
 
           <button
             onClick={() => setActiveTab('audit')}
-            className={`px-4 py-2 text-xs font-semibold rounded-lg transition flex items-center space-x-1.5 ${
+            className={`px-4 py-2 text-sm font-semibold rounded-lg transition flex items-center space-x-1.5 ${
               activeTab === 'audit' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -216,8 +216,8 @@ export const AdminSettings: React.FC = () => {
         <div className="bg-white rounded-2xl border border-slate-200 shadow-xs p-6 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-100">
             <div>
-              <h2 className="text-base font-bold text-slate-900">Internal Staff & RBAC Accounts ({staffList.length})</h2>
-              <p className="text-xs text-slate-500">
+              <h2 className="text-sm font-bold text-slate-900">Internal Staff & RBAC Accounts ({staffList.length})</h2>
+              <p className="text-sm text-slate-500">
                 Staff members with administrative credentials and designated permission boundaries.
               </p>
             </div>
@@ -225,7 +225,7 @@ export const AdminSettings: React.FC = () => {
             {isSuperAdmin && (
               <button
                 onClick={() => setShowAddStaffModal(true)}
-                className="px-4 py-2 bg-[#FF6F61] hover:bg-[#ff5a4a] text-white text-xs font-bold rounded-xl transition shadow-xs flex items-center space-x-1.5"
+                className="px-4 py-2 bg-[#FF6F61] hover:bg-[#ff5a4a] text-white text-sm font-bold rounded-xl transition shadow-xs flex items-center space-x-1.5"
               >
                 <Plus className="w-4 h-4" />
                 <span>Invite New Staff Member</span>
@@ -236,7 +236,7 @@ export const AdminSettings: React.FC = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-slate-200 bg-slate-50/70 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                <tr className="border-b border-slate-200 bg-slate-50/70 text-sm font-bold text-slate-500 uppercase tracking-wider">
                   <th className="py-3 px-4">Staff Member</th>
                   <th className="py-3 px-4">Email</th>
                   <th className="py-3 px-4">RBAC Role</th>
@@ -245,20 +245,20 @@ export const AdminSettings: React.FC = () => {
                   <th className="py-3 px-4">Last Login</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-xs">
+              <tbody className="divide-y divide-slate-100 text-sm">
                 {staffList.map((member) => (
                   <tr key={member.id} className="hover:bg-slate-50/80 transition">
                     <td className="py-3.5 px-4 font-bold text-slate-900 flex items-center space-x-2">
-                      <div className="w-7 h-7 rounded-full bg-[#1B3A4B] text-white flex items-center justify-center text-xs font-black">
+                      <div className="w-7 h-7 rounded-full bg-[#1B3A4B] text-white flex items-center justify-center text-sm font-black">
                         {member.name.charAt(0)}
                       </div>
                       <span>{member.name}</span>
                     </td>
-                    <td className="py-3.5 px-4 text-slate-600 font-mono text-[11px]">
+                    <td className="py-3.5 px-4 text-slate-600 font-mono text-sm">
                       {member.email}
                     </td>
                     <td className="py-3.5 px-4">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
+                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded text-sm font-bold uppercase tracking-wider ${
                         member.role === 'super_admin' ? 'bg-purple-100 text-purple-800' :
                         member.role === 'trust_safety_agent' ? 'bg-red-100 text-red-800' :
                         member.role === 'finance_agent' ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-800'
@@ -268,7 +268,7 @@ export const AdminSettings: React.FC = () => {
                     </td>
                     <td className="py-3.5 px-4">
                       {member.twoFactorEnabled ? (
-                        <span className="flex items-center text-emerald-600 font-semibold text-[11px]">
+                        <span className="flex items-center text-emerald-600 font-semibold text-sm">
                           <ShieldCheck className="w-3.5 h-3.5 mr-1" /> Enforced (App)
                         </span>
                       ) : (
@@ -278,7 +278,7 @@ export const AdminSettings: React.FC = () => {
                     <td className="py-3.5 px-4">
                       <StatusBadge status={member.status} />
                     </td>
-                    <td className="py-3.5 px-4 text-slate-400 text-[11px]">
+                    <td className="py-3.5 px-4 text-slate-400 text-sm">
                       {member.lastLoginAt}
                     </td>
                   </tr>
@@ -297,19 +297,19 @@ export const AdminSettings: React.FC = () => {
               <Sliders className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-slate-900">Platform Operating Parameters</h2>
-              <p className="text-xs text-slate-500">Configure core booking policies, minimum rate, and emergency hotline.</p>
+              <h2 className="text-sm font-bold text-slate-900">Platform Operating Parameters</h2>
+              <p className="text-sm text-slate-500">Configure core booking policies, minimum rate, and emergency hotline.</p>
             </div>
           </div>
 
           {savedSettingsNotice && (
-            <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 font-medium flex items-center space-x-2">
+            <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-sm text-emerald-800 font-medium flex items-center space-x-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Platform rules updated and committed to the system audit trail.</span>
             </div>
           )}
 
-          <form onSubmit={handleSavePlatformSettings} className="space-y-5 text-xs">
+          <form onSubmit={handleSavePlatformSettings} className="space-y-5 text-sm">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1">
@@ -324,7 +324,7 @@ export const AdminSettings: React.FC = () => {
                   onChange={(e) => setMinRate(parseInt(e.target.value) || 300)}
                   className="w-full px-4 py-2.5 border border-slate-300 rounded-xl font-bold text-slate-900 focus:ring-2 focus:ring-[#FF6F61] focus:outline-hidden"
                 />
-                <p className="text-[11px] text-slate-400 mt-1">Companions cannot list their hourly rate below this threshold.</p>
+                <p className="text-sm text-slate-400 mt-1">Companions cannot list their hourly rate below this threshold.</p>
               </div>
 
               <div>
@@ -339,7 +339,7 @@ export const AdminSettings: React.FC = () => {
                   onChange={(e) => setCancelWindow(parseInt(e.target.value) || 1)}
                   className="w-full px-4 py-2.5 border border-slate-300 rounded-xl font-bold text-slate-900 focus:ring-2 focus:ring-[#FF6F61] focus:outline-hidden"
                 />
-                <p className="text-[11px] text-slate-400 mt-1">Full refund allowed if canceled before this window.</p>
+                <p className="text-sm text-slate-400 mt-1">Full refund allowed if canceled before this window.</p>
               </div>
             </div>
 
@@ -353,7 +353,7 @@ export const AdminSettings: React.FC = () => {
                 onChange={(e) => setEmergencyPhone(e.target.value)}
                 className="w-full px-4 py-2.5 border border-slate-300 rounded-xl font-bold text-slate-900 focus:ring-2 focus:ring-[#FF6F61] focus:outline-hidden"
               />
-              <p className="text-[11px] text-slate-400 mt-1">Displayed in active SOS alerts and customer safety banners.</p>
+              <p className="text-sm text-slate-400 mt-1">Displayed in active SOS alerts and customer safety banners.</p>
             </div>
 
             <div className="pt-4">
@@ -376,8 +376,8 @@ export const AdminSettings: React.FC = () => {
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-slate-900">Platonic Policy Banned Word Filter</h2>
-              <p className="text-xs text-slate-500">
+              <h2 className="text-sm font-bold text-slate-900">Platonic Policy Banned Word Filter</h2>
+              <p className="text-sm text-slate-500">
                 Any chat messages containing these keywords are automatically flagged to the Trust & Safety team.
               </p>
             </div>
@@ -389,11 +389,11 @@ export const AdminSettings: React.FC = () => {
               placeholder="Add keyword (e.g. 'hotel', 'kiss', 'massage', 'direct pay')..."
               value={newWord}
               onChange={(e) => setNewWord(e.target.value)}
-              className="flex-1 px-4 py-2 border border-slate-300 rounded-xl text-xs font-semibold focus:ring-2 focus:ring-red-500 focus:outline-hidden"
+              className="flex-1 px-4 py-2 border border-slate-300 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-red-500 focus:outline-hidden"
             />
             <button
               type="submit"
-              className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-xl transition shadow-xs flex items-center space-x-1"
+              className="px-5 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-bold rounded-xl transition shadow-xs flex items-center space-x-1"
             >
               <Plus className="w-4 h-4" />
               <span>Add Filter</span>
@@ -401,14 +401,14 @@ export const AdminSettings: React.FC = () => {
           </form>
 
           <div className="space-y-2">
-            <p className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+            <p className="text-sm font-bold text-slate-700 uppercase tracking-wider">
               Active Trigger Keywords ({keywordList.length})
             </p>
             <div className="flex flex-wrap gap-2 pt-1">
               {keywordList.map(word => (
                 <span
                   key={word}
-                  className="inline-flex items-center px-3 py-1.5 rounded-xl text-xs font-bold bg-red-50 text-red-800 border border-red-200"
+                  className="inline-flex items-center px-3 py-1.5 rounded-xl text-sm font-bold bg-red-50 text-red-800 border border-red-200"
                 >
                   <span>{word}</span>
                   <button
@@ -429,8 +429,8 @@ export const AdminSettings: React.FC = () => {
       {activeTab === 'audit' && (
         <div className="bg-white rounded-2xl border border-slate-200 shadow-xs p-6 space-y-4">
           <div>
-            <h2 className="text-base font-bold text-slate-900">Immutable Administrative Audit Log</h2>
-            <p className="text-xs text-slate-500">
+            <h2 className="text-sm font-bold text-slate-900">Immutable Administrative Audit Log</h2>
+            <p className="text-sm text-slate-500">
               Every sensitive action (bans, approvals, refunds, payouts, setting changes) with admin identity and mandatory rationale.
             </p>
           </div>
@@ -450,11 +450,11 @@ export const AdminSettings: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
           <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-              <h3 className="text-base font-bold text-slate-900">Provision Staff Administrator</h3>
+              <h3 className="text-sm font-bold text-slate-900">Provision Staff Administrator</h3>
               <button onClick={() => setShowAddStaffModal(false)} className="text-slate-400 hover:text-slate-600">✕</button>
             </div>
 
-            <form onSubmit={handleCreateStaff} className="space-y-4 text-xs">
+            <form onSubmit={handleCreateStaff} className="space-y-4 text-sm">
               <div>
                 <label className="block font-bold text-slate-700 uppercase tracking-wider mb-1">Full Name</label>
                 <input
@@ -493,7 +493,7 @@ export const AdminSettings: React.FC = () => {
                 </select>
               </div>
 
-              <div className="p-3 bg-blue-50 rounded-xl border border-blue-100 text-[11px] text-blue-800">
+              <div className="p-3 bg-blue-50 rounded-xl border border-blue-100 text-sm text-blue-800">
                 Staff member will receive an invitation email to set their password and configure mandatory 2FA Authenticator.
               </div>
 

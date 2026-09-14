@@ -68,7 +68,7 @@ export const BookingManagement: React.FC = () => {
       header: 'Companion',
       accessorKey: 'companionName',
       sortable: true,
-      cell: (b) => <span className="font-semibold text-indigo-900">{b.companionName}</span>
+      cell: (b) => <span className="font-semibold text-blue-900">{b.companionName}</span>
     },
     {
       header: 'Occasion & Public Venue',
@@ -77,7 +77,7 @@ export const BookingManagement: React.FC = () => {
       cell: (b) => (
         <div>
           <div className="font-bold text-slate-900">{b.occasionType}</div>
-          <div className="text-[11px] text-slate-500 flex items-center gap-1">
+          <div className="text-sm text-slate-500 flex items-center gap-1">
             <MapPin className="w-3 h-3 text-rose-500 shrink-0" />
             <span className="truncate max-w-xs">{b.venueName}</span>
           </div>
@@ -91,7 +91,7 @@ export const BookingManagement: React.FC = () => {
       cell: (b) => (
         <div>
           <div className="text-slate-800 font-medium">{b.date}</div>
-          <div className="text-[10px] text-slate-400">{b.time}</div>
+          <div className="text-sm text-slate-400">{b.time}</div>
         </div>
       )
     },
@@ -102,7 +102,7 @@ export const BookingManagement: React.FC = () => {
       cell: (b) => (
         <div>
           <div className="font-mono font-bold text-slate-900">৳{b.amount.toLocaleString()}</div>
-          <div className="text-[10px] text-slate-400">Host: ৳{b.companionPayout}</div>
+          <div className="text-sm text-slate-400">Host: ৳{b.companionPayout}</div>
         </div>
       )
     },
@@ -124,14 +124,14 @@ export const BookingManagement: React.FC = () => {
         <div className="flex items-center gap-1.5">
           <button
             onClick={() => setSelectedBooking(b)}
-            className="px-2.5 py-1 rounded-lg bg-[#1B3A4B] text-white text-xs font-semibold hover:bg-[#142d3b]"
+            className="px-2.5 py-1 rounded-lg bg-[#1B3A4B] text-white text-sm font-semibold hover:bg-[#142d3b]"
           >
             Audit Log
           </button>
           {b.status === 'disputed' && (
             <button
               onClick={() => handleOpenDispute(b)}
-              className="px-2.5 py-1 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold shadow-xs animate-pulse"
+              className="px-2.5 py-1 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-sm font-bold shadow-xs animate-pulse"
             >
               Resolve Dispute
             </button>
@@ -146,8 +146,8 @@ export const BookingManagement: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-lg font-black text-[#1B3A4B]">Booking & Dispute Management</h2>
-          <p className="text-xs text-slate-500">
+          <h2 className="text-2xl font-black text-[#1B3A4B]">Booking & Dispute Management</h2>
+          <p className="text-sm text-slate-500">
             Monitor public session timelines, audit logs, escrow payments, and resolve dispute tickets ({bookings.length} total)
           </p>
         </div>
@@ -195,12 +195,12 @@ export const BookingManagement: React.FC = () => {
             <div className="p-6 border-b border-slate-200 bg-slate-50 flex items-start justify-between">
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="text-base font-black text-slate-900">{selectedBooking.id}</h3>
+                  <h3 className="text-sm font-black text-slate-900">{selectedBooking.id}</h3>
                   <StatusBadge status={selectedBooking.status} />
                   <StatusBadge status={selectedBooking.paymentStatus} />
                 </div>
-                <p className="text-xs text-slate-500 font-semibold mt-0.5">{selectedBooking.occasionType}</p>
-                <p className="text-[11px] text-slate-400 mt-0.5">Created on {selectedBooking.createdAt}</p>
+                <p className="text-sm text-slate-500 font-semibold mt-0.5">{selectedBooking.occasionType}</p>
+                <p className="text-sm text-slate-400 mt-0.5">Created on {selectedBooking.createdAt}</p>
               </div>
 
               <button
@@ -212,23 +212,23 @@ export const BookingManagement: React.FC = () => {
             </div>
 
             {/* Body */}
-            <div className="flex-1 p-6 overflow-y-auto space-y-6 text-xs">
+            <div className="flex-1 p-6 overflow-y-auto space-y-6 text-sm">
               {/* Parties & Venue */}
               <div className="grid grid-cols-2 gap-3 p-4 bg-slate-50 rounded-xl border border-slate-200">
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-slate-400">Customer</span>
+                  <span className="text-sm uppercase font-bold text-slate-400">Customer</span>
                   <p className="font-bold text-slate-900">{selectedBooking.customerName}</p>
-                  <p className="text-[11px] text-slate-500 font-mono">ID: {selectedBooking.customerId}</p>
+                  <p className="text-sm text-slate-500 font-mono">ID: {selectedBooking.customerId}</p>
                 </div>
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-slate-400">Companion (Host)</span>
-                  <p className="font-bold text-indigo-900">{selectedBooking.companionName}</p>
-                  <p className="text-[11px] text-slate-500 font-mono">ID: {selectedBooking.companionId}</p>
+                  <span className="text-sm uppercase font-bold text-slate-400">Companion (Host)</span>
+                  <p className="font-bold text-blue-900">{selectedBooking.companionName}</p>
+                  <p className="text-sm text-slate-500 font-mono">ID: {selectedBooking.companionId}</p>
                 </div>
               </div>
 
               <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-                <span className="text-[10px] uppercase font-bold text-slate-400">Public Venue Location</span>
+                <span className="text-sm uppercase font-bold text-slate-400">Public Venue Location</span>
                 <p className="font-bold text-slate-900 flex items-center gap-1.5">
                   <MapPin className="w-4 h-4 text-rose-500" />
                   <span>{selectedBooking.venueName}</span>
@@ -250,7 +250,7 @@ export const BookingManagement: React.FC = () => {
                   </div>
                   <div className="flex justify-between text-slate-600">
                     <span>Companion Payout (80%):</span>
-                    <span className="font-mono text-indigo-700 font-bold">৳{selectedBooking.companionPayout.toLocaleString()}</span>
+                    <span className="font-mono text-blue-700 font-bold">৳{selectedBooking.companionPayout.toLocaleString()}</span>
                   </div>
                 </div>
               </div>
@@ -268,10 +268,10 @@ export const BookingManagement: React.FC = () => {
                       }`} />
                       <div className="flex items-center justify-between">
                         <span className="font-bold text-slate-900">{event.title}</span>
-                        <span className="text-[10px] text-slate-400">{event.timestamp}</span>
+                        <span className="text-sm text-slate-400">{event.timestamp}</span>
                       </div>
                       <p className="text-slate-600">{event.description}</p>
-                      <span className="text-[10px] font-semibold text-slate-400">Actor: {event.actor}</span>
+                      <span className="text-sm font-semibold text-slate-400">Actor: {event.actor}</span>
                     </div>
                   ))}
                 </div>
@@ -296,7 +296,7 @@ export const BookingManagement: React.FC = () => {
             <div className="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-end">
               <button
                 onClick={() => setSelectedBooking(null)}
-                className="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs"
+                className="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-sm"
               >
                 Close Timeline
               </button>
@@ -308,7 +308,7 @@ export const BookingManagement: React.FC = () => {
       {/* Dispute Resolution Modal */}
       {disputeModalOpen && selectedBooking && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4 text-xs">
+          <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4 text-sm">
             <div className="flex items-start justify-between border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 rounded-xl bg-rose-100 text-rose-700">
@@ -333,7 +333,7 @@ export const BookingManagement: React.FC = () => {
                   value={resolutionNote}
                   onChange={(e) => setResolutionNote(e.target.value)}
                   placeholder="Explain findings, policy violation assessment, and resolution terms..."
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 text-xs text-slate-800 focus:bg-white focus:outline-none focus:border-[#1B3A4B]"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 text-sm text-slate-800 focus:bg-white focus:outline-none focus:border-[#1B3A4B]"
                 />
               </div>
 
@@ -346,7 +346,7 @@ export const BookingManagement: React.FC = () => {
                     min={0}
                     value={refundAmount}
                     onChange={(e) => setRefundAmount(Number(e.target.value))}
-                    className="w-36 bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono font-bold"
+                    className="w-36 bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm font-mono font-bold"
                   />
                   <span className="text-slate-500">of ৳{selectedBooking.amount.toLocaleString()} total</span>
                 </div>
@@ -357,7 +357,7 @@ export const BookingManagement: React.FC = () => {
                 <select
                   value={banParty}
                   onChange={(e: any) => setBanParty(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-medium"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-sm font-medium"
                 >
                   <option value="none">No Ban (Warning or Dispute settled peacefully)</option>
                   <option value="customer">Permanently Ban Customer ({selectedBooking.customerName}) for Policy Violation</option>

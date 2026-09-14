@@ -18,7 +18,7 @@ export const SOSAlertBanner: React.FC<SOSAlertBannerProps> = ({
 
   return (
     <div className="relative bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white px-4 py-2.5 shadow-lg border-b border-red-800 animate-pulse-subtle z-30">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
         {/* Left emergency info */}
         <div className="flex items-center gap-3">
           <div className="w-7 h-7 rounded-full bg-white text-red-600 flex items-center justify-center shrink-0 animate-ping">
@@ -26,7 +26,7 @@ export const SOSAlertBanner: React.FC<SOSAlertBannerProps> = ({
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-            <span className="font-extrabold uppercase tracking-wider bg-red-950/80 px-2 py-0.5 rounded text-[11px] text-red-100 border border-red-400/40">
+            <span className="font-extrabold uppercase tracking-wider bg-red-950/80 px-2 py-0.5 rounded text-sm text-red-100 border border-red-400/40">
               🚨 ACTIVE SOS ALERT ({activeAlerts.length})
             </span>
             <span className="font-semibold truncate">

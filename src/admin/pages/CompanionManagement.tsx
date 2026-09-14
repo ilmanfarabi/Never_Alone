@@ -135,7 +135,7 @@ export const CompanionManagement: React.FC = () => {
           />
           <div>
             <div className="font-bold text-slate-900">{comp.name}</div>
-            <div className="text-[11px] text-slate-500">{comp.gender}, {comp.age}y/o • {comp.city}</div>
+            <div className="text-sm text-slate-500">{comp.gender}, {comp.age}y/o • {comp.city}</div>
           </div>
         </div>
       )
@@ -152,11 +152,11 @@ export const CompanionManagement: React.FC = () => {
       cell: (comp) => (
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-1">
-            <span className="text-[10px] text-slate-400 font-medium">NID:</span>
+            <span className="text-sm text-slate-400 font-medium">NID:</span>
             <StatusBadge status={comp.verificationStatus} />
           </div>
           <div className="flex items-center gap-1">
-            <span className="text-[10px] text-slate-400 font-medium">BG Check:</span>
+            <span className="text-sm text-slate-400 font-medium">BG Check:</span>
             <StatusBadge status={comp.backgroundCheckStatus} />
           </div>
         </div>
@@ -171,9 +171,9 @@ export const CompanionManagement: React.FC = () => {
           <div className="flex items-center gap-1 font-bold text-amber-600">
             <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
             <span>{comp.rating > 0 ? comp.rating.toFixed(1) : 'New'}</span>
-            <span className="text-[10px] text-slate-400">({comp.reviewCount})</span>
+            <span className="text-sm text-slate-400">({comp.reviewCount})</span>
           </div>
-          <div className="text-[11px] text-slate-500 font-medium">{comp.totalSessions} sessions</div>
+          <div className="text-sm text-slate-500 font-medium">{comp.totalSessions} sessions</div>
         </div>
       )
     },
@@ -185,7 +185,7 @@ export const CompanionManagement: React.FC = () => {
         <div>
           <div className="font-bold font-mono text-slate-900">৳{comp.totalEarnings.toLocaleString()}</div>
           {comp.pendingPayout > 0 && (
-            <div className="text-[10px] font-semibold text-amber-700 font-mono">
+            <div className="text-sm font-semibold text-amber-700 font-mono">
               Pending: ৳{comp.pendingPayout.toLocaleString()}
             </div>
           )}
@@ -207,7 +207,7 @@ export const CompanionManagement: React.FC = () => {
               setSelectedCompanion(comp);
               setActiveTab('details');
             }}
-            className="px-2.5 py-1 rounded-lg bg-[#1B3A4B] text-white text-xs font-semibold hover:bg-[#142d3b]"
+            className="px-2.5 py-1 rounded-lg bg-[#1B3A4B] text-white text-sm font-semibold hover:bg-[#142d3b]"
           >
             Review Profile
           </button>
@@ -221,8 +221,8 @@ export const CompanionManagement: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-lg font-black text-[#1B3A4B]">Companion & Host Management</h2>
-          <p className="text-xs text-slate-500">
+          <h2 className="text-2xl font-black text-[#1B3A4B]">Companion & Host Management</h2>
+          <p className="text-sm text-slate-500">
             Screen applications, verify background checks, monitor performance and process approvals ({companions.length} total)
           </p>
         </div>
@@ -238,7 +238,7 @@ export const CompanionManagement: React.FC = () => {
                 Pending Approval Queue ({pendingCompanions.length} applications awaiting review)
               </h3>
             </div>
-            <span className="text-xs text-amber-700 font-medium">Sorted by submission date (Oldest First)</span>
+            <span className="text-sm text-amber-700 font-medium">Sorted by submission date (Oldest First)</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -252,12 +252,12 @@ export const CompanionManagement: React.FC = () => {
                       className="w-12 h-12 rounded-xl object-cover border border-slate-200 shrink-0"
                     />
                     <div>
-                      <h4 className="font-bold text-slate-900 text-xs">{comp.name}</h4>
-                      <p className="text-[11px] text-slate-500">{comp.age}y/o • {comp.city}</p>
-                      <p className="text-[10px] text-slate-400">Applied: {comp.appliedDate}</p>
+                      <h4 className="font-bold text-slate-900 text-sm">{comp.name}</h4>
+                      <p className="text-sm text-slate-500">{comp.age}y/o • {comp.city}</p>
+                      <p className="text-sm text-slate-400">Applied: {comp.appliedDate}</p>
                     </div>
                   </div>
-                  <p className="text-xs text-slate-600 line-clamp-2 italic">"{comp.bio}"</p>
+                  <p className="text-sm text-slate-600 line-clamp-2 italic">"{comp.bio}"</p>
                 </div>
 
                 <div className="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
@@ -266,13 +266,13 @@ export const CompanionManagement: React.FC = () => {
                       setSelectedCompanion(comp);
                       setActiveTab('verification');
                     }}
-                    className="flex-1 py-1.5 rounded-lg border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+                    className="flex-1 py-1.5 rounded-lg border border-slate-300 text-sm font-semibold text-slate-700 hover:bg-slate-50"
                   >
                     Inspect NID
                   </button>
                   <button
                     onClick={() => handleApprove(comp)}
-                    className="flex-1 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-xs"
+                    className="flex-1 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold shadow-xs"
                   >
                     Approve
                   </button>
@@ -337,11 +337,11 @@ export const CompanionManagement: React.FC = () => {
                 />
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="text-base font-black text-slate-900">{selectedCompanion.name}</h3>
+                    <h3 className="text-sm font-black text-slate-900">{selectedCompanion.name}</h3>
                     <StatusBadge status={selectedCompanion.status} />
                   </div>
-                  <p className="text-xs text-slate-500 font-mono mt-0.5">{selectedCompanion.email} • {selectedCompanion.phone}</p>
-                  <p className="text-[11px] text-slate-400 mt-0.5">
+                  <p className="text-sm text-slate-500 font-mono mt-0.5">{selectedCompanion.email} • {selectedCompanion.phone}</p>
+                  <p className="text-sm text-slate-400 mt-0.5">
                     {selectedCompanion.gender}, {selectedCompanion.age} yrs • Rate: <strong>৳{selectedCompanion.hourlyRate}/hr</strong>
                   </p>
                 </div>
@@ -356,7 +356,7 @@ export const CompanionManagement: React.FC = () => {
             </div>
 
             {/* Navigation Tabs */}
-            <div className="flex items-center gap-2 px-6 border-b border-slate-200 bg-white text-xs font-bold text-slate-500">
+            <div className="flex items-center gap-2 px-6 border-b border-slate-200 bg-white text-sm font-bold text-slate-500">
               <button
                 onClick={() => setActiveTab('details')}
                 className={`py-3 px-3 border-b-2 transition-all ${
@@ -392,24 +392,24 @@ export const CompanionManagement: React.FC = () => {
             </div>
 
             {/* Tab Content */}
-            <div className="flex-1 p-6 overflow-y-auto space-y-5 text-xs">
+            <div className="flex-1 p-6 overflow-y-auto space-y-5 text-sm">
               
               {/* Tab 1: Profile & Bio */}
               {activeTab === 'details' && (
                 <div className="space-y-4">
                   {/* Bio Card */}
                   <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-                    <span className="text-[10px] uppercase font-bold text-slate-400">Personal Bio & Description</span>
+                    <span className="text-sm uppercase font-bold text-slate-400">Personal Bio & Description</span>
                     <p className="text-slate-800 leading-relaxed font-normal">{selectedCompanion.bio}</p>
                   </div>
 
                   {/* Interests & Languages */}
                   <div className="grid grid-cols-2 gap-3">
                     <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-                      <span className="text-[10px] uppercase font-bold text-slate-400">Interests & Hobbies</span>
+                      <span className="text-sm uppercase font-bold text-slate-400">Interests & Hobbies</span>
                       <div className="flex flex-wrap gap-1.5">
                         {selectedCompanion.interests.map(int => (
-                          <span key={int} className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 text-[11px]">
+                          <span key={int} className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 text-sm">
                             {int}
                           </span>
                         ))}
@@ -417,10 +417,10 @@ export const CompanionManagement: React.FC = () => {
                     </div>
 
                     <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-                      <span className="text-[10px] uppercase font-bold text-slate-400">Languages Spoken</span>
+                      <span className="text-sm uppercase font-bold text-slate-400">Languages Spoken</span>
                       <div className="flex flex-wrap gap-1.5">
                         {selectedCompanion.languages.map(lang => (
-                          <span key={lang} className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-indigo-700 text-[11px] font-semibold">
+                          <span key={lang} className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-blue-700 text-sm font-semibold">
                             {lang}
                           </span>
                         ))}
@@ -430,7 +430,7 @@ export const CompanionManagement: React.FC = () => {
 
                   {/* Availability */}
                   <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
-                    <span className="text-[10px] uppercase font-bold text-slate-400">General Availability Schedule</span>
+                    <span className="text-sm uppercase font-bold text-slate-400">General Availability Schedule</span>
                     <p className="text-slate-800 font-semibold">{selectedCompanion.availability.join(' • ')}</p>
                   </div>
 
@@ -456,7 +456,7 @@ export const CompanionManagement: React.FC = () => {
                           className="w-full h-40 object-cover"
                         />
                         {photo.flagged && (
-                          <span className="absolute top-2 left-2 px-2 py-0.5 rounded bg-rose-600 text-white font-bold text-[10px]">
+                          <span className="absolute top-2 left-2 px-2 py-0.5 rounded bg-rose-600 text-white font-bold text-sm">
                             FLAGGED CONTENT
                           </span>
                         )}
@@ -488,7 +488,7 @@ export const CompanionManagement: React.FC = () => {
                         <span>Inspect Document</span>
                       </button>
                     </div>
-                    <div className="flex items-center gap-2 text-[11px] text-slate-500">
+                    <div className="flex items-center gap-2 text-sm text-slate-500">
                       <span>Status:</span>
                       <StatusBadge status={selectedCompanion.verificationStatus} />
                     </div>
@@ -500,7 +500,7 @@ export const CompanionManagement: React.FC = () => {
                       <span className="font-bold text-slate-800">Police Background & Criminal Record Check</span>
                       <StatusBadge status={selectedCompanion.backgroundCheckStatus} />
                     </div>
-                    <p className="text-slate-500 text-[11px]">
+                    <p className="text-slate-500 text-sm">
                       Criminal record clearance verified via SB Special Branch database.
                     </p>
                   </div>
@@ -512,30 +512,30 @@ export const CompanionManagement: React.FC = () => {
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-3">
                     <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
-                      <span className="text-[10px] uppercase font-bold text-slate-400">Total Lifetime Earnings</span>
-                      <p className="text-lg font-black text-slate-900 font-mono">৳{selectedCompanion.totalEarnings.toLocaleString()}</p>
+                      <span className="text-sm uppercase font-bold text-slate-400">Total Lifetime Earnings</span>
+                      <p className="text-2xl font-black text-slate-900 font-mono">৳{selectedCompanion.totalEarnings.toLocaleString()}</p>
                     </div>
                     <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
-                      <span className="text-[10px] uppercase font-bold text-slate-400">Pending Escrow Payout</span>
-                      <p className="text-lg font-black text-amber-700 font-mono">৳{selectedCompanion.pendingPayout.toLocaleString()}</p>
+                      <span className="text-sm uppercase font-bold text-slate-400">Pending Escrow Payout</span>
+                      <p className="text-2xl font-black text-amber-700 font-mono">৳{selectedCompanion.pendingPayout.toLocaleString()}</p>
                     </div>
                   </div>
 
                   <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-2">
                     <span className="font-bold text-slate-800">Platform Commission Rate for this Host</span>
-                    <p className="text-slate-500 text-[11px]">
+                    <p className="text-slate-500 text-sm">
                       Default global rate is 20%. You can configure custom promotional tiers for senior companions.
                     </p>
                     <div className="flex items-center gap-2 pt-1">
                       <input 
                         type="number" 
                         defaultValue={selectedCompanion.commissionRateOverride || 20}
-                        className="w-24 bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-1 text-xs font-bold" 
+                        className="w-24 bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-1 text-sm font-bold" 
                       />
-                      <span className="text-xs text-slate-500">%</span>
+                      <span className="text-sm text-slate-500">%</span>
                       <button 
                         onClick={() => alert('Custom companion commission override saved!')}
-                        className="px-3 py-1 bg-[#1B3A4B] text-white text-xs font-bold rounded-lg"
+                        className="px-3 py-1 bg-[#1B3A4B] text-white text-sm font-bold rounded-lg"
                       >
                         Update Rate
                       </button>
@@ -550,7 +550,7 @@ export const CompanionManagement: React.FC = () => {
                 <div className="grid grid-cols-3 gap-2">
                   <button
                     onClick={() => handleApprove(selectedCompanion)}
-                    className="p-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs flex items-center justify-center gap-1"
+                    className="p-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-xs flex items-center justify-center gap-1"
                   >
                     <CheckCircle className="w-4 h-4" />
                     <span>Approve & Live</span>
@@ -558,7 +558,7 @@ export const CompanionManagement: React.FC = () => {
 
                   <button
                     onClick={() => handleReject(selectedCompanion)}
-                    className="p-2 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-300 text-rose-700 font-bold text-xs flex items-center justify-center gap-1"
+                    className="p-2 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-300 text-rose-700 font-bold text-sm flex items-center justify-center gap-1"
                   >
                     <XCircle className="w-4 h-4" />
                     <span>Reject</span>
@@ -566,7 +566,7 @@ export const CompanionManagement: React.FC = () => {
 
                   <button
                     onClick={() => handleSuspend(selectedCompanion)}
-                    className="p-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 font-bold text-xs flex items-center justify-center gap-1"
+                    className="p-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 font-bold text-sm flex items-center justify-center gap-1"
                   >
                     <PauseCircle className="w-4 h-4 text-amber-600" />
                     <span>Suspend</span>
@@ -580,7 +580,7 @@ export const CompanionManagement: React.FC = () => {
             <div className="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-end">
               <button
                 onClick={() => setSelectedCompanion(null)}
-                className="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs transition-colors"
+                className="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-sm transition-colors"
               >
                 Close Profile
               </button>

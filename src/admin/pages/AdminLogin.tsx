@@ -89,7 +89,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
           <h1 className="text-2xl font-black text-[#1B3A4B] tracking-tight">
             Never<span className="text-[#FF6F61]">Alone</span> Admin
           </h1>
-          <p className="text-xs text-slate-500">
+          <p className="text-sm text-slate-500">
             Internal Staff & Trust Desk Operations Portal
           </p>
         </div>
@@ -98,7 +98,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
         <div className="flex bg-slate-100 p-1 rounded-2xl border border-slate-200">
           <button
             type="button"
-            className="flex-1 py-2 text-xs font-bold rounded-xl transition flex items-center justify-center space-x-1.5 bg-white text-slate-900 shadow-xs"
+            className="flex-1 py-2 text-sm font-bold rounded-xl transition flex items-center justify-center space-x-1.5 bg-white text-slate-900 shadow-xs"
           >
             <Lock className="w-3.5 h-3.5" />
             <span>Staff Sign In</span>
@@ -107,7 +107,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
           <button
             type="button"
             onClick={() => setAuthMode('signup')}
-            className="flex-1 py-2 text-xs font-bold rounded-xl transition flex items-center justify-center space-x-1.5 text-slate-500 hover:text-slate-900"
+            className="flex-1 py-2 text-sm font-bold rounded-xl transition flex items-center justify-center space-x-1.5 text-slate-500 hover:text-slate-900"
           >
             <UserPlus className="w-3.5 h-3.5" />
             <span>Staff Onboard / Sign Up</span>
@@ -116,7 +116,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
 
         {/* Error Alert */}
         {error && (
-          <div className="p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-xs text-rose-700 flex items-center gap-2 font-semibold animate-in shake">
+          <div className="p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-sm text-rose-700 flex items-center gap-2 font-semibold animate-in shake">
             <AlertCircle className="w-4 h-4 shrink-0" />
             <span>{error}</span>
           </div>
@@ -125,7 +125,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
         {/* Login Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Staff Email</label>
+            <label className="block text-sm font-bold text-slate-700 mb-1">Staff Email</label>
             <div className="relative">
               <Mail className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
@@ -134,18 +134,18 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="staff@neveralone.com"
-                className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B] focus:ring-1 focus:ring-[#1B3A4B]"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B] focus:ring-1 focus:ring-[#1B3A4B]"
               />
             </div>
           </div>
 
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="block text-xs font-bold text-slate-700">Password</label>
+              <label className="block text-sm font-bold text-slate-700">Password</label>
               <button
                 type="button"
                 onClick={() => setShowRecoveryModal(true)}
-                className="text-[11px] text-slate-500 hover:text-[#1B3A4B] font-medium"
+                className="text-sm text-slate-500 hover:text-[#1B3A4B] font-medium"
               >
                 Forgot?
               </button>
@@ -158,7 +158,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-9 py-2 text-xs text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B] focus:ring-1 focus:ring-[#1B3A4B]"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-9 py-2 text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B] focus:ring-1 focus:ring-[#1B3A4B]"
               />
               <button
                 type="button"
@@ -173,8 +173,8 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
           {show2FA && (
             <div className="animate-in fade-in duration-150">
               <div className="flex items-center justify-between mb-1">
-                <label className="block text-xs font-bold text-slate-700">Two-Factor Authenticator Code (2FA)</label>
-                <span className="text-[10px] text-slate-400">Demo code: 123456</span>
+                <label className="block text-sm font-bold text-slate-700">Two-Factor Authenticator Code (2FA)</label>
+                <span className="text-sm text-slate-400">Demo code: 123456</span>
               </div>
               <div className="relative">
                 <KeyRound className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
@@ -184,13 +184,13 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
                   value={twoFactorCode}
                   onChange={(e) => setTwoFactorCode(e.target.value)}
                   placeholder="123456"
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-800 font-mono tracking-widest placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B]"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-sm text-slate-800 font-mono tracking-widest placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B]"
                 />
               </div>
             </div>
           )}
 
-          <div className="flex items-center justify-between text-[11px] pt-1">
+          <div className="flex items-center justify-between text-sm pt-1">
             <button
               type="button"
               onClick={() => setShow2FA(!show2FA)}
@@ -204,7 +204,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 rounded-xl bg-[#1B3A4B] hover:bg-[#142d3b] text-white font-bold text-xs shadow-md shadow-[#1B3A4B]/20 flex items-center justify-center gap-2 transition-all disabled:opacity-50"
+            className="w-full py-2.5 rounded-xl bg-[#1B3A4B] hover:bg-[#142d3b] text-white font-bold text-sm shadow-md shadow-[#1B3A4B]/20 flex items-center justify-center gap-2 transition-all disabled:opacity-50"
           >
             {loading ? (
               <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -219,7 +219,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
 
         {/* Demo Quick-Login Presets */}
         <div className="pt-3 border-t border-slate-100 space-y-2">
-          <div className="flex items-center justify-between text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+          <div className="flex items-center justify-between text-sm uppercase font-bold text-slate-400 tracking-wider">
             <span>Instant Demo Quick-Login</span>
             <span className="text-[#FF6F61] flex items-center gap-0.5">
               <Sparkles className="w-3 h-3" /> 1-Click
@@ -231,11 +231,11 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
               onClick={() => handleQuickDemoLogin('super_admin')}
               className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-left transition-all group"
             >
-              <div className="text-xs font-bold text-[#1B3A4B] flex items-center gap-1">
+              <div className="text-sm font-bold text-[#1B3A4B] flex items-center gap-1">
                 <UserCheck className="w-3.5 h-3.5 text-[#FF6F61]" />
                 <span>Super Admin</span>
               </div>
-              <div className="text-[10px] text-slate-400">Full platform access</div>
+              <div className="text-sm text-slate-400">Full platform access</div>
             </button>
 
             <button
@@ -243,11 +243,11 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
               onClick={() => handleQuickDemoLogin('trust_safety_agent')}
               className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-left transition-all group"
             >
-              <div className="text-xs font-bold text-rose-700 flex items-center gap-1">
+              <div className="text-sm font-bold text-rose-700 flex items-center gap-1">
                 <Shield className="w-3.5 h-3.5 text-rose-500" />
                 <span>Trust & Safety</span>
               </div>
-              <div className="text-[10px] text-slate-400">SOS & Reports desk</div>
+              <div className="text-sm text-slate-400">SOS & Reports desk</div>
             </button>
 
             <button
@@ -255,10 +255,10 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
               onClick={() => handleQuickDemoLogin('finance_agent')}
               className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-left transition-all group"
             >
-              <div className="text-xs font-bold text-emerald-700 flex items-center gap-1">
+              <div className="text-sm font-bold text-emerald-700 flex items-center gap-1">
                 <span>💰 Finance Agent</span>
               </div>
-              <div className="text-[10px] text-slate-400">Payouts & refunds</div>
+              <div className="text-sm text-slate-400">Payouts & refunds</div>
             </button>
 
             <button
@@ -266,16 +266,16 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
               onClick={() => handleQuickDemoLogin('support_agent')}
               className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-left transition-all group"
             >
-              <div className="text-xs font-bold text-blue-700 flex items-center gap-1">
+              <div className="text-sm font-bold text-blue-700 flex items-center gap-1">
                 <span>🎧 Support Desk</span>
               </div>
-              <div className="text-[10px] text-slate-400">Tickets & bookings</div>
+              <div className="text-sm text-slate-400">Tickets & bookings</div>
             </button>
           </div>
         </div>
 
         {/* Back to Customer Site & Onboarding Link */}
-        <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+        <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-sm">
           <button
             type="button"
             onClick={() => setAuthMode('signup')}
@@ -303,10 +303,10 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
               <HelpCircle className="w-5 h-5 text-[#FF6F61]" />
               <h3 className="text-sm font-bold">Staff Credential Recovery</h3>
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-sm text-slate-600 leading-relaxed">
               Administrative credentials and hardware 2FA keys are managed by the IT Security Operations team.
             </p>
-            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1">
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-sm text-slate-700 space-y-1">
               <p className="font-semibold">For Local Testing:</p>
               <p>• Password: <code className="bg-white px-1.5 py-0.5 rounded border font-mono">password123</code></p>
               <p>• 2FA Code: <code className="bg-white px-1.5 py-0.5 rounded border font-mono">123456</code></p>
@@ -315,7 +315,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
             <button
               type="button"
               onClick={() => setShowRecoveryModal(false)}
-              className="w-full py-2 bg-[#1B3A4B] hover:bg-[#132a36] text-white text-xs font-bold rounded-xl transition"
+              className="w-full py-2 bg-[#1B3A4B] hover:bg-[#132a36] text-white text-sm font-bold rounded-xl transition"
             >
               Close Helper
             </button>

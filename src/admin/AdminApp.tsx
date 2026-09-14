@@ -67,11 +67,11 @@ const AdminPortalContent: React.FC<{ onExitAdmin?: () => void }> = ({ onExitAdmi
 
 const AccessDenied: React.FC<{ page: string }> = ({ page }) => (
   <div className="p-12 text-center bg-white rounded-2xl border border-slate-200 shadow-xs max-w-lg mx-auto mt-12">
-    <div className="w-12 h-12 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto mb-3 font-bold text-lg">
+    <div className="w-12 h-12 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto mb-3 font-bold text-2xl">
       ✕
     </div>
-    <h2 className="text-lg font-bold text-slate-900">Access Restricted</h2>
-    <p className="text-xs text-slate-500 mt-1">
+    <h2 className="text-2xl font-bold text-slate-900">Access Restricted</h2>
+    <p className="text-sm text-slate-500 mt-1">
       Your current administrative role does not have permission to view <strong>{page}</strong>.
       Use the Quick Role Switcher in the top bar to switch to an authorized role.
     </p>

@@ -133,7 +133,7 @@ export function DataTable<T extends Record<string, any>>({
               setCurrentPage(1);
             }}
             placeholder={searchPlaceholder}
-            className="w-full bg-white border border-slate-300 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#1B3A4B] focus:ring-1 focus:ring-[#1B3A4B]"
+            className="w-full bg-white border border-slate-300 rounded-lg pl-9 pr-3 py-1.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#1B3A4B] focus:ring-1 focus:ring-[#1B3A4B]"
           />
         </div>
 
@@ -145,7 +145,7 @@ export function DataTable<T extends Record<string, any>>({
               <select
                 value={activeFilters[f.key] || 'all'}
                 onChange={(e) => handleFilterChange(f.key, e.target.value)}
-                className="bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 focus:outline-none focus:border-[#1B3A4B]"
+                className="bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-sm text-slate-700 focus:outline-none focus:border-[#1B3A4B]"
               >
                 <option value="all">All {f.label}</option>
                 {f.options.map(opt => (
@@ -158,7 +158,7 @@ export function DataTable<T extends Record<string, any>>({
           {onExportCsv && (
             <button
               onClick={onExportCsv}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold shadow-xs transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-sm font-semibold shadow-xs transition-colors"
               title="Export filtered records to CSV"
             >
               <Download className="w-3.5 h-3.5 text-slate-500" />
@@ -170,8 +170,8 @@ export function DataTable<T extends Record<string, any>>({
 
       {/* Table Element */}
       <div className="overflow-x-auto">
-        <table className="w-full text-left text-xs text-slate-600">
-          <thead className="bg-slate-100/80 text-[11px] uppercase tracking-wider font-bold text-slate-600 border-b border-slate-200">
+        <table className="w-full text-left text-sm text-slate-600">
+          <thead className="bg-slate-100/80 text-sm uppercase tracking-wider font-bold text-slate-600 border-b border-slate-200">
             <tr>
               {columns.map((col, idx) => (
                 <th 
@@ -214,7 +214,7 @@ export function DataTable<T extends Record<string, any>>({
       </div>
 
       {/* Pagination Footer */}
-      <div className="p-3 border-t border-slate-200 bg-slate-50/40 flex items-center justify-between text-xs text-slate-500">
+      <div className="p-3 border-t border-slate-200 bg-slate-50/40 flex items-center justify-between text-sm text-slate-500">
         <div>
           Showing <span className="font-semibold text-slate-800">{paginatedData.length > 0 ? (currentPage - 1) * pageSize + 1 : 0}</span> to{' '}
           <span className="font-semibold text-slate-800">{Math.min(currentPage * pageSize, sortedData.length)}</span> of{' '}

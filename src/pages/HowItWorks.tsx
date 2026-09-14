@@ -5,7 +5,9 @@ import {
   CalendarCheck, 
   ShieldCheck, 
   Star, 
-  Sparkles
+  Sparkles,
+  ArrowRight,
+  Check
 } from 'lucide-react';
 
 import { useLanguage } from '../i18n/LanguageContext';
@@ -15,118 +17,161 @@ export const HowItWorks: React.FC<{ onNavigate: (page: string) => void }> = ({ o
 
   const steps = [
     {
-      num: '০১',
-      title: 'Sign Up & Verify',
-      titleBn: 'ধাপ ১ — সাইন আপ ও ভেরিফিকেশন',
-      desc: 'Create your account and verify your identity with government NID / Passport. Verification protects the safety of both clients and companions.',
-      descBn: 'আপনার অ্যাকাউন্ট তৈরি করুন এবং সরকারি পরিচয়পত্র (NID/Passport) দিয়ে আইডেন্টিটি ভেরিফাই করুন। এটি সবার নিরাপত্তার জন্য বাধ্যতামূলক।',
+      num: '01',
+      title: 'Sign Up & Verify ID',
+      titleBn: 'আইডি ভেরিফিকেশন',
+      desc: 'Create an account and verify your ID with government NID or Passport in 2 minutes.',
+      descBn: 'সরকারি পরিচয়পত্র (NID/পাসপোর্ট) দিয়ে মাত্র ২ মিনিটে আইডি ভেরিফাই করুন।',
       icon: UserCheck,
-      detailsBn: 'ফেস ম্যাচিং ও ফোন নম্বর ভেরিফিকেশন মাত্র ২ মিনিটে সম্পন্ন হয়।'
+      detailsBn: 'ফেস ম্যাচিং ও বায়োমেট্রিক চেক',
+      badge: 'Identity Verification'
     },
     {
-      num: '০২',
-      title: 'Browse Companions',
-      titleBn: 'ধাপ ২ — কম্প্যানিয়ন প্রোফাইল ব্রাউজ',
-      desc: 'Filter companions by spoken languages, city/area, occasions, ratings, and hourly rates. Inspect detailed bios and verified badges.',
-      descBn: 'ভাষা, আগ্রহ, লোকেশন ও উপলভ্যতা অনুযায়ী কম্প্যানিয়ন প্রোফাইল ব্রাউজ করুন। প্রতিটি প্রোফাইলে রিভিউ, রেটিং ও বায়ো দেখতে পাবেন।',
+      num: '02',
+      title: 'Browse & Choose',
+      titleBn: 'সঙ্গী নির্বাচন',
+      desc: 'Filter companions by spoken languages, city, occasions, and verified ratings.',
+      descBn: 'ভাষা, লোকেশন, উপলক্ষ ও রিয়েল রেটিং দেখে পছন্দের সঙ্গী খুঁজুন।',
       icon: Search,
-      detailsBn: 'রিয়েল ইউজার রিভিউ ও ব্যাকগ্রাউন্ড চেকের স্ট্যাটাস উন্মুক্ত।'
+      detailsBn: 'রিভিউ ও ব্যাকগ্রাউন্ড উন্মুক্ত',
+      badge: 'Verified Matches'
     },
     {
-      num: '০৩',
-      title: 'Book a Session',
-      titleBn: 'ধাপ ৩ — সেশন বুক ও কনফার্মেশন',
-      desc: 'Specify your public venue, date, time, and occasion. The companion accepts the booking request and you receive a secure Safety Check-in PIN.',
-      descBn: 'সময়, স্থান ও উপলক্ষ উল্লেখ করে বুকিং রিকোয়েস্ট পাঠান। কম্প্যানিয়ন কনফার্ম করলেই বুকিং ফাইনাল হয়ে যাবে।',
+      num: '03',
+      title: 'Book a Safe Session',
+      titleBn: 'পাবলিক সেশন বুকিং',
+      desc: 'Specify your public venue, date, time, and receive your Safety PIN.',
+      descBn: 'পাবলিক ভেন্যু, তারিখ ও সময় নির্বাচন করে বুকিং রিকোয়েস্ট পাঠান।',
       icon: CalendarCheck,
-      detailsBn: 'বুকিংয়ের সাথে সাথেই ইন-অ্যাপ সেফটি চেক-ইন পিন জেনারেট হয়।'
+      detailsBn: 'ইউনিক সেফটি পিন (Safety PIN)',
+      badge: 'Public Places Only'
     },
     {
-      num: '০৪',
+      num: '04',
       title: 'Meet & Pay Safely',
-      titleBn: 'ধাপ ৪ — পাবলিক স্থানে সাক্ষাৎ ও নিরাপদ লেনদেন',
-      desc: 'Meet exclusively in verified public places (cafes, restaurants, event halls). Payments are held safely in platform escrow with bKash/Nagad.',
-      descBn: 'সবসময় একটি পাবলিক স্থানে দেখা করুন। পেমেন্ট প্ল্যাটফর্মের মাধ্যমেই সুরক্ষিতভাবে সম্পন্ন হয় — নগদ লেনদেন নিরুৎসাহিত করা হয়।',
+      titleBn: 'সাক্ষাৎ ও নিরাপদ পেমেন্ট',
+      desc: 'Meet in public. Payments are protected in platform escrow until session completes.',
+      descBn: 'পাবলিক স্থানে সাক্ষাৎ করুন। পেমেন্ট প্ল্যাটফর্মের এসক্রোতে সুরক্ষিত থাকে।',
       icon: ShieldCheck,
-      detailsBn: 'সেশন শেষে উভয়পক্ষ রেটিং ও রিভিউ দিতে পারেন।'
+      detailsBn: 'সেশন শেষে দ্বিপাক্ষিক রেটিং',
+      badge: 'Escrow Protection'
     }
   ];
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+    <div className="bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-950/80 text-indigo-300 border border-indigo-500/30 text-xs font-semibold">
-          <Sparkles className="w-4 h-4 text-indigo-400" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold">
+          <Sparkles className="w-3.5 h-3.5 text-blue-600" />
           <span>{language === 'bn' ? 'কীভাবে কাজ করে' : 'How It Works'}</span>
         </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-white">
-          {language === 'bn' ? 'সহজ ৪টি ধাপে আপনার পছন্দের সঙ্গী বুক করুন' : 'Book in 4 Simple & Transparent Steps'}
+        
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+          {language === 'bn' ? (
+            <>
+              সহজ ৪টি ধাপে <br />
+              <span className="text-blue-600">নিরাপদ সঙ্গী বুক করুন</span>
+            </>
+          ) : (
+            <>
+              Book in 4 Simple Steps. <br />
+              <span className="text-blue-600">Safe, Simple & Fast.</span>
+            </>
+          )}
         </h1>
-        <p className="text-base text-slate-300">
+
+        <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed">
           {language === 'bn'
-            ? 'NeverAlone একটি নিরাপদ, পেশাদার ও স্বচ্ছ প্রক্রিয়া নিশ্চিত করে যাতে আপনি যেকোনো মুহূর্তে নিশ্চিন্তে একজন বিশ্বস্ত প্লাস-ওয়ান বা আড্ডার সঙ্গী খুঁজে নিতে পারেন।'
-            : 'NeverAlone ensures a safe, professional, and transparent workflow for finding trusted companions.'}
+            ? 'NeverAlone-এর স্বচ্ছ ও সুরক্ষিত প্রক্রিয়ায় যেকোনো মুহূর্তের জন্য বিশ্বস্ত প্লাস-ওয়ান বা আড্ডার সঙ্গী খুঁজে নিন।'
+            : 'A transparent, respectful, and verified workflow for booking verified platonic companions.'}
         </p>
       </div>
 
-      {/* 4 Steps Detailed Vertical Timeline */}
-      <div className="space-y-6">
+      {/* 4 Steps Bento Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7">
         {steps.map((s, idx) => {
           const Icon = s.icon;
+          const stepBgs = [
+            'card-bg-lavender', // rgb(243, 229, 245)
+            'card-bg-slate',    // rgb(236, 239, 241)
+            'card-bg-peach',    // rgb(255, 244, 230)
+            'card-bg-rose'      // rgb(255, 235, 238)
+          ];
+          const cardBg = stepBgs[idx % stepBgs.length];
+
           return (
             <div
               key={idx}
-              className="p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center gap-6 hover:border-indigo-500/40 transition-colors"
+              className={`${cardBg} border hover:border-blue-300 p-6 sm:p-7 rounded-3xl space-y-4 flex flex-col justify-between group shadow-xs hover:shadow-lg transition-all card-google`}
             >
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 to-indigo-700 text-white flex items-center justify-center font-bold text-xl shrink-0 shadow-lg shadow-indigo-600/30">
-                {s.num}
-              </div>
+              <div className="space-y-3.5">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-extrabold text-sm shadow-xs group-hover:scale-105 transition-transform">
+                      {s.num}
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
+                        {language === 'bn' ? `ধাপ ${s.num}` : `Step ${s.num}`}
+                      </span>
+                      <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                        {language === 'bn' ? s.titleBn : s.title}
+                      </h3>
+                    </div>
+                  </div>
 
-              <div className="space-y-2 flex-1">
-                <div className="flex items-center gap-2">
-                  <Icon className="w-5 h-5 text-indigo-400" />
-                  <h3 className="text-lg font-bold text-white">
-                    {language === 'bn' ? s.titleBn : s.title}
-                  </h3>
+                  <div className="p-2.5 rounded-2xl bg-white border border-slate-200/80 text-slate-600 group-hover:text-blue-600 group-hover:bg-blue-50 transition-colors shadow-2xs">
+                    <Icon className="w-5 h-5" />
+                  </div>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                   {language === 'bn' ? s.descBn : s.desc}
                 </p>
-                <div className="text-[11px] text-emerald-400 font-medium">
-                  ✓ {s.detailsBn}
+              </div>
+
+              <div className="pt-3.5 border-t border-slate-200/60 flex items-center justify-between">
+                <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-blue-600 font-semibold">
+                  <Check className="w-4 h-4" />
+                  <span>{s.detailsBn}</span>
                 </div>
+                <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white text-blue-700 border border-slate-200 shadow-2xs">
+                  {s.badge}
+                </span>
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Rating & Review Assurance Box from Document */}
-      <div className="p-8 rounded-3xl bg-gradient-to-r from-indigo-950/60 to-slate-900 border border-indigo-500/30 flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
-            <Star className="w-6 h-6 fill-amber-400" />
+      {/* Two-Way Rating & Guarantee Capsule */}
+      <div className="p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 text-center sm:text-left">
+          <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0 shadow-xs">
+            <Star className="w-6 h-6 fill-blue-600 text-blue-600" />
           </div>
-          <div>
-            <h4 className="text-base font-bold text-white">
-              {language === 'bn' ? 'দ্বিপাক্ষিক রেটিং ও রিভিউ সিস্টেম' : 'Two-Way Rating & Accountability'}
-            </h4>
-            <p className="text-xs text-slate-300 mt-1">
+          <div className="space-y-1">
+            <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
+              {language === 'bn' ? 'দ্বিপাক্ষিক রেটিং ও ট্রাস্ট ইকোসিস্টেম' : 'Two-Way Rating & Trust Ecosystem'}
+            </h3>
+            <p className="text-sm sm:text-base text-slate-600 max-w-xl font-normal leading-relaxed">
               {language === 'bn'
-                ? 'প্রতিটি সেশনের পর উভয়পক্ষ একে অপরকে রেটিং ও রিভিউ দিতে পারেন, যা প্ল্যাটফর্মের বিশ্বাসযোগ্যতা ও সম্মানজনক পরিবেশ বজায় রাখে।'
-                : 'Both client and companion rate each other after every session to maintain high community trust and respect.'}
+                ? 'সেশন শেষে ক্লায়েন্ট ও কম্প্যানিয়ন উভয়েই রেটিং প্রদান করেন, যা প্ল্যাটফর্মের নিরাপত্তা ও পারস্পরিক সম্মান নিশ্চিত করে।'
+                : 'Both parties rate and review each other after every session to uphold the highest community safety standards.'}
             </p>
           </div>
         </div>
 
         <button
           onClick={() => onNavigate('companions')}
-          className="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shrink-0 transition-colors shadow-lg shadow-indigo-600/30"
+          className="px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold shrink-0 flex items-center gap-2 transition-all apple-pill-btn shadow-xs"
         >
-          {language === 'bn' ? 'কম্প্যানিয়ন ব্রাউজ করুন' : 'Browse Companions'}
+          <span>{language === 'bn' ? 'কম্প্যানিয়ন ব্রাউজ করুন' : 'Browse Companions'}</span>
+          <ArrowRight className="w-4 h-4" />
         </button>
       </div>
     </div>
   );
 };
+

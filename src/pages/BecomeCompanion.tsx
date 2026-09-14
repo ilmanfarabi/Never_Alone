@@ -4,7 +4,8 @@ import {
   CheckCircle2, 
   ShieldAlert, 
   Sparkles, 
-  TrendingUp
+  TrendingUp,
+  ArrowRight
 } from 'lucide-react';
 
 import { useLanguage } from '../i18n/LanguageContext';
@@ -19,71 +20,87 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
 
   const processSteps = [
     {
-      num: '০১',
-      title: 'অনলাইন আবেদন ফর্ম পূরণ',
-      titleEn: 'Fill Online Application',
-      desc: 'আপনার বেসিক তথ্য, আগ্রহ, ভাষা ও পছন্দের লোকেশন যুক্ত করুন।'
+      num: '01',
+      title: 'অনলাইন আবেদন',
+      titleEn: 'Online Application',
+      desc: 'বেসিক তথ্য, আগ্রহ, ভাষা ও লোকেশন যুক্ত করুন।',
+      badge: 'Step 1'
     },
     {
-      num: '০২',
-      title: 'আইডেন্টিটি ভেরিফিকেশন (NID/Passport)',
-      titleEn: 'Government ID Verification',
-      desc: 'জাতীয় পরিচয়পত্র বা পাসপোর্ট আপলোড করে ফেস ম্যাচিং সম্পন্ন করুন।'
+      num: '02',
+      title: 'আইডি ভেরিফিকেশন',
+      titleEn: 'ID Verification',
+      desc: 'জাতীয় পরিচয়পত্র বা পাসপোর্ট দিয়ে ফেস ম্যাচিং।',
+      badge: 'Step 2'
     },
     {
-      num: '০৩',
-      title: 'ব্যাকগ্রাউন্ড চেক ও ওরিয়েন্টেশন',
-      titleEn: 'Background Check & Orientation',
-      desc: 'ক্রিমিনাল রেকর্ড যাচাইকরণ এবং প্ল্যাটফর্ম আচরণবিধি ব্রিফিং।'
+      num: '03',
+      title: 'ওরিয়েন্টেশন ও ব্রিফিং',
+      titleEn: 'Orientation & Rules',
+      desc: 'প্ল্যাটফর্ম আচরণবিধি ও সুরক্ষা সংক্রান্ত গাইডলাইন।',
+      badge: 'Step 3'
     },
     {
-      num: '০৪',
+      num: '04',
       title: 'রেট নির্ধারণ ও প্রোফাইল লাইভ',
       titleEn: 'Set Rates & Go Live',
-      desc: 'নিজের ঘণ্টাপ্রতি রেট ঠিক করে ভেরিফায়েড বুকিং নেওয়া শুরু করুন।'
+      desc: 'ঘণ্টাপ্রতি রেট ঠিক করে বুকিং নেওয়া শুরু করুন।',
+      badge: 'Step 4'
     }
   ];
 
   const rules = [
     {
-      title: 'পেশাদার ও সম্মানজনক আচরণ',
-      desc: 'সবসময় সময়ানুবর্তিতা ও মার্জিত সামাজিক শিষ্টাচার বজায় রাখা আবশ্যক।'
+      title: 'পেশাদার ও মার্জিত শিষ্টাচার',
+      desc: 'সময়ানুবর্তিতা ও মার্জিত আচরণ বজায় রাখা বাধ্যতামূলক।'
     },
     {
       title: 'শুধুমাত্র পাবলিক স্থানে মিটিং',
-      desc: 'কোনো ব্যক্তিগত বাসা বা অনুমোদনহীন স্থানে যাওয়ার অনুরোধ সরাসরি নিষিদ্ধ।'
+      desc: 'ব্যক্তিগত বাসা বা অনুমোদনহীন স্থানে যাওয়া কঠোরভাবে নিষিদ্ধ।'
     },
     {
-      title: 'রোমান্টিক প্রস্তাব প্রত্যাখ্যানের অধিকার',
-      desc: 'যেকোনো রোমান্টিক/অনুপযুক্ত আচরণ প্রত্যাখ্যান করার অধিকার আছে এবং তা সাথে সাথে রিপোর্ট করতে হবে।'
+      title: 'প্রস্তাব প্রত্যাখ্যানের অধিকার',
+      desc: 'যেকোনো রোমান্টিক বা অনুপযুক্ত আচরণ সাথে সাথে প্রত্যাখ্যান ও রিপোর্ট করার অধিকার।'
     },
     {
       title: 'প্ল্যাটফর্মের মাধ্যমে লেনদেন',
-      desc: 'সকল বুকিং ও পেমেন্ট প্ল্যাটফর্মের মাধ্যমেই নিষ্পত্তি হতে হবে।'
+      desc: 'সকল বুকিং ও পেমেন্ট প্ল্যাটফর্মের মাধ্যমেই সম্পন্ন হতে হবে।'
     }
   ];
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+    <div className="bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-500/30 text-xs font-semibold">
-          <UserPlus className="w-4 h-4 text-emerald-400" />
-          <span>{language === 'bn' ? 'কম্প্যানিয়ন রিক্রুটমেন্ট' : 'Companion Opportunities'}</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold">
+          <UserPlus className="w-3.5 h-3.5 text-blue-600" />
+          <span>{language === 'bn' ? 'কম্প্যানিয়ন সুযোগ' : 'Companion Opportunities'}</span>
         </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-white">
-          {language === 'bn' ? 'NeverAlone-এ কম্প্যানিয়ন হিসেবে যোগ দিয়ে আয় করুন' : 'Join NeverAlone as a Verified Companion'}
+        
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+          {language === 'bn' ? (
+            <>
+              সম্মানজনক পরিবেশে <br />
+              <span className="text-blue-600">স্বাধীনভাবে আয় করুন</span>
+            </>
+          ) : (
+            <>
+              Earn on Your Schedule. <br />
+              <span className="text-blue-600">Safe, Respectful & Verified.</span>
+            </>
+          )}
         </h1>
-        <p className="text-base text-slate-300">
+
+        <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed">
           {language === 'bn'
-            ? 'আপনি কি বন্ধুত্বপূর্ণ, ভালো শ্রোতা এবং মানুষের সাথে সামাজিক অনুষ্ঠানে সময় কাটাতে পছন্দ করেন? নিরাপদ পরিবেশে নিজের সুবিধাজনক সময়ে স্বাধীনভাবে আয় করুন।'
-            : 'Are you friendly, an active listener, and socially confident? Earn respectfully on your own schedule in a verified, 100% platonic platform.'}
+            ? 'নিরাপদ পরিবেশে নিজের সুবিধাজনক সময়ে স্বাধীনভাবে আয় করুন।'
+            : 'Earn respectfully on your own schedule in a verified, 100% platonic platform.'}
         </p>
 
         <div className="pt-2">
           <button
             onClick={onOpenApply}
-            className="px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-emerald-600 hover:from-indigo-500 hover:to-emerald-500 text-white font-bold text-sm shadow-xl shadow-indigo-600/30 flex items-center justify-center gap-2 mx-auto transition-transform hover:-translate-y-0.5"
+            className="apple-pill-btn text-sm font-semibold inline-flex items-center gap-2 px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md transition-all"
           >
             <Sparkles className="w-4 h-4" />
             <span>{language === 'bn' ? 'এখনই আবেদন করুন' : 'Apply to Become a Companion'}</span>
@@ -91,19 +108,19 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
         </div>
       </div>
 
-      {/* Interactive Income Calculator */}
-      <div className="p-8 sm:p-10 rounded-3xl bg-slate-900 border border-indigo-500/30 shadow-2xl space-y-8">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+      {/* Income Calculator */}
+      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-md space-y-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
           <div>
-            <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-              <TrendingUp className="w-6 h-6 text-emerald-400" />
-              {language === 'bn' ? 'সম্ভাব্য মাসিক আয় ক্যালকুলেটর' : 'Earnings Calculator'}
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
+              <TrendingUp className="w-6 h-6 text-blue-600" />
+              <span>{language === 'bn' ? 'সম্ভাব্য মাসিক আয় ক্যালকুলেটর' : 'Earnings Calculator'}</span>
             </h2>
-            <p className="text-xs text-slate-400 mt-1">
-              {language === 'bn' ? 'আপনার সময় ও ঘণ্টাপ্রতি রেট অনুযায়ী সম্ভাব্য আয় হিসাব করুন' : 'Calculate projected income based on your available hours and rate'}
+            <p className="text-sm sm:text-base text-slate-500 mt-1 font-normal">
+              {language === 'bn' ? 'আপনার সময় ও ঘণ্টাপ্রতি রেট অনুযায়ী সম্ভাব্য আয় হিসাব করুন' : 'Calculate projected income based on your available hours and rate'}
             </p>
           </div>
-          <span className="px-3 py-1 rounded-full bg-indigo-950 text-indigo-300 border border-indigo-700/30 text-xs font-semibold">
+          <span className="px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold">
             {language === 'bn' ? '৮৫% সরাসরি পে-আউট' : '85% Direct Companion Payout'}
           </span>
         </div>
@@ -112,9 +129,9 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
           <div className="space-y-6">
             {/* Rate Slider */}
             <div className="space-y-2">
-              <div className="flex justify-between text-xs font-semibold">
-                <span className="text-slate-300">ঘণ্টাপ্রতি রেট:</span>
-                <span className="text-indigo-400 font-bold">৳ {hourlyRate} / ঘণ্টা</span>
+              <div className="flex justify-between text-sm font-semibold text-slate-700">
+                <span>ঘণ্টাপ্রতি রেট:</span>
+                <span className="text-blue-600 font-bold">৳ {hourlyRate} / ঘণ্টা</span>
               </div>
               <input
                 type="range"
@@ -123,9 +140,9 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
                 step="50"
                 value={hourlyRate}
                 onChange={(e) => setHourlyRate(Number(e.target.value))}
-                className="w-full accent-indigo-500 cursor-pointer"
+                className="w-full accent-blue-600 cursor-pointer h-2 bg-slate-100 rounded-lg appearance-none"
               />
-              <div className="flex justify-between text-[10px] text-slate-400">
+              <div className="flex justify-between text-xs text-slate-400">
                 <span>৳ ৬০০</span>
                 <span>৳ ১,৫০০</span>
                 <span>৳ ২,৫০০</span>
@@ -134,9 +151,9 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
 
             {/* Hours Slider */}
             <div className="space-y-2">
-              <div className="flex justify-between text-xs font-semibold">
-                <span className="text-slate-300">সাপ্তাহিক সময়:</span>
-                <span className="text-emerald-400 font-bold">{hoursPerWeek} ঘণ্টা / সপ্তাহ</span>
+              <div className="flex justify-between text-sm font-semibold text-slate-700">
+                <span>সাপ্তাহিক সময়:</span>
+                <span className="text-blue-600 font-bold">{hoursPerWeek} ঘণ্টা / সপ্তাহ</span>
               </div>
               <input
                 type="range"
@@ -145,9 +162,9 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
                 step="1"
                 value={hoursPerWeek}
                 onChange={(e) => setHoursPerWeek(Number(e.target.value))}
-                className="w-full accent-emerald-500 cursor-pointer"
+                className="w-full accent-blue-600 cursor-pointer h-2 bg-slate-100 rounded-lg appearance-none"
               />
-              <div className="flex justify-between text-[10px] text-slate-400">
+              <div className="flex justify-between text-xs text-slate-400">
                 <span>৪ ঘণ্টা (পার্ট-টাইম)</span>
                 <span>১৫ ঘণ্টা</span>
                 <span>৩৫ ঘণ্টা (ফুল-টাইম)</span>
@@ -156,67 +173,73 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
           </div>
 
           {/* Earnings Projection Card */}
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-indigo-950/80 to-slate-950 border border-indigo-500/40 text-center space-y-3">
-            <div className="text-xs uppercase tracking-wider text-slate-400 font-medium">
-              সম্ভাব্য নিট মাসিক আয় (১৫% প্ল্যাটফর্ম ফি বাদে)
+          <div className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-4">
+            <div className="text-xs uppercase tracking-wider text-slate-500 font-bold">
+              সম্ভাব্য নিট মাসিক আয় (১৫% প্ল্যাটফর্ম ফি বাদে)
             </div>
-            <div className="text-4xl sm:text-5xl font-extrabold text-emerald-400 py-1">
+            <div className="text-3xl font-extrabold text-blue-600 py-1 tracking-tight font-mono">
               ৳ {Math.round(netEarnings).toLocaleString()}
             </div>
-            <div className="text-xs text-slate-300">
+            <div className="text-sm text-slate-600 font-normal">
               মাসিক মোট বুকিং: ৳ {monthlyGross.toLocaleString()} • সরাসরি bKash / Bank ট্রান্সফার
             </div>
             <button
               onClick={onOpenApply}
-              className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-md shadow-indigo-600/30 transition-colors"
+              className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-xs transition-all flex items-center justify-center gap-2 apple-pill-btn"
             >
-              এই রেটে আবেদন করুন
+              <span>এই রেটে আবেদন করুন</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
       </div>
 
       {/* 4 Process Steps */}
-      <div className="space-y-6">
-        <div className="text-center max-w-xl mx-auto space-y-1">
-          <h2 className="text-2xl font-bold text-white">
+      <div className="space-y-8">
+        <div className="text-center max-w-xl mx-auto space-y-2">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
             {language === 'bn' ? 'যোগদানের ৪টি সহজ ধাপ' : '4-Step Onboarding Process'}
           </h2>
-          <p className="text-xs text-slate-400">
+          <p className="text-sm sm:text-base text-slate-600 font-normal">
             {language === 'bn' ? 'অনুমোদনের পর আপনার প্রোফাইল সাথে সাথে লাইভ হবে' : 'Verification ensures high platform prestige and user trust'}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {processSteps.map((step, idx) => (
-            <div key={idx} className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2.5">
-              <div className="w-9 h-9 rounded-xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center font-bold text-xs">
+            <div key={idx} className="bg-white border border-slate-200 hover:border-blue-300 p-6 rounded-3xl space-y-3 flex flex-col justify-between group shadow-xs hover:shadow-md transition-all">
+              <div className="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center font-bold text-sm">
                 {step.num}
               </div>
-              <h3 className="text-sm font-bold text-white">{step.title}</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">{step.desc}</p>
+              <div className="space-y-1">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">{step.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-normal">{step.desc}</p>
+              </div>
+              <div className="pt-2 border-t border-slate-100 text-xs uppercase font-semibold text-blue-600">
+                {step.badge}
+              </div>
             </div>
           ))}
         </div>
       </div>
 
       {/* Rules & Code of Conduct */}
-      <div className="p-8 rounded-3xl bg-slate-900 border border-slate-800 space-y-6">
+      <div className="p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200 space-y-6">
         <div className="flex items-center gap-3">
-          <ShieldAlert className="w-6 h-6 text-rose-400" />
-          <h2 className="text-xl font-bold text-white">
+          <ShieldAlert className="w-6 h-6 text-blue-600" />
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
             {language === 'bn' ? 'কম্প্যানিয়নদের জন্য বাধ্যতামূলক আচরণবিধি' : 'Companion Code of Conduct'}
           </h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {rules.map((r, idx) => (
-            <div key={idx} className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-              <div className="flex items-center gap-2 text-rose-300 font-bold text-xs">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+            <div key={idx} className="p-5 rounded-2xl bg-white border border-slate-200 space-y-1.5 shadow-xs">
+              <div className="flex items-center gap-2 text-slate-900 font-bold text-sm sm:text-base">
+                <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
                 <span>{r.title}</span>
               </div>
-              <p className="text-xs text-slate-400 pl-6 leading-relaxed">{r.desc}</p>
+              <p className="text-sm text-slate-600 pl-6 leading-relaxed font-normal">{r.desc}</p>
             </div>
           ))}
         </div>

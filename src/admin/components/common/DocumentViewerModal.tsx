@@ -30,12 +30,12 @@ export const DocumentViewerModal: React.FC<DocumentViewerModalProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-lg bg-indigo-50 text-[#1B3A4B]">
+            <div className="p-2 rounded-lg bg-blue-50 text-[#1B3A4B]">
               <Lock className="w-5 h-5" />
             </div>
             <div>
               <h3 className="text-sm font-bold text-slate-900">{title}</h3>
-              <p className="text-xs text-slate-500">
+              <p className="text-sm text-slate-500">
                 Subject: <span className="font-semibold text-slate-700">{ownerName}</span> • Type: <span className="font-semibold text-slate-700">{documentType}</span>
               </p>
             </div>
@@ -49,13 +49,13 @@ export const DocumentViewerModal: React.FC<DocumentViewerModalProps> = ({
         </div>
 
         {/* Security watermark badge */}
-        <div className="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-800 flex items-center justify-between">
+        <div className="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-sm text-amber-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-amber-600 shrink-0" />
             <span>Confidential Internal Staff View. Encrypted Storage. Never share externally.</span>
           </div>
           {verificationStatus && (
-            <span className="px-2 py-0.5 rounded-md bg-white font-bold text-[11px] text-amber-900 border border-amber-200">
+            <span className="px-2 py-0.5 rounded-md bg-white font-bold text-sm text-amber-900 border border-amber-200">
               {verificationStatus.toUpperCase()}
             </span>
           )}
@@ -72,10 +72,10 @@ export const DocumentViewerModal: React.FC<DocumentViewerModalProps> = ({
 
         {/* Optional Metadata Grid */}
         {metadata && Object.keys(metadata).length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200 text-sm">
             {Object.entries(metadata).map(([key, val]) => (
               <div key={key}>
-                <span className="text-[10px] uppercase font-bold text-slate-400">{key}</span>
+                <span className="text-sm uppercase font-bold text-slate-400">{key}</span>
                 <p className="font-semibold text-slate-800">{val}</p>
               </div>
             ))}
@@ -88,14 +88,14 @@ export const DocumentViewerModal: React.FC<DocumentViewerModalProps> = ({
             href={documentUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
           >
             <ExternalLink className="w-3.5 h-3.5" />
             <span>Open in New Tab</span>
           </a>
           <button
             onClick={onClose}
-            className="px-4 py-1.5 rounded-lg bg-[#1B3A4B] text-xs font-bold text-white hover:bg-[#142d3b]"
+            className="px-4 py-1.5 rounded-lg bg-[#1B3A4B] text-sm font-bold text-white hover:bg-[#142d3b]"
           >
             Close Viewer
           </button>

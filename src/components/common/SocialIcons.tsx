@@ -13,9 +13,9 @@ export const SocialIcons: React.FC<{ className?: string; size?: 'sm' | 'md' | 'l
   size = 'md'
 }) => {
   const sizeClasses = {
-    sm: 'w-7 h-7 text-xs',
+    sm: 'w-7 h-7 text-sm',
     md: 'w-8 h-8 sm:w-9 sm:h-9 text-sm',
-    lg: 'w-10 h-10 text-base'
+    lg: 'w-10 h-10 text-sm'
   };
 
   const iconSizes = {

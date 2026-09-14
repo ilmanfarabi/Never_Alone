@@ -37,12 +37,67 @@ app.use('/api/admin/tickets', ticketsRouter);
 app.use('/api/admin/analytics', analyticsRouter);
 app.use('/api/admin/settings', settingsRouter);
 
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', service: 'NeverAlone Staff Admin API', timestamp: new Date().toISOString() });
+// Root and Health endpoints
+app.get(['/', '/api', '/api/index'], (req, res) => {
+  res.json({
+    name: 'NeverAlone Platonic Platform - Staff Admin REST API',
+    status: 'online',
+    version: '1.0.0',
+    documentation: '/api/health',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/admin/auth',
+      users: '/api/admin/users',
+      companions: '/api/admin/companions',
+      bookings: '/api/admin/bookings',
+      payments: '/api/admin/payments',
+      safety: '/api/admin/safety',
+      moderation: '/api/admin/moderation',
+      tickets: '/api/admin/tickets',
+      analytics: '/api/admin/analytics',
+      settings: '/api/admin/settings'
+    },
+    message: 'Backend server is running properly on Vercel.'
+  });
 });
 
-app.listen(PORT, () => {
-  console.log(`[SERVER] NeverAlone Admin REST API running on port ${PORT}`);
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'ok', 
+    service: 'NeverAlone Staff Admin API', 
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
 });
+
+// Fallback 404 handler for undefined routes
+app.use((req, res) => {
+  res.status(404).json({
+    error: 'Not Found',
+    path: req.originalUrl,
+    message: 'The requested API route was not found.',
+    availableEndpoints: [
+      '/',
+      '/api/health',
+      '/api/admin/auth',
+      '/api/admin/users',
+      '/api/admin/companions',
+      '/api/admin/bookings',
+      '/api/admin/payments',
+      '/api/admin/safety',
+      '/api/admin/moderation',
+      '/api/admin/tickets',
+      '/api/admin/analytics',
+      '/api/admin/settings'
+    ]
+  });
+});
+
+// Start standalone HTTP server only when not running in Vercel serverless environment
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`[SERVER] NeverAlone Admin REST API running on port ${PORT}`);
+  });
+}
 
 export default app;

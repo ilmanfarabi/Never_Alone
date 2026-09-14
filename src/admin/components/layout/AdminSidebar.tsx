@@ -76,7 +76,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentPage, onNavig
       label: 'Content Moderation', 
       icon: Image,
       badgeCount: pendingModCount > 0 ? pendingModCount : undefined,
-      badgeColor: 'bg-indigo-500'
+      badgeColor: 'bg-blue-500'
     },
     { 
       id: 'tickets', 
@@ -96,19 +96,19 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentPage, onNavig
     <aside className="w-64 bg-[#1B3A4B] text-slate-200 flex flex-col shrink-0 border-r border-[#142d3b] select-none h-screen sticky top-0">
       {/* Brand Header */}
       <div className="p-4 border-b border-[#254d63] flex items-center gap-3">
-        <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#FF6F61] to-indigo-500 p-0.5 shadow-md">
+        <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#FF6F61] to-blue-500 p-0.5 shadow-md">
           <div className="w-full h-full bg-[#1B3A4B] rounded-[10px] flex items-center justify-center">
             <Shield className="w-5 h-5 text-[#FF6F61]" />
           </div>
         </div>
         <div className="flex flex-col">
-          <span className="text-base font-black tracking-tight text-white flex items-center gap-1.5">
+          <span className="text-sm font-black tracking-tight text-white flex items-center gap-1.5">
             Never<span className="text-[#FF6F61]">Alone</span>
-            <span className="text-[9px] uppercase tracking-wider px-1.5 py-0.2 rounded bg-[#FF6F61]/20 text-[#FF6F61] font-extrabold border border-[#FF6F61]/30">
+            <span className="text-sm uppercase tracking-wider px-1.5 py-0.2 rounded bg-[#FF6F61]/20 text-[#FF6F61] font-extrabold border border-[#FF6F61]/30">
               Staff
             </span>
           </span>
-          <span className="text-[10px] text-slate-400 font-medium">
+          <span className="text-sm text-slate-400 font-medium">
             Internal Operations Portal
           </span>
         </div>
@@ -116,7 +116,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentPage, onNavig
 
       {/* Navigation List */}
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-        <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3 py-1 mb-1">
+        <div className="text-sm uppercase font-bold tracking-wider text-slate-400 px-3 py-1 mb-1">
           Operations Modules
         </div>
 
@@ -127,7 +127,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentPage, onNavig
             <button
               key={item.id}
               onClick={() => onNavigate(item.id)}
-              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all group ${
+              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition-all group ${
                 isActive
                   ? 'bg-[#FF6F61] text-white shadow-md shadow-[#FF6F61]/25 font-bold'
                   : 'text-slate-300 hover:bg-[#234b61] hover:text-white'
@@ -138,7 +138,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentPage, onNavig
                 <span>{item.label}</span>
               </div>
               {item.badgeCount !== undefined && (
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold text-white shadow-xs ${item.badgeColor || 'bg-slate-700'}`}>
+                <span className={`text-sm px-1.5 py-0.2 rounded-full font-bold text-white shadow-xs ${item.badgeColor || 'bg-slate-700'}`}>
                   {item.badgeCount}
                 </span>
               )}
@@ -157,8 +157,8 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentPage, onNavig
               className="w-8 h-8 rounded-lg object-cover border border-slate-400 shrink-0"
             />
             <div className="flex flex-col truncate">
-              <span className="text-xs font-bold text-white truncate">{currentAdmin?.name || 'Staff User'}</span>
-              <span className="text-[10px] text-[#FF6F61] font-semibold uppercase tracking-wider truncate">
+              <span className="text-sm font-bold text-white truncate">{currentAdmin?.name || 'Staff User'}</span>
+              <span className="text-sm text-[#FF6F61] font-semibold uppercase tracking-wider truncate">
                 {currentAdmin?.role.replace(/_/g, ' ')}
               </span>
             </div>
@@ -183,8 +183,8 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentPage, onNavig
             </div>
             
             <div>
-              <h3 className="text-base font-bold text-slate-900">Sign Out of Staff Portal?</h3>
-              <p className="text-xs text-slate-500 mt-1">
+              <h3 className="text-sm font-bold text-slate-900">Sign Out of Staff Portal?</h3>
+              <p className="text-sm text-slate-500 mt-1">
                 Your active administrative session will be terminated and you will return to the sign-in screen.
               </p>
             </div>
@@ -193,7 +193,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentPage, onNavig
               <button
                 type="button"
                 onClick={() => setShowLogoutConfirm(false)}
-                className="flex-1 py-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold transition"
+                className="flex-1 py-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-sm font-bold transition"
               >
                 Cancel
               </button>
@@ -203,7 +203,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentPage, onNavig
                   setShowLogoutConfirm(false);
                   logout();
                 }}
-                className="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold shadow-md shadow-rose-600/20 transition"
+                className="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-sm font-bold shadow-md shadow-rose-600/20 transition"
               >
                 Yes, Sign Out
               </button>

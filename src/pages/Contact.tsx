@@ -32,120 +32,135 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+    <div className="bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
       {/* Header */}
-      <div className="text-center max-w-2xl mx-auto space-y-3">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-950/80 text-indigo-300 border border-indigo-500/30 text-xs font-semibold">
-          <MessageSquare className="w-4 h-4 text-indigo-400" />
-          <span>{language === 'bn' ? 'যোগাযোগ ও সহায়তা' : 'Get in Touch'}</span>
+      <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold">
+          <MessageSquare className="w-3.5 h-3.5 text-blue-600" />
+          <span>{language === 'bn' ? 'যোগাযোগ ও সাপোর্ট' : 'Contact & Support'}</span>
         </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-white">
-          {language === 'bn' ? 'আমাদের সাথে যোগাযোগ করুন' : 'Contact Support & Office'}
+        
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+          {language === 'bn' ? (
+            <>
+              সার্বক্ষণিক পাশে আছি <br />
+              <span className="text-blue-600">২৪/৭ সাপোর্ট টিম</span>
+            </>
+          ) : (
+            <>
+              We're Here for You. <br />
+              <span className="text-blue-600">24/7 Dedicated Support.</span>
+            </>
+          )}
         </h1>
-        <p className="text-sm text-slate-300">
+
+        <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed">
           {language === 'bn'
-            ? '২৪/৭ সাপোর্ট হেল্পলাইন, লাইভ চ্যাট এবং আমাদের ডেডিকেটেড নিরাপত্তা দলের সাথে সরাসরি যোগাযোগ করুন।'
-            : '24/7 Helpline, email support, and trust desk for seamless assistance.'}
+            ? 'যেকোনো প্রশ্ন বা সহায়তায় আমাদের সাপোর্ট টিম সার্বক্ষণিক প্রস্তুত।'
+            : 'Get in touch for booking help, safety dispatch, or general inquiries.'}
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
         {/* Contact Info Cards */}
-        <div className="space-y-4 lg:col-span-1">
+        <div className="space-y-4 lg:col-span-5">
           {/* Helpline */}
-          <div className="p-6 rounded-3xl bg-slate-900/90 border border-slate-800 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center">
+          <div className="p-6 rounded-3xl bg-white border border-slate-200 hover:border-blue-300 space-y-3 group shadow-xs hover:shadow-md transition-all">
+            <div className="w-11 h-11 rounded-2xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center shadow-xs">
               <Phone className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white">
-                {language === 'bn' ? '২৪/৭ হেল্পলাইন' : '24/7 Hotline'}
+              <h3 className="text-base sm:text-lg font-bold text-slate-900">
+                {language === 'bn' ? '২৪/৭ হেল্পলাইন হটলাইন' : '24/7 Hotline Support'}
               </h3>
-              <p className="text-xs text-slate-400 mt-0.5">
-                {language === 'bn' ? 'যেকোনো সময় সরাসরি কল করুন' : 'Call us toll-free anytime'}
+              <p className="text-xs sm:text-sm text-slate-500 mt-0.5 font-normal">
+                {language === 'bn' ? 'সরাসরি কল করে কথা বলুন' : 'Instant phone assistance'}
               </p>
             </div>
-            <div className="text-sm font-bold text-emerald-400 font-mono">
-              ০৯৬XX-XXXXXX
+            <div className="text-sm font-bold text-blue-600 font-mono tracking-wide">
+              ০৯৬১২-৩৪৫৬৭৮
             </div>
           </div>
 
           {/* Email */}
-          <div className="p-6 rounded-3xl bg-slate-900/90 border border-slate-800 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center">
+          <div className="p-6 rounded-3xl bg-white border border-slate-200 hover:border-blue-300 space-y-3 group shadow-xs hover:shadow-md transition-all">
+            <div className="w-11 h-11 rounded-2xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center shadow-xs">
               <Mail className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white">
-                {language === 'bn' ? 'ইমেইল সাপোর্ট' : 'Email Inquiries'}
+              <h3 className="text-base sm:text-lg font-bold text-slate-900">
+                {language === 'bn' ? 'ইমেইল সাপোর্ট ডায়ালগ' : 'Email Support Desk'}
               </h3>
-              <p className="text-xs text-slate-400 mt-0.5">
-                {language === 'bn' ? 'গড় উত্তর প্রদানের সময়: ১ ঘণ্টা' : 'Average response time: 1 hour'}
+              <p className="text-xs sm:text-sm text-slate-500 mt-0.5 font-normal">
+                {language === 'bn' ? 'গড় উত্তর সময়: ১ ঘণ্টা' : 'Average response: under 1 hour'}
               </p>
             </div>
-            <a href="mailto:support@neveralone.com" className="text-xs font-semibold text-indigo-300 hover:underline block font-mono">
+            <a href="mailto:support@neveralone.com" className="text-sm font-semibold text-blue-600 hover:underline block font-mono">
               support@neveralone.com
             </a>
           </div>
 
           {/* Office Address */}
-          <div className="p-6 rounded-3xl bg-slate-900/90 border border-slate-800 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center">
+          <div className="p-6 rounded-3xl bg-white border border-slate-200 hover:border-blue-300 space-y-3 group shadow-xs hover:shadow-md transition-all">
+            <div className="w-11 h-11 rounded-2xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center shadow-xs">
               <MapPin className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white">
-                {language === 'bn' ? 'হেড অফিস' : 'Headquarters'}
-              </h3>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <h3 className="text-base sm:text-lg font-bold text-slate-900">
                 {language === 'bn' ? 'কর্পোরেট কার্যালয়' : 'Corporate Office'}
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-500 mt-0.5 font-normal">
+                {language === 'bn' ? 'ঢাকা হেডকোয়ার্টার' : 'Dhaka Headquarters'}
               </p>
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              প্লট ১২, রোড ৪৪, গুলশান-২, ঢাকা ১২১২, বাংলাদেশ
+            <p className="text-sm text-slate-600 leading-relaxed font-normal">
+              প্লট ১২, রোড ৪৪, গুলশান-২, ঢাকা ১২১২
             </p>
           </div>
         </div>
 
         {/* Support Inquiry Form */}
-        <div className="lg:col-span-2 p-8 rounded-3xl bg-slate-900 border border-slate-800 shadow-xl">
+        <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-md">
           {submitted ? (
             <div className="py-12 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 mx-auto flex items-center justify-center">
-                <CheckCircle className="w-10 h-10" />
+              <div className="w-14 h-14 rounded-full bg-blue-50 text-blue-600 border border-blue-100 mx-auto flex items-center justify-center shadow-xs">
+                <CheckCircle className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-bold text-emerald-400">
-                {language === 'bn' ? 'আপনার বার্তা সফলভাবে পাঠানো হয়েছে!' : 'Message Sent Successfully!'}
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
+                {language === 'bn' ? 'বার্তা সফলভাবে পাঠানো হয়েছে!' : 'Message Sent Successfully!'}
               </h3>
-              <p className="text-xs text-slate-300 max-w-md mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-600 max-w-md mx-auto leading-relaxed font-normal">
                 {language === 'bn'
-                  ? 'NeverAlone সাপোর্টে যোগাযোগ করার জন্য ধন্যবাদ। আমাদের প্রতিনিধি আপনার ইমেইল বা ফোনে দ্রুত যোগাযোগ করবেন।'
-                  : 'Thank you for contacting us. A support representative will respond shortly.'}
+                  ? 'ধন্যবাদ। আমাদের সাপোর্ট প্রতিনিধি দ্রুত আপনার সাথে যোগাযোগ করবেন।'
+                  : 'Thank you for reaching out. A support agent will respond to you shortly.'}
               </p>
-              <button
-                onClick={() => {
-                  setSubmitted(false);
-                  setFormData({ name: '', email: '', phone: '', subject: 'General Inquiry', message: '' });
-                }}
-                className="py-2.5 px-6 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold"
-              >
-                {language === 'bn' ? 'আরেকটি বার্তা পাঠান' : 'Send Another Message'}
-              </button>
+              <div className="pt-2">
+                <button
+                  onClick={() => {
+                    setSubmitted(false);
+                    setFormData({ name: '', email: '', phone: '', subject: 'General Inquiry', message: '' });
+                  }}
+                  className="apple-pill-btn bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-6 py-2.5 rounded-full shadow-xs"
+                >
+                  {language === 'bn' ? 'আরেকটি বার্তা পাঠান' : 'Send Another Message'}
+                </button>
+              </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4 text-xs">
-              <div className="border-b border-slate-800 pb-3">
-                <h2 className="text-lg font-bold text-white">
-                  {language === 'bn' ? 'সাপোর্ট ইনকোয়ারি ফর্ম' : 'Send us a Message'}
+            <form onSubmit={handleSubmit} className="space-y-4 text-sm">
+              <div className="border-b border-slate-100 pb-4">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+                  {language === 'bn' ? 'বার্তা পাঠান' : 'Send Us a Message'}
                 </h2>
-                <p className="text-xs text-slate-400">
-                  {language === 'bn' ? 'ফর্ম পূরণ করে আপনার প্রশ্ন বা মতামত জানান' : 'Fill out the form below and we will get back to you.'}
+                <p className="text-sm sm:text-base text-slate-500 mt-1 font-normal">
+                  {language === 'bn' ? 'ফর্মটি পূরণ করে আপনার মতামত বা প্রশ্ন জানান' : 'Fill out the details below and we will get back to you shortly.'}
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-semibold text-slate-300 mb-1">
+                  <label className="block font-semibold text-slate-700 mb-1.5">
                     {language === 'bn' ? 'আপনার নাম:' : 'Your Name:'}
                   </label>
                   <input
@@ -154,12 +169,12 @@ export const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Shakib Ahmed"
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-300 mb-1">
+                  <label className="block font-semibold text-slate-700 mb-1.5">
                     {language === 'bn' ? 'ইমেইল অ্যাড্রেস:' : 'Email Address:'}
                   </label>
                   <input
@@ -168,14 +183,14 @@ export const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="e.g. name@example.com"
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-colors"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-semibold text-slate-300 mb-1">
+                  <label className="block font-semibold text-slate-700 mb-1.5">
                     {language === 'bn' ? 'মোবাইল নম্বর:' : 'Phone Number:'}
                   </label>
                   <input
@@ -183,18 +198,18 @@ export const Contact: React.FC = () => {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="017XXXXXXXX"
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-300 mb-1">
-                    {language === 'bn' ? 'ইনকোয়ারির ধরন:' : 'Topic:'}
+                  <label className="block font-semibold text-slate-700 mb-1.5">
+                    {language === 'bn' ? 'ইনকোয়ারির বিষয়:' : 'Topic:'}
                   </label>
                   <select
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-colors"
                   >
                     <option value="General Inquiry">{language === 'bn' ? 'সাধারণ প্রশ্ন (General Inquiry)' : 'General Inquiry'}</option>
                     <option value="Booking Help">{language === 'bn' ? 'বুকিং সহায়তা (Booking Assistance)' : 'Booking Assistance'}</option>
@@ -206,7 +221,7 @@ export const Contact: React.FC = () => {
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-300 mb-1">
+                <label className="block font-semibold text-slate-700 mb-1.5">
                   {language === 'bn' ? 'আপনার বার্তা / প্রশ্ন:' : 'Your Message:'}
                 </label>
                 <textarea
@@ -214,15 +229,15 @@ export const Contact: React.FC = () => {
                   rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder={language === 'bn' ? 'বিস্তারিত লিখুন...' : 'Describe how we can help you...'}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500"
+                  placeholder={language === 'bn' ? 'কীভাবে আমরা আপনাকে সাহায্য করতে পারি লিখুন...' : 'Describe how we can assist you...'}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-colors"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-bold text-xs shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2 transition-all"
+                className="w-full py-3.5 rounded-full apple-pill-btn bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold flex items-center justify-center gap-2 shadow-md transition-all"
               >
                 {loading ? (
                   <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>

@@ -122,7 +122,7 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
           <h1 className="text-2xl font-black text-[#1B3A4B] tracking-tight">
             Never<span className="text-[#FF6F61]">Alone</span> Staff Onboarding
           </h1>
-          <p className="text-xs text-slate-500">
+          <p className="text-sm text-slate-500">
             Provision Authorized Administrative & Operations Credentials
           </p>
         </div>
@@ -132,7 +132,7 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
           <button
             type="button"
             onClick={onSwitchToLogin}
-            className="flex-1 py-2 text-xs font-bold rounded-xl transition flex items-center justify-center space-x-1.5 text-slate-500 hover:text-slate-900"
+            className="flex-1 py-2 text-sm font-bold rounded-xl transition flex items-center justify-center space-x-1.5 text-slate-500 hover:text-slate-900"
           >
             <Lock className="w-3.5 h-3.5" />
             <span>Staff Sign In</span>
@@ -140,7 +140,7 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
 
           <button
             type="button"
-            className="flex-1 py-2 text-xs font-bold rounded-xl transition flex items-center justify-center space-x-1.5 bg-white text-slate-900 shadow-xs"
+            className="flex-1 py-2 text-sm font-bold rounded-xl transition flex items-center justify-center space-x-1.5 bg-white text-slate-900 shadow-xs"
           >
             <Shield className="w-3.5 h-3.5 text-[#FF6F61]" />
             <span>Staff Onboard / Sign Up</span>
@@ -149,7 +149,7 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
 
         {/* Success Alert */}
         {successNotice && (
-          <div className="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 flex items-center gap-2.5 font-bold animate-in fade-in">
+          <div className="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-sm text-emerald-800 flex items-center gap-2.5 font-bold animate-in fade-in">
             <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
             <span>Staff account created successfully! Signing in to dashboard...</span>
           </div>
@@ -157,7 +157,7 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
 
         {/* Error Alert */}
         {error && (
-          <div className="p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-xs text-rose-700 flex items-center gap-2 font-semibold animate-in shake">
+          <div className="p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-sm text-rose-700 flex items-center gap-2 font-semibold animate-in shake">
             <AlertCircle className="w-4 h-4 shrink-0" />
             <span>{error}</span>
           </div>
@@ -169,7 +169,7 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Full Name */}
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Full Legal Name</label>
+              <label className="block text-sm font-bold text-slate-700 mb-1">Full Legal Name</label>
               <div className="relative">
                 <User className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
@@ -178,14 +178,14 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Farhan Chowdhury"
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B] focus:ring-1 focus:ring-[#1B3A4B]"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B] focus:ring-1 focus:ring-[#1B3A4B]"
                 />
               </div>
             </div>
 
             {/* Work Email */}
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Corporate Email</label>
+              <label className="block text-sm font-bold text-slate-700 mb-1">Corporate Email</label>
               <div className="relative">
                 <Mail className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
@@ -194,7 +194,7 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@neveralone.com"
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B] focus:ring-1 focus:ring-[#1B3A4B]"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B] focus:ring-1 focus:ring-[#1B3A4B]"
                 />
               </div>
             </div>
@@ -203,8 +203,8 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
           {/* RBAC Role Selector */}
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <label className="block text-xs font-bold text-slate-700">Administrative Role & Permissions</label>
-              <span className="text-[10px] text-slate-400 font-medium">Select RBAC tier</span>
+              <label className="block text-sm font-bold text-slate-700">Administrative Role & Permissions</label>
+              <span className="text-sm text-slate-400 font-medium">Select RBAC tier</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {roleOptions.map((opt) => (
@@ -218,12 +218,12 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-slate-900">{opt.label}</span>
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${opt.color}`}>
+                    <span className="text-sm font-bold text-slate-900">{opt.label}</span>
+                    <span className={`text-sm font-bold px-2 py-0.5 rounded-full border ${opt.color}`}>
                       {opt.badge}
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-500 mt-1 leading-snug">{opt.desc}</p>
+                  <p className="text-sm text-slate-500 mt-1 leading-snug">{opt.desc}</p>
                 </div>
               ))}
             </div>
@@ -232,7 +232,7 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
           {/* Passwords */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Master Password</label>
+              <label className="block text-sm font-bold text-slate-700 mb-1">Master Password</label>
               <div className="relative">
                 <Lock className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
@@ -241,7 +241,7 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="At least 6 characters"
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-9 py-2 text-xs text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B]"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-9 py-2 text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B]"
                 />
                 <button
                   type="button"
@@ -254,7 +254,7 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Confirm Password</label>
+              <label className="block text-sm font-bold text-slate-700 mb-1">Confirm Password</label>
               <div className="relative">
                 <Lock className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
@@ -263,7 +263,7 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="Repeat password"
-                  className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B]"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-sm text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B]"
                 />
               </div>
             </div>
@@ -272,11 +272,11 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
           {/* Staff Invitation Passcode */}
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="block text-xs font-bold text-slate-700">Staff Invitation Token / Passcode</label>
+              <label className="block text-sm font-bold text-slate-700">Staff Invitation Token / Passcode</label>
               <button
                 type="button"
                 onClick={() => setInviteCode('NEVERALONE2026')}
-                className="text-[10px] text-[#FF6F61] hover:underline font-semibold"
+                className="text-sm text-[#FF6F61] hover:underline font-semibold"
               >
                 Auto-fill Demo Token (NEVERALONE2026)
               </button>
@@ -289,22 +289,22 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
                 value={inviteCode}
                 onChange={(e) => setInviteCode(e.target.value)}
                 placeholder="NEVERALONE2026"
-                className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-xs font-mono tracking-wider text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B]"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-sm font-mono tracking-wider text-slate-800 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#1B3A4B]"
               />
             </div>
-            <p className="text-[10px] text-slate-400 mt-1 flex items-center gap-1">
+            <p className="text-sm text-slate-400 mt-1 flex items-center gap-1">
               <Building2 className="w-3 h-3" />
               Issued by NeverAlone HQ Operations Team to verify internal authorization.
             </p>
           </div>
 
           {/* 2FA Enrollment Notice */}
-          <div className="p-3 bg-slate-50 border border-slate-200 rounded-2xl flex items-center justify-between text-xs">
+          <div className="p-3 bg-slate-50 border border-slate-200 rounded-2xl flex items-center justify-between text-sm">
             <div className="flex items-center space-x-2">
               <BadgeCheck className="w-4 h-4 text-emerald-600 shrink-0" />
               <span className="text-slate-700 font-semibold">Hardware/App 2FA Enrollment</span>
             </div>
-            <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-md">
+            <span className="text-sm font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-md">
               Enabled by Default
             </span>
           </div>
@@ -318,7 +318,7 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
               onChange={(e) => setAcceptTerms(e.target.checked)}
               className="mt-0.5 rounded border-slate-300 text-[#1B3A4B] focus:ring-[#1B3A4B]"
             />
-            <label htmlFor="admin-terms" className="text-[11px] text-slate-600 leading-snug">
+            <label htmlFor="admin-terms" className="text-sm text-slate-600 leading-snug">
               I certify that I am an authorized NeverAlone staff member. I agree to maintain strict confidentiality of user data and enforce the platform's non-romantic, non-dating platonic companionship charter.
             </label>
           </div>
@@ -327,7 +327,7 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
           <button
             type="submit"
             disabled={loading || successNotice}
-            className="w-full py-3 rounded-2xl bg-[#1B3A4B] hover:bg-[#142d3b] text-white font-bold text-xs shadow-md shadow-[#1B3A4B]/20 flex items-center justify-center gap-2 transition-all disabled:opacity-50"
+            className="w-full py-3 rounded-2xl bg-[#1B3A4B] hover:bg-[#142d3b] text-white font-bold text-sm shadow-md shadow-[#1B3A4B]/20 flex items-center justify-center gap-2 transition-all disabled:opacity-50"
           >
             {loading ? (
               <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -341,7 +341,7 @@ export const AdminSignup: React.FC<AdminSignupProps> = ({
         </form>
 
         {/* Switch to Login / Back Links */}
-        <div className="pt-3 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
+        <div className="pt-3 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm">
           <button
             type="button"
             onClick={onSwitchToLogin}

@@ -47,7 +47,7 @@ export const ContentModeration: React.FC = () => {
         <div className="flex bg-slate-100 p-1 rounded-xl border border-slate-200">
           <button
             onClick={() => setActiveTab('photos')}
-            className={`px-4 py-2 text-xs font-semibold rounded-lg transition flex items-center space-x-1.5 ${
+            className={`px-4 py-2 text-sm font-semibold rounded-lg transition flex items-center space-x-1.5 ${
               activeTab === 'photos'
                 ? 'bg-white text-slate-900 shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
@@ -56,7 +56,7 @@ export const ContentModeration: React.FC = () => {
             <ImageIcon className="w-4 h-4 text-purple-600" />
             <span>Profile Photos</span>
             {pendingPhotos.length > 0 && (
-              <span className="bg-purple-600 text-white text-[10px] px-1.5 py-0.2 rounded-full font-bold">
+              <span className="bg-purple-600 text-white text-sm px-1.5 py-0.2 rounded-full font-bold">
                 {pendingPhotos.length}
               </span>
             )}
@@ -64,7 +64,7 @@ export const ContentModeration: React.FC = () => {
 
           <button
             onClick={() => setActiveTab('reviews')}
-            className={`px-4 py-2 text-xs font-semibold rounded-lg transition flex items-center space-x-1.5 ${
+            className={`px-4 py-2 text-sm font-semibold rounded-lg transition flex items-center space-x-1.5 ${
               activeTab === 'reviews'
                 ? 'bg-white text-slate-900 shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
@@ -73,7 +73,7 @@ export const ContentModeration: React.FC = () => {
             <Star className="w-4 h-4 text-amber-500" />
             <span>Customer Reviews</span>
             {pendingReviews.length > 0 && (
-              <span className="bg-amber-500 text-white text-[10px] px-1.5 py-0.2 rounded-full font-bold">
+              <span className="bg-amber-500 text-white text-sm px-1.5 py-0.2 rounded-full font-bold">
                 {pendingReviews.length}
               </span>
             )}
@@ -82,7 +82,7 @@ export const ContentModeration: React.FC = () => {
       </div>
 
       {/* Guidelines Reminder Banner */}
-      <div className="p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl border border-purple-100 flex items-start space-x-3 text-xs text-slate-700">
+      <div className="p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl border border-purple-100 flex items-start space-x-3 text-sm text-slate-700">
         <AlertCircle className="w-5 h-5 text-purple-600 shrink-0 mt-0.5" />
         <div>
           <span className="font-bold text-slate-900">Platonic Standard Moderation Rules:</span>
@@ -97,7 +97,7 @@ export const ContentModeration: React.FC = () => {
       {activeTab === 'photos' && (
         <div className="space-y-6">
           <div className="bg-white rounded-2xl border border-slate-200 shadow-xs p-6">
-            <h2 className="text-base font-bold text-slate-900 mb-4">
+            <h2 className="text-sm font-bold text-slate-900 mb-4">
               Pending Photo Submissions ({pendingPhotos.length})
             </h2>
 
@@ -105,7 +105,7 @@ export const ContentModeration: React.FC = () => {
               <div className="py-12 text-center">
                 <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto mb-2" />
                 <h3 className="text-sm font-bold text-slate-900">Photo Moderation Queue is Clear!</h3>
-                <p className="text-xs text-slate-500">No new companion or user profile photos are waiting for audit.</p>
+                <p className="text-sm text-slate-500">No new companion or user profile photos are waiting for audit.</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -117,7 +117,7 @@ export const ContentModeration: React.FC = () => {
                         alt={item.name}
                         className="w-full h-full object-cover"
                       />
-                      <span className="absolute top-3 left-3 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded backdrop-blur-xs uppercase">
+                      <span className="absolute top-3 left-3 bg-black/60 text-white text-sm font-bold px-2 py-0.5 rounded backdrop-blur-xs uppercase">
                         {item.type.replace('_', ' ')}
                       </span>
                     </div>
@@ -125,8 +125,8 @@ export const ContentModeration: React.FC = () => {
                     <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
                       <div>
                         <p className="font-bold text-slate-900 text-sm">{item.name}</p>
-                        <p className="text-[11px] text-slate-400 font-mono">User ID: {item.companionOrUserId}</p>
-                        <p className="text-[11px] text-slate-500 mt-1">
+                        <p className="text-sm text-slate-400 font-mono">User ID: {item.companionOrUserId}</p>
+                        <p className="text-sm text-slate-500 mt-1">
                           Submitted: {item.submittedAt}
                         </p>
                       </div>
@@ -134,7 +134,7 @@ export const ContentModeration: React.FC = () => {
                       <div className="flex items-center space-x-2 pt-2 border-t border-slate-100">
                         <button
                           onClick={() => handleApprove(item)}
-                          className="flex-1 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition flex items-center justify-center space-x-1"
+                          className="flex-1 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-xl transition flex items-center justify-center space-x-1"
                         >
                           <Check className="w-4 h-4" />
                           <span>Approve</span>
@@ -144,7 +144,7 @@ export const ContentModeration: React.FC = () => {
                             setSelectedItem(item);
                             setRejectModalOpen(true);
                           }}
-                          className="flex-1 py-2 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 text-xs font-bold rounded-xl transition flex items-center justify-center space-x-1"
+                          className="flex-1 py-2 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 text-sm font-bold rounded-xl transition flex items-center justify-center space-x-1"
                         >
                           <X className="w-4 h-4" />
                           <span>Reject</span>
@@ -162,7 +162,7 @@ export const ContentModeration: React.FC = () => {
       {/* TAB 2: Customer Reviews Queue */}
       {activeTab === 'reviews' && (
         <div className="bg-white rounded-2xl border border-slate-200 shadow-xs p-6 space-y-6">
-          <h2 className="text-base font-bold text-slate-900">
+          <h2 className="text-sm font-bold text-slate-900">
             Pending Customer Reviews ({pendingReviews.length})
           </h2>
 
@@ -170,7 +170,7 @@ export const ContentModeration: React.FC = () => {
             <div className="py-12 text-center">
               <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto mb-2" />
               <h3 className="text-sm font-bold text-slate-900">Review Queue is Clear!</h3>
-              <p className="text-xs text-slate-500">All customer ratings and feedback have been moderated.</p>
+              <p className="text-sm text-slate-500">All customer ratings and feedback have been moderated.</p>
             </div>
           ) : (
             <div className="space-y-4">
@@ -186,19 +186,19 @@ export const ContentModeration: React.FC = () => {
                           />
                         ))}
                       </div>
-                      <span className="text-xs font-bold text-slate-800">
+                      <span className="text-sm font-bold text-slate-800">
                         {item.rating || 5}.0 Stars
                       </span>
-                      <span className="text-xs text-slate-400 font-mono">#{item.id}</span>
+                      <span className="text-sm text-slate-400 font-mono">#{item.id}</span>
                     </div>
 
-                    <div className="text-xs text-slate-600">
+                    <div className="text-sm text-slate-600">
                       <span className="font-bold text-slate-900">{item.authorName || item.name}</span>
                       <span> submitted feedback for companion </span>
-                      <span className="font-mono text-indigo-600 font-semibold">{item.companionOrUserId}</span>
+                      <span className="font-mono text-blue-600 font-semibold">{item.companionOrUserId}</span>
                     </div>
 
-                    <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-800 italic">
+                    <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 text-sm text-slate-800 italic">
                       "{item.content}"
                     </div>
                   </div>
@@ -206,7 +206,7 @@ export const ContentModeration: React.FC = () => {
                   <div className="flex items-center space-x-2 shrink-0">
                     <button
                       onClick={() => handleApprove(item)}
-                      className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition flex items-center space-x-1"
+                      className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-xl transition flex items-center space-x-1"
                     >
                       <Check className="w-4 h-4" />
                       <span>Approve & Publish</span>
@@ -216,7 +216,7 @@ export const ContentModeration: React.FC = () => {
                         setSelectedItem(item);
                         setRejectModalOpen(true);
                       }}
-                      className="px-4 py-2 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 text-xs font-bold rounded-xl transition flex items-center space-x-1"
+                      className="px-4 py-2 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 text-sm font-bold rounded-xl transition flex items-center space-x-1"
                     >
                       <Trash2 className="w-4 h-4" />
                       <span>Reject & Delete</span>

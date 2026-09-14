@@ -145,7 +145,7 @@ export const UserManagement: React.FC = () => {
           />
           <div>
             <div className="font-bold text-slate-900">{user.name}</div>
-            <div className="text-[11px] text-slate-500 font-mono">{user.email}</div>
+            <div className="text-sm text-slate-500 font-mono">{user.email}</div>
           </div>
         </div>
       )
@@ -193,7 +193,7 @@ export const UserManagement: React.FC = () => {
       sortable: true,
       cell: (user) => (
         <span className="font-bold text-slate-800">
-          {user.totalBookings} <span className="text-[10px] text-slate-400 font-normal">sessions</span>
+          {user.totalBookings} <span className="text-sm text-slate-400 font-normal">sessions</span>
         </span>
       )
     },
@@ -218,7 +218,7 @@ export const UserManagement: React.FC = () => {
               setSelectedUser(user);
               setActiveTab('profile');
             }}
-            className="px-2.5 py-1 rounded-lg bg-[#1B3A4B] text-white text-xs font-semibold hover:bg-[#142d3b] transition-colors"
+            className="px-2.5 py-1 rounded-lg bg-[#1B3A4B] text-white text-sm font-semibold hover:bg-[#142d3b] transition-colors"
           >
             View Details
           </button>
@@ -237,8 +237,8 @@ export const UserManagement: React.FC = () => {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-lg font-black text-[#1B3A4B]">Customer Management</h2>
-          <p className="text-xs text-slate-500">
+          <h2 className="text-2xl font-black text-[#1B3A4B]">Customer Management</h2>
+          <p className="text-sm text-slate-500">
             View, verify, moderate and manage customer accounts ({customers.length} total)
           </p>
         </div>
@@ -290,11 +290,11 @@ export const UserManagement: React.FC = () => {
                 />
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="text-base font-black text-slate-900">{selectedUser.name}</h3>
+                    <h3 className="text-sm font-black text-slate-900">{selectedUser.name}</h3>
                     <StatusBadge status={selectedUser.status} />
                   </div>
-                  <p className="text-xs text-slate-500 font-mono mt-0.5">{selectedUser.email} • {selectedUser.phone}</p>
-                  <p className="text-[11px] text-slate-400 mt-0.5">Customer since {selectedUser.signupDate}</p>
+                  <p className="text-sm text-slate-500 font-mono mt-0.5">{selectedUser.email} • {selectedUser.phone}</p>
+                  <p className="text-sm text-slate-400 mt-0.5">Customer since {selectedUser.signupDate}</p>
                 </div>
               </div>
 
@@ -307,7 +307,7 @@ export const UserManagement: React.FC = () => {
             </div>
 
             {/* Navigation Tabs */}
-            <div className="flex items-center gap-2 px-6 border-b border-slate-200 bg-white text-xs font-bold text-slate-500">
+            <div className="flex items-center gap-2 px-6 border-b border-slate-200 bg-white text-sm font-bold text-slate-500">
               <button
                 onClick={() => setActiveTab('profile')}
                 className={`py-3 px-3 border-b-2 transition-all ${
@@ -343,22 +343,22 @@ export const UserManagement: React.FC = () => {
             </div>
 
             {/* Tab Body */}
-            <div className="flex-1 p-6 overflow-y-auto space-y-5 text-xs">
+            <div className="flex-1 p-6 overflow-y-auto space-y-5 text-sm">
               {/* 1. Profile Tab */}
               {activeTab === 'profile' && (
                 <div className="space-y-4">
                   {/* Account Summary */}
                   <div className="grid grid-cols-3 gap-3 p-4 bg-slate-50 rounded-xl border border-slate-200">
                     <div>
-                      <span className="text-[10px] uppercase font-bold text-slate-400">Total Bookings</span>
-                      <p className="text-base font-bold text-slate-900">{selectedUser.totalBookings}</p>
+                      <span className="text-sm uppercase font-bold text-slate-400">Total Bookings</span>
+                      <p className="text-sm font-bold text-slate-900">{selectedUser.totalBookings}</p>
                     </div>
                     <div>
-                      <span className="text-[10px] uppercase font-bold text-slate-400">Total Billed</span>
-                      <p className="text-base font-bold text-slate-900">৳{selectedUser.totalSpent.toLocaleString()}</p>
+                      <span className="text-sm uppercase font-bold text-slate-400">Total Billed</span>
+                      <p className="text-sm font-bold text-slate-900">৳{selectedUser.totalSpent.toLocaleString()}</p>
                     </div>
                     <div>
-                      <span className="text-[10px] uppercase font-bold text-slate-400">ID Verification</span>
+                      <span className="text-sm uppercase font-bold text-slate-400">ID Verification</span>
                       <div className="mt-0.5"><StatusBadge status={selectedUser.verificationStatus} /></div>
                     </div>
                   </div>
@@ -379,7 +379,7 @@ export const UserManagement: React.FC = () => {
                             documentUrl: selectedUser.idDocumentUrl!,
                             verificationStatus: selectedUser.verificationStatus
                           })}
-                          className="text-[#FF6F61] font-bold text-xs hover:underline flex items-center gap-1"
+                          className="text-[#FF6F61] font-bold text-sm hover:underline flex items-center gap-1"
                         >
                           <Eye className="w-3.5 h-3.5" />
                           <span>View Document</span>
@@ -392,7 +392,7 @@ export const UserManagement: React.FC = () => {
                         <FileText className="w-6 h-6 text-[#1B3A4B]" />
                         <div>
                           <p className="font-semibold text-slate-800">{selectedUser.idDocumentType} - Verified by Trust Desk</p>
-                          <p className="text-[11px] text-slate-400">Uploaded during account onboarding</p>
+                          <p className="text-sm text-slate-400">Uploaded during account onboarding</p>
                         </div>
                       </div>
                     ) : (
@@ -417,7 +417,7 @@ export const UserManagement: React.FC = () => {
                         onClick={() => alert(`Password reset link generated and sent to ${selectedUser.email}`)}
                         className="p-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 font-bold flex items-center justify-center gap-1.5"
                       >
-                        <KeyRound className="w-4 h-4 text-indigo-600" />
+                        <KeyRound className="w-4 h-4 text-blue-600" />
                         <span>Reset Password</span>
                       </button>
 
@@ -467,7 +467,7 @@ export const UserManagement: React.FC = () => {
                       <div className="text-slate-500">
                         Venue: {b.venueName}, {b.venueAddress}
                       </div>
-                      <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
+                      <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-sm">
                         <span className="font-mono font-bold text-slate-800">৳{b.amount.toLocaleString()} ({b.durationHours}h)</span>
                         <span className="text-slate-400">Created: {b.createdAt}</span>
                       </div>
@@ -493,7 +493,7 @@ export const UserManagement: React.FC = () => {
                             <StatusBadge status={r.status} />
                           </div>
                           <p className="text-slate-700">{r.description}</p>
-                          <span className="text-[10px] text-slate-400 block pt-1">Reported by {r.reporterName} on {r.createdAt}</span>
+                          <span className="text-sm text-slate-400 block pt-1">Reported by {r.reporterName} on {r.createdAt}</span>
                         </div>
                       ))}
                       {reportsAgainstUser.length === 0 && <p className="text-slate-400 italic">No reports filed against this customer.</p>}
@@ -510,7 +510,7 @@ export const UserManagement: React.FC = () => {
                             <StatusBadge status={r.status} />
                           </div>
                           <p className="text-slate-700">{r.description}</p>
-                          <span className="text-[10px] text-slate-400 block pt-1">Target: {r.reportedName} • {r.createdAt}</span>
+                          <span className="text-sm text-slate-400 block pt-1">Target: {r.reportedName} • {r.createdAt}</span>
                         </div>
                       ))}
                       {reportsFiledByUser.length === 0 && <p className="text-slate-400 italic">User has not filed any incident reports.</p>}
@@ -530,12 +530,12 @@ export const UserManagement: React.FC = () => {
                       value={newNoteText}
                       onChange={(e) => setNewNoteText(e.target.value)}
                       placeholder="Write an internal operational note regarding this customer..."
-                      className="w-full bg-white border border-slate-300 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-[#1B3A4B]"
+                      className="w-full bg-white border border-slate-300 rounded-lg p-2.5 text-sm text-slate-800 focus:outline-none focus:border-[#1B3A4B]"
                     />
                     <button
                       onClick={handleAddNote}
                       disabled={!newNoteText.trim()}
-                      className="px-3 py-1.5 rounded-lg bg-[#1B3A4B] text-white text-xs font-bold disabled:opacity-40"
+                      className="px-3 py-1.5 rounded-lg bg-[#1B3A4B] text-white text-sm font-bold disabled:opacity-40"
                     >
                       Save Internal Note
                     </button>
@@ -545,7 +545,7 @@ export const UserManagement: React.FC = () => {
                   <div className="space-y-2">
                     {selectedUser.notes.map(n => (
                       <div key={n.id} className="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1">
-                        <div className="flex items-center justify-between text-[11px]">
+                        <div className="flex items-center justify-between text-sm">
                           <span className="font-bold text-slate-900">{n.authorName} ({n.authorRole.replace(/_/g, ' ')})</span>
                           <span className="text-slate-400">{n.createdAt}</span>
                         </div>
@@ -564,7 +564,7 @@ export const UserManagement: React.FC = () => {
             <div className="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-end">
               <button
                 onClick={() => setSelectedUser(null)}
-                className="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs transition-colors"
+                className="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-sm transition-colors"
               >
                 Close Drawer
               </button>

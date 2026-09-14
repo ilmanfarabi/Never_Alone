@@ -37,7 +37,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ status, className = ''
     .replace(/\b\w/g, l => l.toUpperCase());
 
   return (
-    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs border ${styles} ${className}`}>
+    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-sm border ${styles} ${className}`}>
       <span className={`w-1.5 h-1.5 rounded-full mr-1.5 ${
         ['active', 'verified', 'approved', 'completed', 'paid', 'resolved'].includes(normalized) ? 'bg-emerald-500' :
         ['pending', 'investigating', 'processing'].includes(normalized) ? 'bg-amber-500 animate-pulse' :

@@ -88,7 +88,7 @@ export const FloatingChat: React.FC<{ onOpenSOS: () => void }> = ({ onOpenSOS })
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="flex items-center gap-2.5 px-4 py-3 bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white rounded-full shadow-2xl shadow-indigo-500/40 hover:scale-105 active:scale-95 transition-all border border-indigo-400/30"
+          className="flex items-center gap-2.5 px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white rounded-full shadow-2xl shadow-blue-500/40 hover:scale-105 active:scale-95 transition-all border border-blue-400/30"
           aria-label="Open live support chat"
         >
           <div className="relative">
@@ -105,16 +105,16 @@ export const FloatingChat: React.FC<{ onOpenSOS: () => void }> = ({ onOpenSOS })
       {isOpen && (
         <div className="w-[90vw] sm:w-96 h-[480px] max-h-[80vh] bg-slate-900 rounded-2xl shadow-2xl border border-slate-700/80 flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
           {/* Header */}
-          <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 px-4 py-3 flex items-center justify-between text-white">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-3 flex items-center justify-between text-white">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-indigo-800 flex items-center justify-center border border-indigo-400/40">
-                <Bot className="w-4 h-4 text-indigo-200" />
+              <div className="w-8 h-8 rounded-full bg-blue-800 flex items-center justify-center border border-blue-400/40">
+                <Bot className="w-4 h-4 text-blue-200" />
               </div>
               <div>
                 <h4 className="text-sm font-semibold flex items-center gap-1.5">
                   NeverAlone Support <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
                 </h4>
-                <p className="text-[11px] text-indigo-200">
+                <p className="text-sm text-blue-200">
                   {language === 'bn' ? '২৪/৭ সার্বক্ষণিক সহায়তা' : '24/7 Live Assistance'}
                 </p>
               </div>
@@ -122,14 +122,14 @@ export const FloatingChat: React.FC<{ onOpenSOS: () => void }> = ({ onOpenSOS })
             <div className="flex items-center gap-1">
               <button
                 onClick={onOpenSOS}
-                className="px-2 py-1 bg-rose-600/80 hover:bg-rose-600 text-white rounded text-[10px] font-bold tracking-wider mr-1"
+                className="px-2 py-1 bg-rose-600/80 hover:bg-rose-600 text-white rounded text-sm font-bold tracking-wider mr-1"
                 title="Emergency SOS"
               >
                 SOS
               </button>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1 text-indigo-200 hover:text-white rounded-lg hover:bg-indigo-800/60"
+                className="p-1 text-blue-200 hover:text-white rounded-lg hover:bg-blue-800/60"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -137,7 +137,7 @@ export const FloatingChat: React.FC<{ onOpenSOS: () => void }> = ({ onOpenSOS })
           </div>
 
           {/* Platonic Reminder Top Tag */}
-          <div className="bg-rose-950/40 border-b border-rose-500/20 px-3 py-1.5 flex items-center justify-between text-[11px] text-rose-300">
+          <div className="bg-rose-950/40 border-b border-rose-500/20 px-3 py-1.5 flex items-center justify-between text-sm text-rose-300">
             <span className="flex items-center gap-1 font-medium">
               <ShieldCheck className="w-3.5 h-3.5 text-rose-400" />
               ১০০% প্ল্যাটোনিক ও নিরাপদ সার্ভিস
@@ -155,15 +155,15 @@ export const FloatingChat: React.FC<{ onOpenSOS: () => void }> = ({ onOpenSOS })
                 className={`flex flex-col ${m.sender === 'user' ? 'items-end' : 'items-start'}`}
               >
                 <div
-                  className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-xs leading-relaxed ${
+                  className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
                     m.sender === 'user'
-                      ? 'bg-indigo-600 text-white rounded-br-none'
+                      ? 'bg-blue-600 text-white rounded-br-none'
                       : 'bg-slate-800 text-slate-200 border border-slate-700/80 rounded-bl-none'
                   }`}
                 >
                   {m.text}
                 </div>
-                <span className="text-[10px] text-slate-400 mt-1 px-1">{m.time}</span>
+                <span className="text-sm text-slate-400 mt-1 px-1">{m.time}</span>
               </div>
             ))}
             <div ref={chatEndRef} />
@@ -175,7 +175,7 @@ export const FloatingChat: React.FC<{ onOpenSOS: () => void }> = ({ onOpenSOS })
               <button
                 key={idx}
                 onClick={() => handleSend(p.query)}
-                className="whitespace-nowrap px-2.5 py-1 text-[11px] bg-slate-800 hover:bg-indigo-900/40 hover:text-indigo-300 text-slate-300 rounded-full border border-slate-700 transition-colors shrink-0"
+                className="whitespace-nowrap px-2.5 py-1 text-sm bg-slate-800 hover:bg-blue-900/40 hover:text-blue-300 text-slate-300 rounded-full border border-slate-700 transition-colors shrink-0"
               >
                 {p.label}
               </button>
@@ -195,12 +195,12 @@ export const FloatingChat: React.FC<{ onOpenSOS: () => void }> = ({ onOpenSOS })
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value)}
               placeholder={language === 'bn' ? 'আপনার প্রশ্ন লিখুন...' : 'Type a question...'}
-              className="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500"
+              className="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
             />
             <button
               type="submit"
               disabled={!inputVal.trim()}
-              className="w-9 h-9 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 disabled:hover:bg-indigo-600 text-white flex items-center justify-center transition-colors shrink-0"
+              className="w-9 h-9 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-40 disabled:hover:bg-blue-600 text-white flex items-center justify-center transition-colors shrink-0"
             >
               <Send className="w-4 h-4" />
             </button>

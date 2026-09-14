@@ -46,25 +46,25 @@ export const TermsOfService: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto space-y-3">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-950/80 text-indigo-300 border border-indigo-500/30 text-xs font-semibold">
-          <FileText className="w-4 h-4 text-indigo-400" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold">
+          <FileText className="w-3.5 h-3.5 text-blue-600" />
           <span>{language === 'bn' ? 'ব্যবহারের শর্তাবলী' : 'Terms & Conditions'}</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white">
-          {language === 'bn' ? 'শর্তাবলী ও আচরণবিধি (Terms of Service)' : 'Terms of Service & Behavioral Agreement'}
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+          {language === 'bn' ? 'শর্তাবলী ও আচরণবিধি' : 'Terms of Service & Agreement'}
         </h1>
-        <p className="text-xs text-slate-400">
+        <p className="text-sm text-slate-500 font-normal">
           {language === 'bn' ? 'সর্বশেষ হালনাগাদ: সেপ্টেম্বর ২০২৬ • আইনি পর্যালোচনা কাঠামো' : 'Last Updated: September 2026 • Legal Framework'}
         </p>
       </div>
 
       {/* Platonic Banner */}
-      <div className="p-4 rounded-2xl bg-rose-950/40 border border-rose-500/30 text-xs text-rose-200 flex items-start gap-3">
-        <ShieldCheck className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
-        <div className="leading-relaxed">
+      <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-sm text-amber-900 flex items-start gap-3">
+        <ShieldCheck className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+        <div className="leading-relaxed font-normal">
           {language === 'bn'
             ? 'NeverAlone ব্যবহার করার মাধ্যমে আপনি নিশ্চিত করছেন যে আপনি শুধুমাত্র অ-রোমান্টিক ও প্ল্যাটোনিক সঙ্গ সেবার শর্তে সম্মত এবং আমাদের জিরো-টলারেন্স পলিসি মেনে চলবেন।'
             : 'By accessing NeverAlone, you expressly acknowledge and agree that this is a purely platonic and respectful platform.'}
@@ -72,14 +72,14 @@ export const TermsOfService: React.FC = () => {
       </div>
 
       {/* Terms Sections */}
-      <div className="space-y-6">
+      <div className="space-y-4">
         {terms.map((t, idx) => (
-          <div key={idx} className="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-2">
-            <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+          <div key={idx} className="p-6 rounded-2xl bg-white border border-slate-200 space-y-2 shadow-xs">
+            <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
               <span>{language === 'bn' ? t.num : t.numEn}</span>
             </h3>
-            <p className="text-xs sm:text-sm text-slate-300 pl-6 leading-relaxed">
+            <p className="text-sm text-slate-600 pl-6 leading-relaxed font-normal">
               {language === 'bn' ? t.contentBn : t.contentEn}
             </p>
           </div>
@@ -88,3 +88,4 @@ export const TermsOfService: React.FC = () => {
     </div>
   );
 };
+

@@ -86,7 +86,7 @@ export const SupportTickets: React.FC = () => {
                 placeholder="Search ticket, user, #ID..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-[#FF6F61] focus:outline-hidden"
+                className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-[#FF6F61] focus:outline-hidden"
               />
             </div>
 
@@ -94,7 +94,7 @@ export const SupportTickets: React.FC = () => {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="flex-1 px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 focus:outline-hidden"
+                className="flex-1 px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-sm font-semibold text-slate-700 focus:outline-hidden"
               >
                 <option value="">All Statuses ({tickets.length})</option>
                 <option value="open">Open</option>
@@ -122,19 +122,19 @@ export const SupportTickets: React.FC = () => {
                       <span className={`w-2 h-2 rounded-full ${
                         ticket.priority === 'urgent' ? 'bg-red-500' : ticket.priority === 'high' ? 'bg-orange-500' : 'bg-blue-400'
                       }`} />
-                      <span className="text-[11px] font-mono text-slate-400">{ticket.ticketNumber}</span>
+                      <span className="text-sm font-mono text-slate-400">{ticket.ticketNumber}</span>
                     </div>
-                    <span className="text-[10px] text-slate-400">
+                    <span className="text-sm text-slate-400">
                       {ticket.updatedAt}
                     </span>
                   </div>
 
-                  <h3 className={`text-xs font-bold truncate ${isSelected ? 'text-slate-900' : 'text-slate-700'}`}>
+                  <h3 className={`text-sm font-bold truncate ${isSelected ? 'text-slate-900' : 'text-slate-700'}`}>
                     {ticket.subject}
                   </h3>
 
                   <div className="flex items-center justify-between mt-2">
-                    <span className="text-[11px] text-slate-500 font-medium truncate max-w-[120px]">
+                    <span className="text-sm text-slate-500 font-medium truncate max-w-[120px]">
                       {ticket.requesterName}
                     </span>
                     <StatusBadge status={ticket.status} />
@@ -152,10 +152,10 @@ export const SupportTickets: React.FC = () => {
             <div className="p-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-white">
               <div>
                 <div className="flex items-center space-x-2">
-                  <span className="text-xs font-mono font-bold text-slate-400">{currentTicket.ticketNumber}</span>
-                  <h2 className="text-base font-bold text-slate-900">{currentTicket.subject}</h2>
+                  <span className="text-sm font-mono font-bold text-slate-400">{currentTicket.ticketNumber}</span>
+                  <h2 className="text-sm font-bold text-slate-900">{currentTicket.subject}</h2>
                 </div>
-                <div className="flex items-center space-x-3 text-xs text-slate-500 mt-1">
+                <div className="flex items-center space-x-3 text-sm text-slate-500 mt-1">
                   <span>User: <strong className="text-slate-800">{currentTicket.requesterName}</strong> ({currentTicket.requesterType})</span>
                   <span>•</span>
                   <span>Category: <strong className="text-slate-700 capitalize">{currentTicket.category.replace('_', ' ')}</strong></span>
@@ -167,7 +167,7 @@ export const SupportTickets: React.FC = () => {
                 <select
                   value={currentTicket.status}
                   onChange={(e) => updateTicketStatus(currentTicket.id, e.target.value as any)}
-                  className="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-bold text-slate-700 focus:outline-hidden"
+                  className="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-sm font-bold text-slate-700 focus:outline-hidden"
                 >
                   <option value="open">Open</option>
                   <option value="pending">Pending</option>
@@ -182,7 +182,7 @@ export const SupportTickets: React.FC = () => {
               {currentTicket.messages.map((msg: TicketMessage) => (
                 <div
                   key={msg.id}
-                  className={`p-4 rounded-2xl text-xs max-w-2xl ${
+                  className={`p-4 rounded-2xl text-sm max-w-2xl ${
                     msg.isInternalNote
                       ? 'bg-amber-50/80 border border-amber-200 ml-auto shadow-xs'
                       : msg.senderRole === 'agent'
@@ -193,16 +193,16 @@ export const SupportTickets: React.FC = () => {
                   <div className="flex items-center justify-between space-x-4 mb-1.5 pb-1 border-b border-slate-200/50">
                     <div className="flex items-center space-x-1.5">
                       {msg.isInternalNote ? (
-                        <span className="flex items-center text-[10px] font-bold text-amber-800 uppercase tracking-wider bg-amber-200/60 px-2 py-0.5 rounded">
+                        <span className="flex items-center text-sm font-bold text-amber-800 uppercase tracking-wider bg-amber-200/60 px-2 py-0.5 rounded">
                           <Lock className="w-3 h-3 mr-1" /> Internal Staff Note
                         </span>
                       ) : (
                         <span className="font-bold text-slate-900">{msg.senderName}</span>
                       )}
-                      <span className="text-[10px] text-slate-400 capitalize">({msg.senderRole})</span>
+                      <span className="text-sm text-slate-400 capitalize">({msg.senderRole})</span>
                     </div>
 
-                    <span className="text-[10px] text-slate-400">
+                    <span className="text-sm text-slate-400">
                       {msg.timestamp}
                     </span>
                   </div>
@@ -220,13 +220,13 @@ export const SupportTickets: React.FC = () => {
               {showCanned && (
                 <div className="mb-3 p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wider flex items-center">
+                    <span className="text-sm font-bold text-slate-700 uppercase tracking-wider flex items-center">
                       <Sparkles className="w-3.5 h-3.5 text-amber-500 mr-1" /> Canned Response Templates
                     </span>
                     <button
                       type="button"
                       onClick={() => setShowCanned(false)}
-                      className="text-xs text-slate-400 hover:text-slate-600"
+                      className="text-sm text-slate-400 hover:text-slate-600"
                     >
                       Close
                     </button>
@@ -239,8 +239,8 @@ export const SupportTickets: React.FC = () => {
                         onClick={() => handleInsertCanned(item.text)}
                         className="p-2.5 bg-white rounded-lg border border-slate-200 hover:border-[#FF6F61] text-left transition"
                       >
-                        <p className="text-xs font-bold text-slate-900">{item.title}</p>
-                        <p className="text-[11px] text-slate-500 line-clamp-2 mt-0.5">{item.text}</p>
+                        <p className="text-sm font-bold text-slate-900">{item.title}</p>
+                        <p className="text-sm text-slate-500 line-clamp-2 mt-0.5">{item.text}</p>
                       </button>
                     ))}
                   </div>
@@ -253,7 +253,7 @@ export const SupportTickets: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setIsInternalNote(false)}
-                    className={`px-3 py-1 rounded-lg text-xs font-bold transition ${
+                    className={`px-3 py-1 rounded-lg text-sm font-bold transition ${
                       !isInternalNote ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                     }`}
                   >
@@ -262,7 +262,7 @@ export const SupportTickets: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setIsInternalNote(true)}
-                    className={`px-3 py-1 rounded-lg text-xs font-bold transition flex items-center space-x-1 ${
+                    className={`px-3 py-1 rounded-lg text-sm font-bold transition flex items-center space-x-1 ${
                       isInternalNote ? 'bg-amber-500 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                     }`}
                   >
@@ -274,7 +274,7 @@ export const SupportTickets: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowCanned(!showCanned)}
-                  className="text-xs font-semibold text-purple-600 hover:text-purple-700 flex items-center space-x-1"
+                  className="text-sm font-semibold text-purple-600 hover:text-purple-700 flex items-center space-x-1"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>Insert Canned Response</span>
@@ -292,7 +292,7 @@ export const SupportTickets: React.FC = () => {
                   }
                   value={replyText}
                   onChange={(e) => setReplyText(e.target.value)}
-                  className={`w-full p-3 border rounded-xl text-xs focus:ring-2 focus:outline-hidden ${
+                  className={`w-full p-3 border rounded-xl text-sm focus:ring-2 focus:outline-hidden ${
                     isInternalNote
                       ? 'border-amber-300 bg-amber-50/40 focus:ring-amber-500 text-amber-950'
                       : 'border-slate-200 bg-white focus:ring-[#FF6F61] text-slate-900'
@@ -300,14 +300,14 @@ export const SupportTickets: React.FC = () => {
                 />
 
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] text-slate-400">
+                  <span className="text-sm text-slate-400">
                     Press Shift+Enter for new line
                   </span>
 
                   <button
                     type="submit"
                     disabled={!replyText.trim()}
-                    className={`px-5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow-xs ${
+                    className={`px-5 py-2 rounded-xl text-sm font-bold transition flex items-center space-x-1.5 shadow-xs ${
                       isInternalNote
                         ? 'bg-amber-600 hover:bg-amber-700 text-white'
                         : 'bg-[#FF6F61] hover:bg-[#ff5a4a] text-white'

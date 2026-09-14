@@ -89,7 +89,7 @@ export const AnalyticsReports: React.FC = () => {
           <select
             value={timeRange}
             onChange={(e) => setTimeRange(e.target.value)}
-            className="px-3 py-2 bg-white border border-gray-200 rounded-xl text-xs font-semibold text-gray-700 shadow-sm focus:outline-none"
+            className="px-3 py-2 bg-white border border-gray-200 rounded-xl text-sm font-semibold text-gray-700 shadow-sm focus:outline-none"
           >
             <option value="30d">Last 30 Days</option>
             <option value="90d">Last Quarter</option>
@@ -98,7 +98,7 @@ export const AnalyticsReports: React.FC = () => {
 
           <button
             onClick={exportAnalyticsCSV}
-            className="px-4 py-2 bg-[#1B3A4B] hover:bg-[#132a36] text-white text-xs font-bold rounded-xl transition shadow-sm flex items-center space-x-1.5"
+            className="px-4 py-2 bg-[#1B3A4B] hover:bg-[#132a36] text-white text-sm font-bold rounded-xl transition shadow-sm flex items-center space-x-1.5"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Export Executive CSV</span>
@@ -109,36 +109,36 @@ export const AnalyticsReports: React.FC = () => {
       {/* 4 Summary High-Level Metrics */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
-          <p className="text-xs font-medium text-gray-500">YTD Gross Booking Volume</p>
+          <p className="text-sm font-medium text-gray-500">YTD Gross Booking Volume</p>
           <p className="text-2xl font-black text-gray-900 mt-1">৳8,070,000</p>
-          <div className="flex items-center text-xs text-emerald-600 font-bold mt-1">
+          <div className="flex items-center text-sm text-emerald-600 font-bold mt-1">
             <ArrowUpRight className="w-4 h-4 mr-0.5" />
             <span>+24.5% vs Q1</span>
           </div>
         </div>
 
         <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
-          <p className="text-xs font-medium text-gray-500">Net Platform Commission</p>
+          <p className="text-sm font-medium text-gray-500">Net Platform Commission</p>
           <p className="text-2xl font-black text-[#FF6F61] mt-1">৳1,210,500</p>
-          <div className="flex items-center text-xs text-emerald-600 font-bold mt-1">
+          <div className="flex items-center text-sm text-emerald-600 font-bold mt-1">
             <ArrowUpRight className="w-4 h-4 mr-0.5" />
             <span>15% avg take-rate</span>
           </div>
         </div>
 
         <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
-          <p className="text-xs font-medium text-gray-500">Verified Companions</p>
+          <p className="text-sm font-medium text-gray-500">Verified Companions</p>
           <p className="text-2xl font-black text-gray-900 mt-1">350 Active</p>
-          <div className="flex items-center text-xs text-blue-600 font-bold mt-1">
+          <div className="flex items-center text-sm text-blue-600 font-bold mt-1">
             <ShieldCheck className="w-4 h-4 mr-0.5" />
             <span>100% NID Verified</span>
           </div>
         </div>
 
         <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
-          <p className="text-xs font-medium text-gray-500">Avg. Booking Value (ABV)</p>
+          <p className="text-sm font-medium text-gray-500">Avg. Booking Value (ABV)</p>
           <p className="text-2xl font-black text-gray-900 mt-1">৳3,020</p>
-          <div className="flex items-center text-xs text-emerald-600 font-bold mt-1">
+          <div className="flex items-center text-sm text-emerald-600 font-bold mt-1">
             <ArrowUpRight className="w-4 h-4 mr-0.5" />
             <span>~4.2 hrs / session</span>
           </div>
@@ -151,8 +151,8 @@ export const AnalyticsReports: React.FC = () => {
         <div className="lg:col-span-8 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h2 className="text-base font-bold text-gray-900">Gross Merchandise Value & Platform Revenue</h2>
-              <p className="text-xs text-gray-500">Monthly booking transaction volume (BDT)</p>
+              <h2 className="text-sm font-bold text-gray-900">Gross Merchandise Value & Platform Revenue</h2>
+              <p className="text-sm text-gray-500">Monthly booking transaction volume (BDT)</p>
             </div>
           </div>
 
@@ -187,8 +187,8 @@ export const AnalyticsReports: React.FC = () => {
         {/* Occasion Breakdown Pie Chart */}
         <div className="lg:col-span-4 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
           <div>
-            <h2 className="text-base font-bold text-gray-900">Occasion Categories</h2>
-            <p className="text-xs text-gray-500 mb-2">Platonic companionship use-cases</p>
+            <h2 className="text-sm font-bold text-gray-900">Occasion Categories</h2>
+            <p className="text-sm text-gray-500 mb-2">Platonic companionship use-cases</p>
           </div>
 
           <div className="h-60">
@@ -212,7 +212,7 @@ export const AnalyticsReports: React.FC = () => {
             </ResponsiveContainer>
           </div>
 
-          <div className="grid grid-cols-2 gap-2 text-[11px] pt-2 border-t border-gray-100">
+          <div className="grid grid-cols-2 gap-2 text-sm pt-2 border-t border-gray-100">
             {OCCASION_DATA.map(o => (
               <div key={o.name} className="flex items-center space-x-1.5">
                 <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: o.color }} />
@@ -229,8 +229,8 @@ export const AnalyticsReports: React.FC = () => {
         <div className="lg:col-span-6 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h2 className="text-base font-bold text-gray-900">Regional Booking Distribution</h2>
-              <p className="text-xs text-gray-500">Active companionship bookings by urban hub</p>
+              <h2 className="text-sm font-bold text-gray-900">Regional Booking Distribution</h2>
+              <p className="text-sm text-gray-500">Active companionship bookings by urban hub</p>
             </div>
           </div>
 
@@ -251,14 +251,14 @@ export const AnalyticsReports: React.FC = () => {
         {/* Companion Onboarding Conversion Funnel */}
         <div className="lg:col-span-6 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-4">
           <div>
-            <h2 className="text-base font-bold text-gray-900">Companion Onboarding Conversion Funnel</h2>
-            <p className="text-xs text-gray-500">Applicant drop-off analysis during safety vetting</p>
+            <h2 className="text-sm font-bold text-gray-900">Companion Onboarding Conversion Funnel</h2>
+            <p className="text-sm text-gray-500">Applicant drop-off analysis during safety vetting</p>
           </div>
 
           <div className="space-y-3 pt-2">
             {FUNNEL_DATA.map((step, idx) => (
               <div key={step.stage} className="space-y-1">
-                <div className="flex items-center justify-between text-xs font-semibold">
+                <div className="flex items-center justify-between text-sm font-semibold">
                   <span className="text-gray-800">{idx + 1}. {step.stage}</span>
                   <div className="space-x-2">
                     <span className="text-gray-500">{step.count} candidates</span>
@@ -275,7 +275,7 @@ export const AnalyticsReports: React.FC = () => {
             ))}
           </div>
 
-          <p className="text-[11px] text-gray-400 italic pt-2">
+          <p className="text-sm text-gray-400 italic pt-2">
             *High drop-off between Application and Safety Check is intentional due to strict NID & police background screening.
           </p>
         </div>

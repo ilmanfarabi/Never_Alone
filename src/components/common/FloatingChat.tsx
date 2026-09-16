@@ -140,10 +140,10 @@ export const FloatingChat: React.FC<{ onOpenSOS: () => void }> = ({ onOpenSOS })
           <div className="bg-rose-950/40 border-b border-rose-500/20 px-3 py-1.5 flex items-center justify-between text-sm text-rose-300">
             <span className="flex items-center gap-1 font-medium">
               <ShieldCheck className="w-3.5 h-3.5 text-rose-400" />
-              ১০০% প্ল্যাটোনিক ও নিরাপদ সার্ভিস
+              {language === 'bn' ? '১০০% প্ল্যাটোনিক ও নিরাপদ সার্ভিস' : '100% Platonic & Safe Service'}
             </span>
-            <a href="tel:09600000000" className="flex items-center gap-1 text-emerald-400 hover:underline">
-              <PhoneCall className="w-3 h-3" /> হেল্পলাইন
+            <a href="tel:09612345678" className="flex items-center gap-1 text-emerald-400 hover:underline">
+              <PhoneCall className="w-3 h-3" /> {language === 'bn' ? 'হেল্পলাইন' : 'Helpline'}
             </a>
           </div>
 

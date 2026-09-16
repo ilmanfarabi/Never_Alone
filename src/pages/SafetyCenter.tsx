@@ -26,24 +26,28 @@ export const SafetyCenter: React.FC<SafetyCenterProps> = ({ onOpenSOS, onOpenRep
       title: 'জাতীয় পরিচয়পত্র যাচাই (NID / Passport)',
       titleEn: 'Government ID Verification',
       desc: 'প্রতিটি ব্যবহারকারী ও কম্প্যানিয়নের সরকারি পরিচয়পত্র যাচাই।',
+      descEn: 'Verification of official government IDs for all users & companions.',
       icon: Lock
     },
     {
       title: 'ফেস ভেরিফিকেশন ও বায়োমেট্রিক ম্যাচ',
       titleEn: 'Biometric Selfie Match',
       desc: 'লাইভ সেলফি ও ডকুমেন্টের ছবি মিলিয়ে নিখুঁত যাচাই।',
+      descEn: 'Real-time live facial biometric match against government ID.',
       icon: Eye
     },
     {
       title: 'মোবাইল নম্বর ও ইমেইল ওটিপি',
       titleEn: 'Phone & Email OTP Verification',
       desc: 'দ্বিমুখী ওটিপি কোডের মাধ্যমে নিশ্চিতকরণ।',
+      descEn: 'Two-factor account verification via instant SMS and email OTP.',
       icon: Key
     },
     {
       title: 'ক্রিমিনাল ব্যাকগ্রাউন্ড চেক',
       titleEn: 'Criminal Background Clearance',
       desc: 'নিরাপত্তা নিশ্চিতকরণে রেকর্ড হিস্ট্রি যাচাই।',
+      descEn: 'Background vetting to ensure maximum safety and trust.',
       icon: ShieldCheck
     }
   ];
@@ -52,22 +56,30 @@ export const SafetyCenter: React.FC<SafetyCenterProps> = ({ onOpenSOS, onOpenRep
     {
       icon: MapPin,
       title: '১০০% পাবলিক প্লেস পলিসি',
-      desc: 'সব মিটিং শুধুমাত্র পাবলিক ক্যাফে, রেস্তোরাঁ বা ভেন্যুতে হতে হবে। বাসা কঠোরভাবে নিষিদ্ধ।'
+      titleEn: '100% Public Place Policy',
+      desc: 'সব মিটিং শুধুমাত্র পাবলিক ক্যাফে, রেস্তোরাঁ বা ভেন্যুতে হতে হবে। বাসা কঠোরভাবে নিষিদ্ধ।',
+      descEn: 'All sessions must occur in public cafes, restaurants or venues. Private homes strictly forbidden.'
     },
     {
       icon: Clock,
       title: 'ইন-অ্যাপ চেক-ইন সিস্টেম',
-      desc: 'সেশন শুরুতে ইউনিক সেফটি পিন (PIN) আদান-প্রদান ও স্বয়ংক্ৰিয় টাইমস্ট্যাম্প লগ।'
+      titleEn: 'In-App Check-In System',
+      desc: 'সেশন শুরুতে ইউনিক সেফটি পিন (PIN) আদান-প্রদান ও স্বয়ংক্ৰিয় টাইমস্ট্যাম্প লগ।',
+      descEn: 'Session verification via unique safety PIN exchange and automatic timestamp log.'
     },
     {
       icon: ShieldAlert,
       title: '১-ট্যাপে SOS ইমার্জেন্সি বাটন',
-      desc: 'জরুরি প্রয়োজনে ১ ট্যাপে ২৪/৭ ট্রাস্ট অ্যান্ড সেফটি টিমের সহায়তা।'
+      titleEn: '1-Tap Emergency SOS',
+      desc: 'জরুরি প্রয়োজনে ১ ট্যাপে ২৪/৭ ট্রাস্ট অ্যান্ড সেফটি টিমের সহায়তা।',
+      descEn: 'Instant 1-tap dispatch to 24/7 Trust & Safety command team.'
     },
     {
       icon: Eye,
       title: 'লাইভ স্ট্যাটাস শেয়ারিং',
-      desc: 'সেশন চলাকালীন পরিবারের বিশ্বস্ত কন্টাক্টের সাথে স্ট্যাটাস শেয়ারের সুবিধা।'
+      titleEn: 'Live Status Sharing',
+      desc: 'সেশন চলাকালীন পরিবারের বিশ্বস্ত কন্টাক্টের সাথে স্ট্যাটাস শেয়ারের সুবিধা।',
+      descEn: 'Share active session details and location with trusted family/friends.'
     }
   ];
 
@@ -170,7 +182,9 @@ export const SafetyCenter: React.FC<SafetyCenterProps> = ({ onOpenSOS, onOpenRep
                   <h3 className="text-lg sm:text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                     {language === 'bn' ? f.title : f.titleEn}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{f.desc}</p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    {language === 'bn' ? f.desc : f.descEn}
+                  </p>
                 </div>
               </div>
             );
@@ -206,8 +220,12 @@ export const SafetyCenter: React.FC<SafetyCenterProps> = ({ onOpenSOS, onOpenRep
                   <Icon className="w-6 h-6" />
                 </div>
                 <div className="space-y-1.5">
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900">{p.title}</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{p.desc}</p>
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900">
+                    {language === 'bn' ? p.title : p.titleEn}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    {language === 'bn' ? p.desc : p.descEn}
+                  </p>
                 </div>
               </div>
             );

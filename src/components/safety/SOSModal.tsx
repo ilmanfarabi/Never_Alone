@@ -72,12 +72,12 @@ export const SOSModal: React.FC<SOSModalProps> = ({ isOpen, onClose }) => {
 
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-left space-y-2 text-sm">
               <div className="flex items-center justify-between text-slate-600">
-                <span>সার্ভিস স্ট্যাটাস:</span>
-                <span className="text-emerald-600 font-semibold">লাইভ ট্র্যাকিং সক্রিয়</span>
+                <span>{language === 'bn' ? 'সার্ভিস স্ট্যাটাস:' : 'Service Status:'}</span>
+                <span className="text-emerald-600 font-semibold">{language === 'bn' ? 'লাইভ ট্র্যাকিং সক্রিয়' : 'Live Tracking Active'}</span>
               </div>
               <div className="flex items-center justify-between text-slate-600">
-                <span>জরুরি হেল্পলাইন:</span>
-                <span className="text-rose-600 font-bold">০৯৬XX-XXXXXX (ফ্রি কল)</span>
+                <span>{language === 'bn' ? 'জরুরি হেল্পলাইন:' : 'Emergency Hotline:'}</span>
+                <span className="text-rose-600 font-bold">{language === 'bn' ? '০৯৬১২-৩৪৫৬৭৮ (ফ্রি কল)' : '+880 9612-345678 (Toll Free)'}</span>
               </div>
             </div>
 
@@ -121,15 +121,15 @@ export const SOSModal: React.FC<SOSModalProps> = ({ isOpen, onClose }) => {
             {/* Quick Safety Actions Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
               <a
-                href="tel:09600000000"
+                href="tel:09612345678"
                 className="p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-800 flex items-center gap-3 transition-colors text-left shadow-xs"
               >
                 <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
                   <PhoneCall className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-slate-900">২৪/৭ হটলাইন কল</div>
-                  <div className="text-sm text-slate-500">০৯৬XX-XXXXXX</div>
+                  <div className="text-sm font-bold text-slate-900">{language === 'bn' ? '২৪/৭ হটলাইন কল' : '24/7 Hotline Call'}</div>
+                  <div className="text-sm text-slate-500">{language === 'bn' ? '০৯৬১২-৩৪৫৬৭৮' : '+880 9612-345678'}</div>
                 </div>
               </a>
 
@@ -141,8 +141,8 @@ export const SOSModal: React.FC<SOSModalProps> = ({ isOpen, onClose }) => {
                   <ShieldAlert className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-slate-900">জাতীয় জরুরি সেবা</div>
-                  <div className="text-sm text-slate-500">৯৯৯ (National Police)</div>
+                  <div className="text-sm font-bold text-slate-900">{language === 'bn' ? 'জাতীয় জরুরি সেবা' : 'National Emergency'}</div>
+                  <div className="text-sm text-slate-500">{language === 'bn' ? '৯৯৯ (জাতীয় পুলিশ)' : '999 (National Police)'}</div>
                 </div>
               </a>
             </div>
@@ -151,9 +151,9 @@ export const SOSModal: React.FC<SOSModalProps> = ({ isOpen, onClose }) => {
             <div className="pt-2 text-sm text-slate-500 space-y-1">
               <div className="flex items-center gap-1.5 text-slate-700 font-medium">
                 <MapPin className="w-3.5 h-3.5 text-blue-600" />
-                সব মিটিং সর্বদা উন্মুক্ত পাবলিক স্থানে সম্পন্ন করা বাধ্যতামূলক।
+                {language === 'bn' ? 'সব মিটিং সর্বদা উন্মুক্ত পাবলিক স্থানে সম্পন্ন করা বাধ্যতামূলক।' : 'All meetings must take place in verified public venues.'}
               </div>
-              <div>আপনার যেকোনো মুহূর্তে কোনো ব্যাখ্যা ছাড়াই সেশন ত্যাগ করার নিরঙ্কুশ অধিকার রয়েছে।</div>
+              <div>{language === 'bn' ? 'আপনার যেকোনো মুহূর্তে কোনো ব্যাখ্যা ছাড়াই সেশন ত্যাগ করার নিরঙ্কুশ অধিকার রয়েছে।' : 'You hold the absolute right to abort a session at any time without explanation.'}</div>
             </div>
           </div>
         )}

@@ -79,7 +79,7 @@ export const Contact: React.FC = () => {
               </p>
             </div>
             <div className="text-sm font-bold text-blue-600 font-mono tracking-wide">
-              ০৯৬১২-৩৪৫৬৭৮
+              {language === 'bn' ? '০৯৬১২-৩৪৫৬৭৮' : '+880 9612-345678'}
             </div>
           </div>
 
@@ -115,7 +115,7 @@ export const Contact: React.FC = () => {
               </p>
             </div>
             <p className="text-sm text-slate-600 leading-relaxed font-normal">
-              প্লট ১২, রোড ৪৪, গুলশান-২, ঢাকা ১২১২
+              {language === 'bn' ? 'প্লট ১২, রোড ৪৪, গুলশান-২, ঢাকা ১২১২' : 'Plot 12, Road 44, Gulshan-2, Dhaka 1212'}
             </p>
           </div>
         </div>

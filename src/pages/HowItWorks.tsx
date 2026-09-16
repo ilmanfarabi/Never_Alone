@@ -23,6 +23,7 @@ export const HowItWorks: React.FC<{ onNavigate: (page: string) => void }> = ({ o
       desc: 'Create an account and verify your ID with government NID or Passport in 2 minutes.',
       descBn: 'সরকারি পরিচয়পত্র (NID/পাসপোর্ট) দিয়ে মাত্র ২ মিনিটে আইডি ভেরিফাই করুন।',
       icon: UserCheck,
+      details: 'Biometric & NID Match',
       detailsBn: 'ফেস ম্যাচিং ও বায়োমেট্রিক চেক',
       badge: 'Identity Verification'
     },
@@ -33,6 +34,7 @@ export const HowItWorks: React.FC<{ onNavigate: (page: string) => void }> = ({ o
       desc: 'Filter companions by spoken languages, city, occasions, and verified ratings.',
       descBn: 'ভাষা, লোকেশন, উপলক্ষ ও রিয়েল রেটিং দেখে পছন্দের সঙ্গী খুঁজুন।',
       icon: Search,
+      details: 'Transparent Reviews & Badges',
       detailsBn: 'রিভিউ ও ব্যাকগ্রাউন্ড উন্মুক্ত',
       badge: 'Verified Matches'
     },
@@ -43,6 +45,7 @@ export const HowItWorks: React.FC<{ onNavigate: (page: string) => void }> = ({ o
       desc: 'Specify your public venue, date, time, and receive your Safety PIN.',
       descBn: 'পাবলিক ভেন্যু, তারিখ ও সময় নির্বাচন করে বুকিং রিকোয়েস্ট পাঠান।',
       icon: CalendarCheck,
+      details: 'Unique Safety PIN Code',
       detailsBn: 'ইউনিক সেফটি পিন (Safety PIN)',
       badge: 'Public Places Only'
     },
@@ -53,6 +56,7 @@ export const HowItWorks: React.FC<{ onNavigate: (page: string) => void }> = ({ o
       desc: 'Meet in public. Payments are protected in platform escrow until session completes.',
       descBn: 'পাবলিক স্থানে সাক্ষাৎ করুন। পেমেন্ট প্ল্যাটফর্মের এসক্রোতে সুরক্ষিত থাকে।',
       icon: ShieldCheck,
+      details: 'Two-Way Rating & Escrow',
       detailsBn: 'সেশন শেষে দ্বিপাক্ষিক রেটিং',
       badge: 'Escrow Protection'
     }
@@ -134,7 +138,7 @@ export const HowItWorks: React.FC<{ onNavigate: (page: string) => void }> = ({ o
               <div className="pt-3.5 border-t border-slate-200/60 flex items-center justify-between">
                 <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-blue-600 font-semibold">
                   <Check className="w-4 h-4" />
-                  <span>{s.detailsBn}</span>
+                  <span>{language === 'bn' ? s.detailsBn : s.details}</span>
                 </div>
                 <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white text-blue-700 border border-slate-200 shadow-2xs">
                   {s.badge}

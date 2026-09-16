@@ -126,10 +126,10 @@ export const Companions: React.FC<CompanionsProps> = ({
               className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-colors cursor-pointer"
             >
               <option value="all">{language === 'bn' ? 'সব শহর' : 'All Cities'}</option>
-              <option value="Dhaka">Dhaka (ঢাকা)</option>
-              <option value="Chittagong">Chittagong (চট্টগ্রাম)</option>
-              <option value="Sylhet">Sylhet (সিলেট)</option>
-              <option value="Rajshahi">Rajshahi (রাজশাহী)</option>
+              <option value="Dhaka">{language === 'bn' ? 'ঢাকা' : 'Dhaka'}</option>
+              <option value="Chittagong">{language === 'bn' ? 'চট্টগ্রাম' : 'Chittagong'}</option>
+              <option value="Sylhet">{language === 'bn' ? 'সিলেট' : 'Sylhet'}</option>
+              <option value="Rajshahi">{language === 'bn' ? 'রাজশাহী' : 'Rajshahi'}</option>
             </select>
           </div>
 
@@ -163,10 +163,10 @@ export const Companions: React.FC<CompanionsProps> = ({
               className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-colors cursor-pointer"
             >
               <option value="all">{language === 'bn' ? 'সব ভাষা' : 'All Languages'}</option>
-              <option value="bengali">Bengali (বাংলা)</option>
+              <option value="bengali">{language === 'bn' ? 'বাংলা' : 'Bengali'}</option>
               <option value="english">English</option>
-              <option value="sylheti">Sylheti (সিলেটি)</option>
-              <option value="chittagonian">Chittagonian (চাটগাঁইয়া)</option>
+              <option value="sylheti">{language === 'bn' ? 'সিলেটি' : 'Sylheti'}</option>
+              <option value="chittagonian">{language === 'bn' ? 'চাটগাঁইয়া' : 'Chittagonian'}</option>
             </select>
           </div>
 

@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { LanguageProvider } from './i18n/LanguageContext';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
-import { PlatonicBanner } from './components/layout/PlatonicBanner';
 import { FloatingChat } from './components/common/FloatingChat';
 import { BookingModal } from './components/booking/BookingModal';
 import { CompanionProfileModal } from './components/companion/CompanionProfileModal';
 import { SOSModal } from './components/safety/SOSModal';
+import { FloatingSOS } from './components/safety/FloatingSOS';
 import { ReportModal } from './components/safety/ReportModal';
 import { ApplicationModal } from './components/companion/ApplicationModal';
 
@@ -86,14 +86,10 @@ const MainApp: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-slate-900 font-sans selection:bg-blue-500 selection:text-white">
-      {/* Top Platonic Safety Guarantee Banner */}
-      <PlatonicBanner />
-
       {/* Main Navbar */}
       <Navbar 
         currentPage={currentPage}
         onNavigate={handleNavigate}
-        onOpenSOS={() => setIsSOSOpen(true)}
         onOpenApply={() => setIsApplyOpen(true)}
       />
 
@@ -159,6 +155,9 @@ const MainApp: React.FC = () => {
 
       {/* 24/7 Floating Live Support Chat */}
       <FloatingChat onOpenSOS={() => setIsSOSOpen(true)} />
+
+      {/* Quick-Access Floating SOS Emergency Button (Bottom-Left) */}
+      <FloatingSOS onOpenSOS={() => setIsSOSOpen(true)} />
 
       {/* Modals */}
       <CompanionProfileModal

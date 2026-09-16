@@ -147,7 +147,15 @@ export const Services: React.FC<{ onNavigate: (page: string) => void }> = ({ onN
       <div className="p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200 flex items-center gap-4">
         <ShieldCheck className="w-8 h-8 text-blue-600 shrink-0" />
         <div className="text-sm text-slate-600 leading-relaxed font-normal">
-          <strong className="text-slate-900 font-bold">প্ল্যাটফর্ম সতর্কতা:</strong> সকল সার্ভিস সম্পূর্ণভাবে অ-রোমান্টিক ও অ-যৌন প্রকৃতির। যেকোনো প্রকার রোমান্টিক বা অন্তরঙ্গ প্রস্তাব অবিলম্বে অ্যাকাউন্ট বাতিল ও আইনানুগ ব্যবস্থাযোগ্য অপরাধ।
+          {language === 'bn' ? (
+            <>
+              <strong className="text-slate-900 font-bold">প্ল্যাটফর্ম সতর্কতা:</strong> সকল সার্ভিস সম্পূর্ণভাবে অ-রোমান্টিক ও অ-যৌন প্রকৃতির। যেকোনো প্রকার রোমান্টিক বা অন্তরঙ্গ প্রস্তাব অবিলম্বে অ্যাকাউন্ট বাতিল ও আইনানুগ ব্যবস্থাযোগ্য অপরাধ।
+            </>
+          ) : (
+            <>
+              <strong className="text-slate-900 font-bold">Platform Policy Notice:</strong> All services are strictly platonic and non-romantic. Any romantic or inappropriate propositions lead to immediate permanent account termination and potential legal action.
+            </>
+          )}
         </div>
       </div>
     </div>

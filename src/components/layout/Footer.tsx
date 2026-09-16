@@ -148,21 +148,21 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenReport }) => {
               <li className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-slate-900 font-medium">০৯৬১২-৩৪৫৬৭৮</div>
-                  <div className="text-sm text-slate-500">২৪/৭ কাস্টমার সাপোর্ট হেল্পলাইন</div>
+                  <div className="text-slate-900 font-medium">{language === 'bn' ? '০৯৬১২-৩৪৫৬৭৮' : '+880 9612-345678'}</div>
+                  <div className="text-sm text-slate-500">{language === 'bn' ? '২৪/৭ কাস্টমার সাপোর্ট হেল্পলাইন' : '24/7 Support Helpline'}</div>
                 </div>
               </li>
               <li className="flex items-start gap-2.5">
                 <Mail className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                 <div>
                   <a href="mailto:support@neveralone.com" className="text-slate-900 hover:underline">support@neveralone.com</a>
-                  <div className="text-sm text-slate-500">দ্রুত রেসপন্স টিম</div>
+                  <div className="text-sm text-slate-500">{language === 'bn' ? 'দ্রুত রেসপন্স টিম' : 'Rapid Response Desk'}</div>
                 </div>
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                 <div className="text-sm leading-relaxed text-slate-600">
-                  গুলশান-২, ঢাকা ১২১২, বাংলাদেশ
+                  {language === 'bn' ? 'গুলশান-২, ঢাকা ১২১২, বাংলাদেশ' : 'Gulshan-2, Dhaka 1212, Bangladesh'}
                 </div>
               </li>
             </ul>

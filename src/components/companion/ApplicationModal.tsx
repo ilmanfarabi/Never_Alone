@@ -278,16 +278,18 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onCl
                       className="w-full accent-blue-600 cursor-pointer"
                     />
                     <div className="flex justify-between text-sm text-slate-400">
-                      <span>৳ ৬০০ (বেসিক)</span>
-                      <span>৳ ১,৫০০ (স্ট্যান্ডার্ড)</span>
-                      <span>৳ ২,৫০০ (প্রিমিয়াম)</span>
+                      <span>{language === 'bn' ? '৳ ৬০০ (বেসিক)' : '৳ 600 (Basic)'}</span>
+                      <span>{language === 'bn' ? '৳ ১,৫০০ (স্ট্যান্ডার্ড)' : '৳ 1,500 (Standard)'}</span>
+                      <span>{language === 'bn' ? '৳ ২,৫০০ (প্রিমিয়াম)' : '৳ 2,500 (Premium)'}</span>
                     </div>
                   </div>
 
                   <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
                     <div className="flex items-center justify-between">
                       <span className="text-slate-700 font-medium">{language === 'bn' ? 'সপ্তাহে সম্ভাব্য সময় (ঘণ্টা):' : 'Estimated Weekly Hours:'}</span>
-                      <span className="text-sm font-bold text-blue-600">{formData.hoursPerWeek} ঘণ্টা / সপ্তাহ</span>
+                      <span className="text-sm font-bold text-blue-600">
+                        {formData.hoursPerWeek} {language === 'bn' ? 'ঘণ্টা / সপ্তাহ' : 'hrs / week'}
+                      </span>
                     </div>
                     <input
                       type="range"
@@ -307,7 +309,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onCl
                         {language === 'bn' ? 'আনুমানিক সম্ভাব্য মাসিক আয় (১৫% কমিশন বাদে):' : 'Estimated Monthly Payout (after 15% fee):'}
                       </div>
                       <div className="text-2xl font-extrabold text-blue-600 mt-0.5 font-mono">
-                        ৳ {Math.round(estimatedMonthlyIncome).toLocaleString()} <span className="text-sm text-slate-600 font-normal">/ মাস</span>
+                        ৳ {Math.round(estimatedMonthlyIncome).toLocaleString()} <span className="text-sm text-slate-600 font-normal">{language === 'bn' ? '/ মাস' : '/ month'}</span>
                       </div>
                     </div>
                     <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
@@ -316,7 +318,9 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onCl
                   </div>
 
                   <p className="text-sm text-slate-500 leading-relaxed">
-                    * কম্প্যানিয়নরা সরাসরি তাদের নিজস্ব রেট ও সময়সূচি নির্ধারণ করতে পারেন। NeverAlone শুধুমাত্র প্ল্যাটফর্ম চার্জ (১৫%) গ্রহণ করে, বাকি অর্থ সরাসরি আপনার bKash/Bank-এ ট্রান্সফার হবে।
+                    {language === 'bn'
+                      ? '* কম্প্যানিয়নরা সরাসরি তাদের নিজস্ব রেট ও সময়সূচি নির্ধারণ করতে পারেন। NeverAlone শুধুমাত্র প্ল্যাটফর্ম চার্জ (১৫%) গ্রহণ করে, বাকি অর্থ সরাসরি আপনার bKash/Bank-এ ট্রান্সফার হবে।'
+                      : '* Companions set their own hourly rates and schedules. NeverAlone only retains a 15% platform escrow fee; remaining earnings are directly transferred to your bKash/Bank account.'}
                   </p>
                 </div>
               )}
@@ -340,8 +344,12 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onCl
                     {/* Simulated Document Upload Dropzone */}
                     <div className="mt-2 border-2 border-dashed border-slate-200 hover:border-blue-300 rounded-xl p-3 text-center cursor-pointer bg-white transition-colors">
                       <Upload className="w-5 h-5 text-blue-600 mx-auto mb-1" />
-                      <div className="text-sm text-slate-700 font-medium">NID / পাসপোর্ট ফ্রন্ট ও ব্যাক ছবি যুক্ত করুন</div>
-                      <div className="text-sm text-slate-400">JPG, PNG বা PDF (সর্বোচ্চ ৫ MB)</div>
+                      <div className="text-sm text-slate-700 font-medium">
+                        {language === 'bn' ? 'NID / পাসপোর্ট ফ্রন্ট ও ব্যাক ছবি যুক্ত করুন' : 'Upload NID / Passport front & back photo'}
+                      </div>
+                      <div className="text-sm text-slate-400">
+                        {language === 'bn' ? 'JPG, PNG বা PDF (সর্বোচ্চ ৫ MB)' : 'JPG, PNG or PDF (Max 5 MB)'}
+                      </div>
                     </div>
                   </div>
 
@@ -356,7 +364,11 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onCl
                         className="mt-0.5 rounded accent-blue-600 w-4 h-4"
                       />
                       <span className="text-sm text-slate-700 leading-snug">
-                        <strong>১০০% প্ল্যাটোনিক অঙ্গীকার:</strong> আমি অঙ্গীকার করছি যে এটি সম্পূর্ণ অ-রোমান্টিক ও অ-যৌন প্ল্যাটফর্ম। কোনো অনৈতিক প্রস্তাব আসলে অবিলম্বে প্ল্যাটফর্মে রিপোর্ট করব।
+                        {language === 'bn' ? (
+                          <><strong>১০০% প্ল্যাটোনিক অঙ্গীকার:</strong> আমি অঙ্গীকার করছি যে এটি সম্পূর্ণ অ-রোমান্টিক ও অ-যৌন প্ল্যাটফর্ম। কোনো অনৈতিক প্রস্তাব আসলে অবিলম্বে প্ল্যাটফর্মে রিপোর্ট করব।</>
+                        ) : (
+                          <><strong>100% Platonic Pledge:</strong> I declare this is a non-romantic & non-sexual platform. I will immediately report any inappropriate requests.</>
+                        )}
                       </span>
                     </label>
 
@@ -369,7 +381,11 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onCl
                         className="mt-0.5 rounded accent-blue-600 w-4 h-4"
                       />
                       <span className="text-sm text-slate-700 leading-snug">
-                        আমি সর্বদা শুধুমাত্র অনুমোদিত <strong>পাবলিক স্থানে</strong> ক্লায়েন্টের সাথে সাক্ষাৎ করব এবং পেশাদার আচরণবিধি মেনে চলব।
+                        {language === 'bn' ? (
+                          <>আমি সর্বদা শুধুমাত্র অনুমোদিত <strong>পাবলিক স্থানে</strong> ক্লায়েন্টের সাথে সাক্ষাৎ করব এবং পেশাদার আচরণবিধি মেনে চলব।</>
+                        ) : (
+                          <>I will always meet clients strictly in verified <strong>public venues</strong> and maintain professional decorum.</>
+                        )}
                       </span>
                     </label>
 
@@ -382,7 +398,9 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onCl
                         className="mt-0.5 rounded accent-blue-600 w-4 h-4"
                       />
                       <span className="text-sm text-slate-700 leading-snug">
-                        আমি আমার জাতীয় পরিচয়পত্র ও ক্রিমিনাল ব্যাকগ্রাউন্ড যাচাইকরণে সম্মতি প্রদান করছি।
+                        {language === 'bn'
+                          ? 'আমি আমার জাতীয় পরিচয়পত্র ও ক্রিমিনাল ব্যাকগ্রাউন্ড যাচাইকরণে সম্মতি প্রদান করছি।'
+                          : 'I consent to NID identity verification & background screening.'}
                       </span>
                     </label>
                   </div>

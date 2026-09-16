@@ -27,6 +27,13 @@ export const Pricing: React.FC<{ onNavigate: (page: string) => void }> = ({ onNa
         '১০০% ভেরিফায়েড পাবলিক প্লেস মিটিং',
         'ইন-অ্যাপ সেফটি চেক-ইন ও SOS সাপোর্ট',
         'bKash / Nagad সুরক্ষিত পেমেন্ট'
+      ],
+      featuresEn: [
+        'Restaurant dinner or coffee shop meeting',
+        'Language practice & engaging conversation',
+        '100% verified public venue meeting',
+        'In-app safety check-in & SOS dispatch',
+        'bKash / Nagad secure escrow payment'
       ]
     },
     {
@@ -43,6 +50,13 @@ export const Pricing: React.FC<{ onNavigate: (page: string) => void }> = ({ onNa
         'কর্পোরেট ইভেন্ট ও সেমিনারে মার্জিত সঙ্গ',
         'লাইভ লোকেশন ও সেফটি ট্র্যাকিং',
         'ফুল এসক্রো পেমেন্ট সুরক্ষা'
+      ],
+      featuresEn: [
+        'Wedding / reception plus-one companion',
+        'Movie show & dinner combo session',
+        'Polite accompaniment for corporate events',
+        'Live location status & safety tracking',
+        'Full escrow payment protection'
       ]
     },
     {
@@ -59,6 +73,13 @@ export const Pricing: React.FC<{ onNavigate: (page: string) => void }> = ({ onNa
         'ফটোগ্রাফি ও লোকাল সিটি গাইডেন্স',
         '২৪/৭ ডেডিকেটেড সাপোর্ট লাইন',
         'ফ্লেক্সিবল রিশিডিউলিং পলিসি'
+      ],
+      featuresEn: [
+        'Full-day trip & heritage site exploration',
+        'Family weddings & social gala events',
+        'Photography assistance & local city guide',
+        '24/7 dedicated support team line',
+        'Flexible rescheduling guarantee'
       ]
     }
   ];
@@ -115,13 +136,15 @@ export const Pricing: React.FC<{ onNavigate: (page: string) => void }> = ({ onNa
             >
               {t.popular && (
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-blue-600 text-white text-xs font-extrabold uppercase tracking-wider shadow-md">
-                  {t.tag}
+                  {language === 'bn' ? t.tag : t.tagEn}
                 </div>
               )}
 
               <div className="space-y-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-blue-600">{t.tag}</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
+                    {language === 'bn' ? t.tag : t.tagEn}
+                  </span>
                   <h3 className="text-xl font-bold text-slate-900 mt-0.5">
                     {language === 'bn' ? t.name : t.nameEn}
                   </h3>
@@ -138,7 +161,7 @@ export const Pricing: React.FC<{ onNavigate: (page: string) => void }> = ({ onNa
 
                 {/* Features List */}
                 <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700">
-                  {t.features.map((f, fIdx) => (
+                  {(language === 'bn' ? t.features : t.featuresEn).map((f, fIdx) => (
                     <li key={fIdx} className="flex items-start gap-2.5 font-normal leading-relaxed">
                       <Check className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                       <span>{f}</span>

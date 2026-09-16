@@ -24,6 +24,7 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
       title: 'অনলাইন আবেদন',
       titleEn: 'Online Application',
       desc: 'বেসিক তথ্য, আগ্রহ, ভাষা ও লোকেশন যুক্ত করুন।',
+      descEn: 'Provide basic details, interests, spoken languages & location.',
       badge: 'Step 1'
     },
     {
@@ -31,6 +32,7 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
       title: 'আইডি ভেরিফিকেশন',
       titleEn: 'ID Verification',
       desc: 'জাতীয় পরিচয়পত্র বা পাসপোর্ট দিয়ে ফেস ম্যাচিং।',
+      descEn: 'Biometric face matching with government NID or Passport.',
       badge: 'Step 2'
     },
     {
@@ -38,6 +40,7 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
       title: 'ওরিয়েন্টেশন ও ব্রিফিং',
       titleEn: 'Orientation & Rules',
       desc: 'প্ল্যাটফর্ম আচরণবিধি ও সুরক্ষা সংক্রান্ত গাইডলাইন।',
+      descEn: 'Briefing on platonic code of conduct and safety guidelines.',
       badge: 'Step 3'
     },
     {
@@ -45,6 +48,7 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
       title: 'রেট নির্ধারণ ও প্রোফাইল লাইভ',
       titleEn: 'Set Rates & Go Live',
       desc: 'ঘণ্টাপ্রতি রেট ঠিক করে বুকিং নেওয়া শুরু করুন।',
+      descEn: 'Set your hourly rate and start accepting verified bookings.',
       badge: 'Step 4'
     }
   ];
@@ -52,19 +56,27 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
   const rules = [
     {
       title: 'পেশাদার ও মার্জিত শিষ্টাচার',
-      desc: 'সময়ানুবর্তিতা ও মার্জিত আচরণ বজায় রাখা বাধ্যতামূলক।'
+      titleEn: 'Polite & Professional Etiquette',
+      desc: 'সময়ানুবর্তিতা ও মার্জিত আচরণ বজায় রাখা বাধ্যতামূলক।',
+      descEn: 'Punctuality, politeness, and professional demeanor are mandatory.'
     },
     {
       title: 'শুধুমাত্র পাবলিক স্থানে মিটিং',
-      desc: 'ব্যক্তিগত বাসা বা অনুমোদনহীন স্থানে যাওয়া কঠোরভাবে নিষিদ্ধ।'
+      titleEn: 'Public Places Only',
+      desc: 'ব্যক্তিগত বাসা বা অনুমোদনহীন স্থানে যাওয়া কঠোরভাবে নিষিদ্ধ।',
+      descEn: 'Private homes or unverified locations are strictly prohibited.'
     },
     {
       title: 'প্রস্তাব প্রত্যাখ্যানের অধিকার',
-      desc: 'যেকোনো রোমান্টিক বা অনুপযুক্ত আচরণ সাথে সাথে প্রত্যাখ্যান ও রিপোর্ট করার অধিকার।'
+      titleEn: 'Right to Refuse & Report',
+      desc: 'যেকোনো রোমান্টিক বা অনুপযুক্ত আচরণ সাথে সাথে প্রত্যাখ্যান ও রিপোর্ট করার অধিকার।',
+      descEn: 'Immediate right to refuse and report any romantic or improper request.'
     },
     {
       title: 'প্ল্যাটফর্মের মাধ্যমে লেনদেন',
-      desc: 'সকল বুকিং ও পেমেন্ট প্ল্যাটফর্মের মাধ্যমেই সম্পন্ন হতে হবে।'
+      titleEn: 'In-Platform Transactions Only',
+      desc: 'সকল বুকিং ও পেমেন্ট প্ল্যাটফর্মের মাধ্যমেই সম্পন্ন হতে হবে।',
+      descEn: 'All bookings and payments must strictly process via the platform.'
     }
   ];
 
@@ -130,8 +142,8 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
             {/* Rate Slider */}
             <div className="space-y-2">
               <div className="flex justify-between text-sm font-semibold text-slate-700">
-                <span>ঘণ্টাপ্রতি রেট:</span>
-                <span className="text-blue-600 font-bold">৳ {hourlyRate} / ঘণ্টা</span>
+                <span>{language === 'bn' ? 'ঘণ্টাপ্রতি রেট:' : 'Hourly Rate:'}</span>
+                <span className="text-blue-600 font-bold">৳ {hourlyRate} {language === 'bn' ? '/ ঘণ্টা' : '/ hr'}</span>
               </div>
               <input
                 type="range"
@@ -143,17 +155,17 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
                 className="w-full accent-blue-600 cursor-pointer h-2 bg-slate-100 rounded-lg appearance-none"
               />
               <div className="flex justify-between text-xs text-slate-400">
-                <span>৳ ৬০০</span>
-                <span>৳ ১,৫০০</span>
-                <span>৳ ২,৫০০</span>
+                <span>{language === 'bn' ? '৳ ৬০০' : '৳ 600'}</span>
+                <span>{language === 'bn' ? '৳ ১,৫০০' : '৳ 1,500'}</span>
+                <span>{language === 'bn' ? '৳ ২,৫০০' : '৳ 2,500'}</span>
               </div>
             </div>
 
             {/* Hours Slider */}
             <div className="space-y-2">
               <div className="flex justify-between text-sm font-semibold text-slate-700">
-                <span>সাপ্তাহিক সময়:</span>
-                <span className="text-blue-600 font-bold">{hoursPerWeek} ঘণ্টা / সপ্তাহ</span>
+                <span>{language === 'bn' ? 'সাপ্তাহিক সময়:' : 'Weekly Commitment:'}</span>
+                <span className="text-blue-600 font-bold">{hoursPerWeek} {language === 'bn' ? 'ঘণ্টা / সপ্তাহ' : 'hrs / week'}</span>
               </div>
               <input
                 type="range"
@@ -165,9 +177,9 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
                 className="w-full accent-blue-600 cursor-pointer h-2 bg-slate-100 rounded-lg appearance-none"
               />
               <div className="flex justify-between text-xs text-slate-400">
-                <span>৪ ঘণ্টা (পার্ট-টাইম)</span>
-                <span>১৫ ঘণ্টা</span>
-                <span>৩৫ ঘণ্টা (ফুল-টাইম)</span>
+                <span>{language === 'bn' ? '৪ ঘণ্টা (পার্ট-টাইম)' : '4 hrs (Part-Time)'}</span>
+                <span>{language === 'bn' ? '১৫ ঘণ্টা' : '15 hrs'}</span>
+                <span>{language === 'bn' ? '৩৫ ঘণ্টা (ফুল-টাইম)' : '35 hrs (Full-Time)'}</span>
               </div>
             </div>
           </div>
@@ -175,19 +187,21 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
           {/* Earnings Projection Card */}
           <div className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-4">
             <div className="text-xs uppercase tracking-wider text-slate-500 font-bold">
-              সম্ভাব্য নিট মাসিক আয় (১৫% প্ল্যাটফর্ম ফি বাদে)
+              {language === 'bn' ? 'সম্ভাব্য নিট মাসিক আয় (১৫% প্ল্যাটফর্ম ফি বাদে)' : 'Projected Net Monthly Income (After 15% Platform Fee)'}
             </div>
             <div className="text-3xl font-extrabold text-blue-600 py-1 tracking-tight font-mono">
               ৳ {Math.round(netEarnings).toLocaleString()}
             </div>
             <div className="text-sm text-slate-600 font-normal">
-              মাসিক মোট বুকিং: ৳ {monthlyGross.toLocaleString()} • সরাসরি bKash / Bank ট্রান্সফার
+              {language === 'bn'
+                ? `মাসিক মোট বুকিং: ৳ ${monthlyGross.toLocaleString()} • সরাসরি bKash / Bank ট্রান্সফার`
+                : `Gross Booking: ৳ ${monthlyGross.toLocaleString()} • Direct bKash / Bank Payout`}
             </div>
             <button
               onClick={onOpenApply}
               className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-xs transition-all flex items-center justify-center gap-2 apple-pill-btn"
             >
-              <span>এই রেটে আবেদন করুন</span>
+              <span>{language === 'bn' ? 'এই রেটে আবেদন করুন' : 'Apply With This Rate'}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -212,8 +226,12 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
                 {step.num}
               </div>
               <div className="space-y-1">
-                <h3 className="text-base sm:text-lg font-bold text-slate-900">{step.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed font-normal">{step.desc}</p>
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">
+                  {language === 'bn' ? step.title : step.titleEn}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-normal">
+                  {language === 'bn' ? step.desc : step.descEn}
+                </p>
               </div>
               <div className="pt-2 border-t border-slate-100 text-xs uppercase font-semibold text-blue-600">
                 {step.badge}
@@ -237,9 +255,11 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
             <div key={idx} className="p-5 rounded-2xl bg-white border border-slate-200 space-y-1.5 shadow-xs">
               <div className="flex items-center gap-2 text-slate-900 font-bold text-sm sm:text-base">
                 <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
-                <span>{r.title}</span>
+                <span>{language === 'bn' ? r.title : r.titleEn}</span>
               </div>
-              <p className="text-sm text-slate-600 pl-6 leading-relaxed font-normal">{r.desc}</p>
+              <p className="text-sm text-slate-600 pl-6 leading-relaxed font-normal">
+                {language === 'bn' ? r.desc : r.descEn}
+              </p>
             </div>
           ))}
         </div>

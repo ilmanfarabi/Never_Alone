@@ -187,11 +187,13 @@ export const CompanionProfileModal: React.FC<CompanionProfileModalProps> = ({
             <div className="space-y-2">
               <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-700">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="font-semibold text-slate-900">নাদিম করিম</span>
+                  <span className="font-semibold text-slate-900">{language === 'bn' ? 'নাদিম করিম' : 'Nadeem Karim'}</span>
                   <div className="flex text-amber-400">★★★★★</div>
                 </div>
                 <p className="text-sm text-slate-600">
-                  "অত্যন্ত ভদ্র ও মার্জিত আচরণ। আমার পারিবারিক অনুষ্ঠানে চমৎকার সঙ্গ দিয়েছেন।"
+                  {language === 'bn' 
+                    ? '"অত্যন্ত ভদ্র ও মার্জিত আচরণ। আমার পারিবারিক অনুষ্ঠানে চমৎকার সঙ্গ দিয়েছেন।"' 
+                    : '"Extremely polite and well-mannered companion. Provided great, comfortable company at my family event."'}
                 </p>
               </div>
             </div>
@@ -210,7 +212,7 @@ export const CompanionProfileModal: React.FC<CompanionProfileModalProps> = ({
 
           <div className="flex items-center gap-3">
             <div className="sm:hidden text-right">
-              <div className="text-sm text-blue-600 font-bold font-mono">৳ {companion.hourlyRate}/ঘণ্টা</div>
+              <div className="text-sm text-blue-600 font-bold font-mono">৳ {companion.hourlyRate}{language === 'bn' ? '/ঘণ্টা' : '/hr'}</div>
             </div>
 
             <button

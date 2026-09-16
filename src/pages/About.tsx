@@ -155,15 +155,15 @@ export const About: React.FC<{ onNavigate: (page: string) => void }> = ({ onNavi
           <div className="space-y-2.5">
             <div className="p-3 rounded-2xl bg-white/90 border border-slate-200/80 flex items-center justify-between text-xs sm:text-sm shadow-2xs">
               <span className="text-slate-700 font-medium">{language === 'bn' ? 'সরকারি NID ভেরিফিকেশন' : 'NID / Passport Vetting'}</span>
-              <span className="font-bold text-blue-600">১০০%</span>
+              <span className="font-bold text-blue-600">{language === 'bn' ? '১০০%' : '100%'}</span>
             </div>
             <div className="p-3 rounded-2xl bg-white/90 border border-slate-200/80 flex items-center justify-between text-xs sm:text-sm shadow-2xs">
               <span className="text-slate-700 font-medium">{language === 'bn' ? 'পাবলিক প্লেস প্রোটোকল' : 'Public Venue Protocol'}</span>
-              <span className="font-bold text-blue-600">অনুমোদিত</span>
+              <span className="font-bold text-blue-600">{language === 'bn' ? 'অনুমোদিত' : 'Mandatory'}</span>
             </div>
             <div className="p-3 rounded-2xl bg-white/90 border border-slate-200/80 flex items-center justify-between text-xs sm:text-sm shadow-2xs">
               <span className="text-slate-700 font-medium">{language === 'bn' ? 'এসক্রো পেমেন্ট সিকিউরিটি' : 'Escrow Payment Security'}</span>
-              <span className="font-bold text-blue-600">সুরক্ষিত</span>
+              <span className="font-bold text-blue-600">{language === 'bn' ? 'সুরক্ষিত' : 'Encrypted'}</span>
             </div>
           </div>
         </div>

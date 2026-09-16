@@ -143,19 +143,19 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               {/* Summary Details */}
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 max-w-md mx-auto text-left space-y-2 text-sm">
                 <div className="flex justify-between text-slate-600">
-                  <span>কম্প্যানিয়ন:</span>
+                  <span>{language === 'bn' ? 'কম্প্যানিয়ন:' : 'Companion:'}</span>
                   <span className="font-semibold text-slate-900">{language === 'bn' ? companion.nameBn : companion.name}</span>
                 </div>
                 <div className="flex justify-between text-slate-600">
-                  <span>তারিখ ও সময়:</span>
-                  <span className="text-blue-600 font-medium">{date} | {time} ({durationHours} ঘণ্টা)</span>
+                  <span>{language === 'bn' ? 'তারিখ ও সময়:' : 'Date & Time:'}</span>
+                  <span className="text-blue-600 font-medium">{date} | {time} ({durationHours} {language === 'bn' ? 'ঘণ্টা' : 'hrs'})</span>
                 </div>
                 <div className="flex justify-between text-slate-600">
-                  <span>পাবলিক ভেন্যু:</span>
+                  <span>{language === 'bn' ? 'পাবলিক ভেন্যু:' : 'Public Venue:'}</span>
                   <span className="text-slate-900">{venueName}, {venueAddress}</span>
                 </div>
                 <div className="flex justify-between text-slate-600 border-t border-slate-200 pt-2 font-bold">
-                  <span>পরিশোধিত মোট:</span>
+                  <span>{language === 'bn' ? 'পরিশোধিত মোট:' : 'Total Paid:'}</span>
                   <span className="text-blue-600 text-sm font-mono">৳ {totalAmount.toLocaleString()} ({paymentMethod.toUpperCase()})</span>
                 </div>
               </div>
@@ -262,12 +262,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     onChange={(e) => setDurationHours(Number(e.target.value))}
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
                   >
-                    <option value={1}>১ ঘণ্টা (1 Hour)</option>
-                    <option value={2}>২ ঘণ্টা (2 Hours - Basic)</option>
-                    <option value={3}>৩ ঘণ্টা (3 Hours)</option>
-                    <option value={4}>৪ ঘণ্টা (4 Hours - Standard)</option>
-                    <option value={6}>৬ ঘণ্টা (6 Hours - Half Day)</option>
-                    <option value={8}>৮ ঘণ্টা (8 Hours - Full Day Event)</option>
+                    <option value={1}>{language === 'bn' ? '১ ঘণ্টা (1 Hour)' : '1 Hour'}</option>
+                    <option value={2}>{language === 'bn' ? '২ ঘণ্টা (2 Hours - Basic)' : '2 Hours - Basic'}</option>
+                    <option value={3}>{language === 'bn' ? '৩ ঘণ্টা (3 Hours)' : '3 Hours'}</option>
+                    <option value={4}>{language === 'bn' ? '৪ ঘণ্টা (4 Hours - Standard)' : '4 Hours - Standard'}</option>
+                    <option value={6}>{language === 'bn' ? '৬ ঘণ্টা (6 Hours - Half Day)' : '6 Hours - Half Day'}</option>
+                    <option value={8}>{language === 'bn' ? '৮ ঘণ্টা (8 Hours - Full Day Event)' : '8 Hours - Full Day Event'}</option>
                   </select>
                 </div>
               </div>
@@ -332,7 +332,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     }`}
                   >
                     <span className="font-bold text-sm">bKash</span>
-                    <span className="text-sm">বিকাশ পেমেন্ট</span>
+                    <span className="text-sm">{language === 'bn' ? 'বিকাশ পেমেন্ট' : 'bKash Direct'}</span>
                   </button>
 
                   <button
@@ -345,7 +345,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     }`}
                   >
                     <span className="font-bold text-sm">Nagad</span>
-                    <span className="text-sm">নগদ পেমেন্ট</span>
+                    <span className="text-sm">{language === 'bn' ? 'নগদ পেমেন্ট' : 'Nagad Direct'}</span>
                   </button>
 
                   <button
@@ -371,7 +371,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     }`}
                   >
                     <span className="font-bold text-sm">In-App Wallet</span>
-                    <span className="text-sm">ব্যালেন্স: ৳ ৫,০০০</span>
+                    <span className="text-sm">{language === 'bn' ? 'ব্যালেন্স: ৳ ৫,০০০' : 'Bal: ৳ 5,000'}</span>
                   </button>
                 </div>
               </div>
@@ -379,15 +379,23 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               {/* Price Breakdown */}
               <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
                 <div className="flex justify-between text-slate-600">
-                  <span>কম্প্যানিয়ন ফি ({durationHours} ঘণ্টা × ৳{companion.hourlyRate}):</span>
+                  <span>
+                    {language === 'bn'
+                      ? `কম্প্যানিয়ন ফি (${durationHours} ঘণ্টা × ৳${companion.hourlyRate}):`
+                      : `Companion Fee (${durationHours} hrs × ৳${companion.hourlyRate}):`}
+                  </span>
                   <span>৳ {basePrice.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between text-slate-600">
-                  <span>প্ল্যাটফর্ম এসক্রো ও সেফটি চার্জ (১৫%):</span>
+                  <span>
+                    {language === 'bn'
+                      ? 'প্ল্যাটফর্ম এসক্রো ও সেফটি চার্জ (১৫%):'
+                      : 'Platform Escrow & Safety Fee (15%):'}
+                  </span>
                   <span>৳ {platformFee.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between text-slate-900 font-bold text-sm pt-2 border-t border-slate-200">
-                  <span>সর্বমোট প্রদেয়:</span>
+                  <span>{language === 'bn' ? 'সর্বমোট প্রদেয়:' : 'Total Amount:'}</span>
                   <span className="text-blue-600 font-mono">৳ {totalAmount.toLocaleString()} BDT</span>
                 </div>
               </div>
@@ -403,7 +411,11 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     className="mt-0.5 rounded accent-blue-600 w-4 h-4"
                   />
                   <span className="text-sm text-slate-700 leading-tight">
-                    <strong>১০০% প্ল্যাটোনিক শর্তে সম্মতি:</strong> আমি নিশ্চিত করছি যে এই সেশনটি সম্পূর্ণ অ-রোমান্টিক ও অ-যৌন। কোনো অনুপযুক্ত আচরণের চেষ্টা করলে আমার অ্যাকাউন্ট অবিলম্বে ব্যান হবে।
+                    {language === 'bn' ? (
+                      <><strong>১০০% প্ল্যাটোনিক শর্তে সম্মতি:</strong> আমি নিশ্চিত করছি যে এই সেশনটি সম্পূর্ণ অ-রোমান্টিক ও অ-যৌন। কোনো অনুপযুক্ত আচরণের চেষ্টা করলে আমার অ্যাকাউন্ট অবিলম্বে ব্যান হবে।</>
+                    ) : (
+                      <><strong>100% Platonic Policy:</strong> I confirm this booking is strictly non-romantic and non-sexual. Any misconduct will result in an immediate permanent ban.</>
+                    )}
                   </span>
                 </label>
 
@@ -416,7 +428,11 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     className="mt-0.5 rounded accent-blue-600 w-4 h-4"
                   />
                   <span className="text-sm text-slate-700 leading-tight">
-                    আমি সম্মতি দিচ্ছি যে সাক্ষাৎটি কেবল একটি <strong>পাবলিক স্থানে</strong> অনুষ্ঠিত হবে এবং নগদ লেনদেন করা হবে না।
+                    {language === 'bn' ? (
+                      <>আমি সম্মতি দিচ্ছি যে সাক্ষাৎটি কেবল একটি <strong>পাবলিক স্থানে</strong> অনুষ্ঠিত হবে এবং নগদ লেনদেন করা হবে না।</>
+                    ) : (
+                      <>I agree that the session will strictly take place in a verified <strong>public venue</strong> with zero cash transactions.</>
+                    )}
                   </span>
                 </label>
               </div>

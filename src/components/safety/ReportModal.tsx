@@ -78,7 +78,7 @@ export const ReportModal: React.FC<ReportModalProps> = ({ isOpen, onClose, targe
               </p>
             </div>
             <div className="p-3 bg-slate-50 rounded-xl text-left text-sm space-y-1 text-slate-700 border border-slate-200">
-              <div className="text-sm text-slate-500">রিপোর্ট ট্র্যাকিং আইডি:</div>
+              <div className="text-sm text-slate-500">{language === 'bn' ? 'রিপোর্ট ট্র্যাকিং আইডি:' : 'Report Tracking ID:'}</div>
               <div className="font-mono text-blue-600 font-semibold">REP-{Math.floor(100000 + Math.random() * 900000)}</div>
             </div>
             <button
@@ -98,7 +98,7 @@ export const ReportModal: React.FC<ReportModalProps> = ({ isOpen, onClose, targe
 
             {targetName && (
               <div className="text-sm text-slate-700 bg-slate-50 px-3 py-2 rounded-xl border border-slate-200 flex items-center justify-between">
-                <span>রিপোর্টের আওতাভুক্ত ব্যক্তি:</span>
+                <span>{language === 'bn' ? 'রিপোর্টের আওতাভুক্ত ব্যক্তি:' : 'Reported Companion / User:'}</span>
                 <span className="font-semibold text-slate-900">{targetName}</span>
               </div>
             )}

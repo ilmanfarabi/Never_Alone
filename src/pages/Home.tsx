@@ -57,37 +57,40 @@ export const Home: React.FC<HomeProps> = ({
   };
 
   return (
-    <div className="bg-white space-y-16 sm:space-y-20 pb-20">
-      {/* 1. Hero Section */}
+    <div className="bg-white space-y-16 sm:space-y-24 pb-20 selection:bg-blue-500 selection:text-white">
+      {/* 1. Hero Section with subtle ambient backdrop */}
       <section className="relative pt-12 sm:pt-20 pb-8 sm:pb-12 overflow-hidden bg-white">
+        {/* Soft Ambient Radial Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[450px] bg-gradient-to-b from-blue-50/70 via-indigo-50/20 to-transparent pointer-events-none -z-10 rounded-b-[4rem]" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
           
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs sm:text-sm font-semibold">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-blue-200/80 text-blue-700 text-xs sm:text-sm font-semibold shadow-xs hover:border-blue-300 transition-colors">
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
             </span>
-            <span>{language === 'bn' ? '১০০% প্ল্যাটোনিক ও বিশ্বস্ত সঙ্গী প্ল্যাটফর্ম' : '100% Platonic & Verified Companionship Platform'}</span>
+            <span>{language === 'bn' ? '১০০% প্ল্যাটোনিক ও নিরাপদ' : '100% Platonic & Safe'}</span>
           </div>
 
           {/* Hero Headline */}
-          <div className="space-y-4 max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+          <div className="space-y-4 max-w-5xl mx-auto">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight text-slate-900 leading-[1.12] sm:leading-[1.1]">
               Never Alone. <br />
               <span className="text-blue-600">Always in Good Company.</span>
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-slate-600 max-w-xl mx-auto leading-relaxed font-normal">
               {t.heroDescription}
             </p>
           </div>
 
           {/* Action CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-1">
             <button
               onClick={() => onNavigate('companions')}
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md flex items-center justify-center gap-2 transition-all apple-pill-btn"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md shadow-blue-600/20 flex items-center justify-center gap-2 transition-all apple-pill-btn hover:-translate-y-0.5 active:translate-y-0"
             >
               <Sparkles className="w-4 h-4" />
               <span>{t.browseCompanions}</span>
@@ -96,49 +99,42 @@ export const Home: React.FC<HomeProps> = ({
 
             <button
               onClick={() => onNavigate('how-it-works')}
-              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm border border-slate-200 transition-all apple-pill-btn"
+              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm border border-slate-200 transition-all apple-pill-btn active:scale-98"
             >
               {t.howItWorksBtn}
-            </button>
-
-            <button
-              onClick={onOpenApply}
-              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white hover:bg-blue-50 text-blue-600 font-semibold text-sm border border-blue-300 transition-all apple-pill-btn"
-            >
-              {t.becomeCompanionBtn}
             </button>
           </div>
 
           {/* Search Capsule */}
-          <div className="max-w-4xl mx-auto mt-10 p-4 sm:p-5 rounded-3xl bg-white border border-slate-200 shadow-lg">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="max-w-4xl mx-auto mt-10 p-4 sm:p-5 rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-xl shadow-slate-900/5 hover:border-slate-300 transition-all">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
               <div className="relative text-left">
                 <label className="block text-xs font-semibold text-slate-700 mb-1.5 pl-1 flex items-center gap-1.5">
-                  <MapPin className="w-4 h-4 text-blue-600" />
+                  <MapPin className="w-3.5 h-3.5 text-blue-600" />
                   {language === 'bn' ? 'শহর / অবস্থান' : 'City / Location'}
                 </label>
                 <select
                   value={selectedCity}
                   onChange={(e) => setSelectedCity(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-3.5 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-colors cursor-pointer"
+                  className="w-full bg-slate-50 border border-slate-200/90 rounded-2xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 focus:bg-white transition-all cursor-pointer font-medium"
                 >
                   <option value="all">{language === 'bn' ? 'সব শহর (All Bangladesh)' : 'All Cities'}</option>
-                  <option value="Dhaka">Dhaka (ঢাকা - গুলশান, ধানমন্ডি, উত্তরা)</option>
-                  <option value="Chittagong">Chittagong (চট্টগ্রাম)</option>
-                  <option value="Sylhet">Sylhet (সিলেট)</option>
-                  <option value="Rajshahi">Rajshahi (রাজশাহী)</option>
+                  <option value="Dhaka">{language === 'bn' ? 'ঢাকা (গুলশান, ধানমন্ডি, উত্তরা)' : 'Dhaka (Gulshan, Dhanmondi, Uttara)'}</option>
+                  <option value="Chittagong">{language === 'bn' ? 'চট্টগ্রাম' : 'Chittagong'}</option>
+                  <option value="Sylhet">{language === 'bn' ? 'সিলেট' : 'Sylhet'}</option>
+                  <option value="Rajshahi">{language === 'bn' ? 'রাজশাহী' : 'Rajshahi'}</option>
                 </select>
               </div>
 
               <div className="relative text-left">
                 <label className="block text-xs font-semibold text-slate-700 mb-1.5 pl-1 flex items-center gap-1.5">
-                  <Sparkles className="w-4 h-4 text-blue-600" />
+                  <Sparkles className="w-3.5 h-3.5 text-blue-600" />
                   {language === 'bn' ? 'উপলক্ষ / সার্ভিস' : 'Occasion / Service'}
                 </label>
                 <select
                   value={selectedOccasion}
                   onChange={(e) => setSelectedOccasion(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-3.5 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-colors cursor-pointer"
+                  className="w-full bg-slate-50 border border-slate-200/90 rounded-2xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 focus:bg-white transition-all cursor-pointer font-medium"
                 >
                   <option value="all">{language === 'bn' ? 'সব উপলক্ষ (All Occasions)' : 'All Occasions'}</option>
                   {occasionsData.map(occ => (
@@ -152,7 +148,7 @@ export const Home: React.FC<HomeProps> = ({
               <div className="flex items-end">
                 <button
                   onClick={handleQuickSearch}
-                  className="w-full py-3 px-5 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl text-sm font-semibold shadow-md flex items-center justify-center gap-2 transition-all apple-pill-btn"
+                  className="w-full py-2.5 px-5 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl text-sm font-bold shadow-md shadow-blue-600/20 flex items-center justify-center gap-2 transition-all apple-pill-btn active:scale-98"
                 >
                   <Search className="w-4 h-4" />
                   <span>{language === 'bn' ? 'কম্প্যানিয়ন খুঁজুন' : 'Search Now'}</span>
@@ -161,8 +157,8 @@ export const Home: React.FC<HomeProps> = ({
             </div>
 
             {/* Quick Filter Tags */}
-            <div className="flex items-center gap-2 pt-4 px-1 overflow-x-auto text-xs text-slate-600">
-              <span className="shrink-0 font-medium">{language === 'bn' ? 'জনপ্রিয়:' : 'Trending:'}</span>
+            <div className="flex items-center gap-2 pt-3.5 px-1 overflow-x-auto text-xs text-slate-600 scrollbar-none">
+              <span className="shrink-0 font-semibold text-slate-500">{language === 'bn' ? 'জনপ্রিয়:' : 'Trending:'}</span>
               <button onClick={() => onNavigate('companions')} className="px-3 py-1 rounded-full bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-600 border border-slate-200 shrink-0 transition-colors">
                 ☕ {language === 'bn' ? 'ক্যাফে আড্ডা' : 'Cafe Chill'}
               </button>
@@ -178,23 +174,23 @@ export const Home: React.FC<HomeProps> = ({
             </div>
           </div>
 
-          {/* Minimal Metrics Bar */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto pt-4">
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-1">
-              <div className="text-2xl font-bold text-slate-900">{t.statVerified.split(' ')[0]}</div>
-              <div className="text-xs text-slate-500 font-medium">{language === 'bn' ? 'ভেরিফায়েড কম্প্যানিয়ন' : 'Verified Companions'}</div>
+          {/* Minimal Metrics Bar with subtle glassmorphism */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 max-w-4xl mx-auto pt-3">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-xs hover:border-blue-200 transition-all text-center space-y-1">
+              <div className="text-2xl font-extrabold text-slate-900 tracking-tight">{language === 'bn' ? '১,৫০০+' : '1,500+'}</div>
+              <div className="text-xs text-slate-500 font-semibold">{language === 'bn' ? 'ভেরিফায়েড সঙ্গী' : 'Verified Hosts'}</div>
             </div>
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-1">
-              <div className="text-2xl font-bold text-blue-600">{t.statSessions.split(' ')[0]}</div>
-              <div className="text-xs text-slate-500 font-medium">{language === 'bn' ? 'সম্পন্ন সেশন' : 'Completed Sessions'}</div>
+            <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-xs hover:border-blue-200 transition-all text-center space-y-1">
+              <div className="text-2xl font-extrabold text-blue-600 tracking-tight">{language === 'bn' ? '১২,০০০+' : '12,000+'}</div>
+              <div className="text-xs text-slate-500 font-semibold">{language === 'bn' ? 'সফল সেশন' : 'Completed Sessions'}</div>
             </div>
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-1">
-              <div className="text-2xl font-bold text-slate-900">4.9 ★</div>
-              <div className="text-xs text-slate-500 font-medium">{language === 'bn' ? 'গড় ইউজার রেটিং' : 'Average Rating'}</div>
+            <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-xs hover:border-blue-200 transition-all text-center space-y-1">
+              <div className="text-2xl font-extrabold text-slate-900 tracking-tight">{language === 'bn' ? '৪.৯ ★' : '4.9 ★'}</div>
+              <div className="text-xs text-slate-500 font-semibold">{language === 'bn' ? 'গড় রেটিং' : 'Average Rating'}</div>
             </div>
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-1">
-              <div className="text-2xl font-bold text-blue-600">100%</div>
-              <div className="text-xs text-slate-500 font-medium">{language === 'bn' ? 'পাবলিক প্লেস সুরক্ষা' : 'Safe Public Venues'}</div>
+            <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-xs hover:border-blue-200 transition-all text-center space-y-1">
+              <div className="text-2xl font-extrabold text-blue-600 tracking-tight">{language === 'bn' ? '১০০%' : '100%'}</div>
+              <div className="text-xs text-slate-500 font-semibold">{language === 'bn' ? 'পাবলিক প্লেস সুরক্ষা' : 'Safe Public Venues'}</div>
             </div>
           </div>
 
@@ -258,22 +254,22 @@ export const Home: React.FC<HomeProps> = ({
                     </p>
                   </div>
 
-                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium line-clamp-2">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal line-clamp-2">
                     {language === 'bn' ? occ.descriptionBn : occ.description}
                   </p>
 
                   {/* Popular Scenario Badges */}
                   <div className="flex flex-wrap gap-1.5 pt-0.5">
-                    {(language === 'bn' ? occ.popularForBn : occ.popularFor).slice(0, 3).map((item, idx) => (
-                      <span key={idx} className="text-xs px-2.5 py-1 rounded-lg bg-white/95 text-slate-700 border border-slate-200/90 font-medium shadow-2xs">
+                    {(language === 'bn' ? occ.popularForBn : occ.popularFor).slice(0, 2).map((item, idx) => (
+                      <span key={idx} className="text-xs px-2.5 py-0.5 rounded-lg bg-white/95 text-slate-700 border border-slate-200/90 font-medium shadow-2xs">
                         {item}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-slate-200/60 flex items-center justify-between text-xs sm:text-sm text-blue-600 font-bold group-hover:text-blue-700">
-                  <span>{language === 'bn' ? 'কম্প্যানিয়ন দেখুন' : 'Explore Companions'}</span>
+                <div className="pt-3 mt-3 border-t border-slate-200/60 flex items-center justify-between text-xs sm:text-sm text-blue-600 font-bold group-hover:text-blue-700">
+                  <span>{language === 'bn' ? 'সঙ্গী দেখুন' : 'Explore'}</span>
                   <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform" />
                 </div>
               </div>
@@ -285,25 +281,25 @@ export const Home: React.FC<HomeProps> = ({
       {/* 3. Featured Verified Companions Spotlight */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-8 gap-4">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold">
-              <UserCheck className="w-4 h-4" />
-              <span>{language === 'bn' ? '১০০% যাচাইকৃত প্রোফাইল' : 'Vetted & Verified'}</span>
+          <div className="space-y-1.5">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold">
+              <UserCheck className="w-3.5 h-3.5" />
+              <span>{language === 'bn' ? 'যাচাইকৃত প্রোফাইল' : 'Verified'}</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
               {t.verifiedCompanionsTitle}
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 font-normal">
+            <p className="text-sm sm:text-base text-slate-600 font-normal">
               {t.verifiedCompanionsSub}
             </p>
           </div>
 
           <button
             onClick={() => onNavigate('companions')}
-            className="px-6 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 text-sm font-bold flex items-center gap-2 transition-all apple-pill-btn"
+            className="px-5 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all apple-pill-btn"
           >
             <span>{t.viewAllCompanions}</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
 
@@ -362,7 +358,7 @@ export const Home: React.FC<HomeProps> = ({
 
                 {/* Details */}
                 <div className="p-5 space-y-3">
-                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed line-clamp-2 font-medium">
+                  <p className="text-xs sm:text-sm text-slate-700 leading-relaxed line-clamp-2 font-medium">
                     {language === 'bn' ? comp.bioBn : comp.bio}
                   </p>
 
@@ -399,78 +395,78 @@ export const Home: React.FC<HomeProps> = ({
 
       {/* 4. 4-Step Process Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 sm:p-12 rounded-3xl bg-slate-50 border border-slate-200 text-center space-y-10">
-          <div className="max-w-2xl mx-auto space-y-2">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold">
+        <div className="p-8 sm:p-10 rounded-3xl bg-slate-50 border border-slate-200 text-center space-y-8">
+          <div className="max-w-xl mx-auto space-y-1.5">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold">
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>{language === 'bn' ? 'সহজ প্রক্রিয়া' : 'Safe Process'}</span>
+              <span>{language === 'bn' ? 'সহজ প্রক্রিয়া' : 'Process'}</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
               {t.howItWorksTitle}
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 font-normal">
+            <p className="text-xs sm:text-sm text-slate-600 font-normal">
               {t.howItWorksSub}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 text-left">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 text-left">
             {/* Step 1 */}
-            <div className="p-6 rounded-3xl card-bg-lavender space-y-3 shadow-2xs hover:shadow-md transition-all card-google">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center font-extrabold text-sm">
+            <div className="p-5 rounded-3xl card-bg-lavender space-y-2 shadow-2xs hover:shadow-md transition-all card-google">
+              <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center font-extrabold text-xs">
                 01
               </div>
-              <h3 className="text-base font-bold text-slate-900">
-                {language === 'bn' ? 'সাইন আপ ও ভেরিফাই' : 'Sign Up & Verify'}
+              <h3 className="text-sm font-bold text-slate-900">
+                {language === 'bn' ? 'আইডি ভেরিফাই' : 'ID Verify'}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">
                 {language === 'bn'
-                  ? 'সরকারি ID (NID/পাসপোর্ট) দিয়ে অ্যাকাউন্ট ভেরিফাই করে শুরু করুন।'
-                  : 'Create an account and verify your ID in minutes.'}
+                  ? 'NID দিয়ে ফ্রি সাইন-আপ ও ভেরিফাই করুন।'
+                  : 'Fast ID verification in minutes.'}
               </p>
             </div>
 
             {/* Step 2 */}
-            <div className="p-6 rounded-3xl card-bg-slate space-y-3 shadow-2xs hover:shadow-md transition-all card-google">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center font-extrabold text-sm">
+            <div className="p-5 rounded-3xl card-bg-slate space-y-2 shadow-2xs hover:shadow-md transition-all card-google">
+              <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center font-extrabold text-xs">
                 02
               </div>
-              <h3 className="text-base font-bold text-slate-900">
-                {language === 'bn' ? 'কম্প্যানিয়ন খুঁজুন' : 'Browse Companions'}
+              <h3 className="text-sm font-bold text-slate-900">
+                {language === 'bn' ? 'সঙ্গী নির্বাচন' : 'Choose Companion'}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">
                 {language === 'bn'
-                  ? 'লোকেশন, ভাষা, উপলক্ষ ও রেটিং দেখে সঠিক সঙ্গী নির্বাচন করুন।'
-                  : 'Filter by location, language, and verified reviews.'}
+                  ? 'লোকেশন ও পছন্দ অনুযায়ী সঠিক সঙ্গী খুঁজুন।'
+                  : 'Browse verified profiles by location.'}
               </p>
             </div>
 
             {/* Step 3 */}
-            <div className="p-6 rounded-3xl card-bg-peach space-y-3 shadow-2xs hover:shadow-md transition-all card-google">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center font-extrabold text-sm">
+            <div className="p-5 rounded-3xl card-bg-peach space-y-2 shadow-2xs hover:shadow-md transition-all card-google">
+              <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center font-extrabold text-xs">
                 03
               </div>
-              <h3 className="text-base font-bold text-slate-900">
-                {language === 'bn' ? 'সেশন বুক করুন' : 'Book a Session'}
+              <h3 className="text-sm font-bold text-slate-900">
+                {language === 'bn' ? 'সেশন বুকিং' : 'Book Session'}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">
                 {language === 'bn'
-                  ? 'পাবলিক ভেন্যু, তারিখ ও সময় নির্বাচন করে বুকিং রিকোয়েস্ট পাঠান।'
-                  : 'Choose public venue, time, and send your request.'}
+                  ? 'পাবলিক স্থান ও সুবিধাজনক সময় সেট করুন।'
+                  : 'Set public venue, date & time.'}
               </p>
             </div>
 
             {/* Step 4 */}
-            <div className="p-6 rounded-3xl card-bg-rose space-y-3 shadow-2xs hover:shadow-md transition-all card-google">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center font-extrabold text-sm">
+            <div className="p-5 rounded-3xl card-bg-rose space-y-2 shadow-2xs hover:shadow-md transition-all card-google">
+              <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center font-extrabold text-xs">
                 04
               </div>
-              <h3 className="text-base font-bold text-slate-900">
-                {language === 'bn' ? 'নিরাপদে সাক্ষাৎ ও পেমেন্ট' : 'Meet & Pay Safely'}
+              <h3 className="text-sm font-bold text-slate-900">
+                {language === 'bn' ? 'নিরাপদ সাক্ষাৎ' : 'Meet Safely'}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+              <p className="text-xs text-slate-600 leading-relaxed font-normal">
                 {language === 'bn'
-                  ? 'পাবলিক স্থানে সাক্ষাৎ করুন। পেমেন্ট প্ল্যাটফর্মের এসক্রোতে সুরক্ষিত।'
-                  : 'Meet at a public venue and pay securely via escrow.'}
+                  ? 'পাবলিক স্থানে সাক্ষাৎ ও সুরক্ষিত পেমেন্ট।'
+                  : 'Meet in public with secure payment.'}
               </p>
             </div>
           </div>

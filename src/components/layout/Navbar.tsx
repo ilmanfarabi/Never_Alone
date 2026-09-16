@@ -88,8 +88,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-xs">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
-          <div className="flex items-center justify-between h-16 sm:h-18 gap-2 sm:gap-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-6 w-full">
+          <div className="flex items-center justify-between h-12 sm:h-13 gap-2 sm:gap-3 py-1">
 
             {/* 1. Brand Logo */}
             <div
@@ -97,7 +97,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="flex items-center gap-2 sm:gap-2.5 cursor-pointer group select-none shrink-0"
               title="NeverAlone Home"
             >
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-sm transition-transform group-hover:scale-105">
+              <div className="w-8 h-8 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-sm transition-transform group-hover:scale-105">
                 <HeartHandshake className="w-5 h-5" />
               </div>
 
@@ -112,16 +112,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* 2. Desktop Navigation with Clean Dropdown */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5 select-none">
+            <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2 select-none">
               {primaryNavLinks.map((link) => {
                 const isActive = currentPage === link.id;
                 return (
                   <button
                     key={link.id}
                     onClick={() => handleLinkClick(link.id)}
-                    className={`relative px-3.5 py-1.5 text-sm font-semibold rounded-xl transition-all duration-150 flex items-center gap-1.5 shrink-0 ${isActive
-                        ? 'text-white bg-blue-600 shadow-xs font-bold'
-                        : 'text-slate-700 hover:text-blue-700 hover:bg-blue-50/80 hover:ring-1 hover:ring-blue-200/80'
+                    className={`relative px-4 py-1.5 text-base font-bold rounded-xl transition-all duration-150 flex items-center gap-1.5 shrink-0 ${isActive
+                        ? 'text-white bg-blue-600 shadow-xs'
+                        : 'text-slate-800 hover:text-blue-700 hover:bg-blue-50/80 hover:ring-1 hover:ring-blue-200/80'
                       }`}
                   >
                     <span>{link.label}</span>
@@ -134,9 +134,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                   onMouseEnter={() => setDropdownOpen(true)}
-                  className={`px-3 py-1.5 text-sm font-semibold rounded-xl transition-all duration-150 flex items-center gap-1.5 ${isDropdownChildActive || dropdownOpen
-                      ? 'text-blue-700 bg-blue-50 ring-1 ring-blue-300 font-bold'
-                      : 'text-slate-700 hover:text-blue-700 hover:bg-blue-50/80 hover:ring-1 hover:ring-blue-200/80'
+                  className={`px-3.5 py-1.5 text-base font-bold rounded-xl transition-all duration-150 flex items-center gap-1.5 ${isDropdownChildActive || dropdownOpen
+                      ? 'text-blue-700 bg-blue-50 ring-1 ring-blue-300'
+                      : 'text-slate-800 hover:text-blue-700 hover:bg-blue-50/80 hover:ring-1 hover:ring-blue-200/80'
                     }`}
                   aria-expanded={dropdownOpen}
                 >
@@ -213,7 +213,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="flex items-center gap-1.5 px-4 py-2 text-sm font-bold rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-md hover:shadow-lg transition-all active:scale-95 shrink-0"
               >
                 <UserPlus className="w-4 h-4 text-white shrink-0" />
-                <span>{language === 'bn' ? 'হোস্ট হন' : 'Join as Host'}</span>
+                <span>{language === 'bn' ? 'যুক্ত হন' : 'Join'}</span>
               </button>
             </div>
 
@@ -259,7 +259,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-sm shadow-xs"
               >
                 <UserPlus className="w-4 h-4 text-white shrink-0" />
-                <span>{language === 'bn' ? 'হোস্ট হন' : 'Join as Host'}</span>
+                <span>{language === 'bn' ? 'যুক্ত হন' : 'Join'}</span>
               </button>
             </div>
 

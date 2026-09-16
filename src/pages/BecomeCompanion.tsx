@@ -89,7 +89,7 @@ export const BecomeCompanion: React.FC<{ onOpenApply: () => void }> = ({ onOpenA
           <span>{language === 'bn' ? 'কম্প্যানিয়ন সুযোগ' : 'Companion Opportunities'}</span>
         </div>
         
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
           {language === 'bn' ? (
             <>
               সম্মানজনক পরিবেশে <br />

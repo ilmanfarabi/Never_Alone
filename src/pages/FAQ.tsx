@@ -48,7 +48,7 @@ export const FAQ: React.FC<{ onNavigate: (page: string) => void }> = ({ onNaviga
           <span>{language === 'bn' ? 'সচরাচর জিজ্ঞাসিত প্রশ্ন' : 'Got Questions?'}</span>
         </div>
         
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
           {language === 'bn' ? (
             <>
               স্পষ্ট ও সরাসরি <br />

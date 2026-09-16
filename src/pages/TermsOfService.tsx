@@ -53,7 +53,7 @@ export const TermsOfService: React.FC = () => {
           <FileText className="w-3.5 h-3.5 text-blue-600" />
           <span>{language === 'bn' ? 'ব্যবহারের শর্তাবলী' : 'Terms & Conditions'}</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
           {language === 'bn' ? 'শর্তাবলী ও আচরণবিধি' : 'Terms of Service & Agreement'}
         </h1>
         <p className="text-sm text-slate-500 font-normal">

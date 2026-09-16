@@ -79,11 +79,11 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onCl
               <UserPlus className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-slate-900">
-                {language === 'bn' ? 'কম্প্যানিয়ন হিসেবে যোগ দিন' : 'Become a Verified Companion'}
+              <h2 className="text-xl font-bold text-slate-900">
+                {language === 'bn' ? 'হোস্ট/কম্প্যানিয়ন আবেদন' : 'Join Application'}
               </h2>
-              <p className="text-sm text-slate-500">
-                {language === 'bn' ? 'সম্মানজনক সঙ্গ দিন ও স্বাধীনভাবে আয় করুন' : 'Earn respectfully on your own schedule'}
+              <p className="text-xs text-slate-500">
+                {language === 'bn' ? 'সম্মানজনক সঙ্গ দিন ও আয় করুন' : 'Earn respectfully on your own schedule'}
               </p>
             </div>
           </div>
@@ -155,11 +155,11 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onCl
             <form onSubmit={handleNext} className="space-y-4 text-sm">
               {/* Step 1: Basic Information */}
               {step === 1 && (
-                <div className="space-y-3.5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="space-y-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     <div>
-                      <label className="block font-semibold text-slate-700 mb-1">
-                        {language === 'bn' ? 'সম্পূর্ণ নাম (NID অনুযায়ী):' : 'Full Legal Name (as per NID):'}
+                      <label className="block text-xs font-semibold text-slate-600 mb-1">
+                        {language === 'bn' ? 'সম্পূর্ণ নাম (NID)' : 'Full Name (NID)'}
                       </label>
                       <input
                         type="text"
@@ -167,12 +167,12 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onCl
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                         placeholder="e.g. Farhana Ahmed"
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
                       />
                     </div>
                     <div>
-                      <label className="block font-semibold text-slate-700 mb-1">
-                        {language === 'bn' ? 'মোবাইল নম্বর:' : 'Phone Number:'}
+                      <label className="block text-xs font-semibold text-slate-600 mb-1">
+                        {language === 'bn' ? 'মোবাইল নম্বর' : 'Phone Number'}
                       </label>
                       <input
                         type="tel"
@@ -180,15 +180,15 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onCl
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="017XXXXXXXX"
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                     <div>
-                      <label className="block font-semibold text-slate-700 mb-1">
-                        {language === 'bn' ? 'বয়স (১৮+ বাধ্যতামূলক):' : 'Age (18+ Mandatory):'}
+                      <label className="block text-xs font-semibold text-slate-600 mb-1">
+                        {language === 'bn' ? 'বয়স (১৮+)' : 'Age (18+)'}
                       </label>
                       <input
                         type="number"
@@ -197,17 +197,17 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onCl
                         required
                         value={formData.age}
                         onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
                       />
                     </div>
                     <div>
-                      <label className="block font-semibold text-slate-700 mb-1">
-                        {language === 'bn' ? 'শহর:' : 'City:'}
+                      <label className="block text-xs font-semibold text-slate-600 mb-1">
+                        {language === 'bn' ? 'শহর' : 'City'}
                       </label>
                       <select
                         value={formData.city}
                         onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
                       >
                         <option value="Dhaka">Dhaka (ঢাকা)</option>
                         <option value="Chittagong">Chittagong (চট্টগ্রাম)</option>
@@ -217,44 +217,44 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onCl
                       </select>
                     </div>
                     <div>
-                      <label className="block font-semibold text-slate-700 mb-1">
-                        {language === 'bn' ? 'এলাকা / জোন:' : 'Preferred Area:'}
+                      <label className="block text-xs font-semibold text-slate-600 mb-1">
+                        {language === 'bn' ? 'এলাকা' : 'Area'}
                       </label>
                       <input
                         type="text"
                         required
                         value={formData.area}
                         onChange={(e) => setFormData({ ...formData, area: e.target.value })}
-                        placeholder="e.g. Dhanmondi, Gulshan"
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
+                        placeholder="e.g. Dhanmondi"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">
-                      {language === 'bn' ? 'জানা ভাষাসমূহ:' : 'Fluent Languages:'}
+                    <label className="block text-xs font-semibold text-slate-600 mb-1">
+                      {language === 'bn' ? 'জানা ভাষা' : 'Languages'}
                     </label>
                     <input
                       type="text"
                       value={formData.languages}
                       onChange={(e) => setFormData({ ...formData, languages: e.target.value })}
-                      placeholder="e.g. Bengali, English, Sylheti, Hindi"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
+                      placeholder="e.g. Bengali, English"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">
-                      {language === 'bn' ? 'আপনার পরিচিতি ও আগ্রহ (Bio):' : 'Brief Bio & Personality:'}
+                    <label className="block text-xs font-semibold text-slate-600 mb-1">
+                      {language === 'bn' ? 'সংক্ষিপ্ত পরিচয় (Bio)' : 'Bio / Interests'}
                     </label>
                     <textarea
                       rows={2}
                       required
                       value={formData.bio}
                       onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
-                      placeholder={language === 'bn' ? 'আপনার আগ্রহ, শখ এবং কেন আপনি একজন ভালো সঙ্গী হবেন তা সংক্ষেপে লিখুন...' : 'Describe your interests, conversational skills, and background...'}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white"
+                      placeholder={language === 'bn' ? 'আপনার আগ্রহ ও শখ সংক্ষেপে লিখুন...' : 'Brief description of interests & personality...'}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white"
                     />
                   </div>
                 </div>
@@ -327,10 +327,10 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onCl
 
               {/* Step 3: Verification & Platonic Pledge */}
               {step === 3 && (
-                <div className="space-y-3.5">
-                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                    <label className="block font-semibold text-slate-700">
-                      {language === 'bn' ? 'জাতীয় পরিচয়পত্র নম্বর (NID / Smart Card):' : 'National ID / Passport Number:'}
+                <div className="space-y-3">
+                  <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+                    <label className="block text-xs font-semibold text-slate-600 mb-1">
+                      {language === 'bn' ? 'জাতীয় পরিচয়পত্র (NID / Smart Card)' : 'National ID / Passport Number'}
                     </label>
                     <input
                       type="text"
@@ -338,69 +338,59 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({ isOpen, onCl
                       value={formData.nidNumber}
                       onChange={(e) => setFormData({ ...formData, nidNumber: e.target.value })}
                       placeholder="e.g. 1998XXXXXXXXXX"
-                      className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600"
+                      className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600"
                     />
                     
                     {/* Simulated Document Upload Dropzone */}
-                    <div className="mt-2 border-2 border-dashed border-slate-200 hover:border-blue-300 rounded-xl p-3 text-center cursor-pointer bg-white transition-colors">
-                      <Upload className="w-5 h-5 text-blue-600 mx-auto mb-1" />
-                      <div className="text-sm text-slate-700 font-medium">
-                        {language === 'bn' ? 'NID / পাসপোর্ট ফ্রন্ট ও ব্যাক ছবি যুক্ত করুন' : 'Upload NID / Passport front & back photo'}
+                    <div className="mt-1.5 border border-dashed border-slate-300 hover:border-blue-400 rounded-xl p-2.5 text-center cursor-pointer bg-white transition-colors">
+                      <Upload className="w-4 h-4 text-blue-600 mx-auto mb-1" />
+                      <div className="text-xs text-slate-700 font-medium">
+                        {language === 'bn' ? 'NID / পাসপোর্ট ছবি সংযুক্ত করুন' : 'Upload NID / Passport photo'}
                       </div>
-                      <div className="text-sm text-slate-400">
+                      <div className="text-xs text-slate-400">
                         {language === 'bn' ? 'JPG, PNG বা PDF (সর্বোচ্চ ৫ MB)' : 'JPG, PNG or PDF (Max 5 MB)'}
                       </div>
                     </div>
                   </div>
 
                   {/* Mandatory Checkboxes */}
-                  <div className="space-y-2.5 pt-1">
-                    <label className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
+                  <div className="space-y-1 text-[11px]">
+                    <label className="flex items-center gap-1.5 p-1.5 rounded-lg bg-slate-50 border border-slate-200/80 cursor-pointer hover:bg-slate-100/70 transition-colors">
                       <input
                         type="checkbox"
                         required
                         checked={formData.agreeToPlatonicPledge}
                         onChange={(e) => setFormData({ ...formData, agreeToPlatonicPledge: e.target.checked })}
-                        className="mt-0.5 rounded accent-blue-600 w-4 h-4"
+                        className="rounded accent-blue-600 w-3.5 h-3.5 shrink-0"
                       />
-                      <span className="text-sm text-slate-700 leading-snug">
-                        {language === 'bn' ? (
-                          <><strong>১০০% প্ল্যাটোনিক অঙ্গীকার:</strong> আমি অঙ্গীকার করছি যে এটি সম্পূর্ণ অ-রোমান্টিক ও অ-যৌন প্ল্যাটফর্ম। কোনো অনৈতিক প্রস্তাব আসলে অবিলম্বে প্ল্যাটফর্মে রিপোর্ট করব।</>
-                        ) : (
-                          <><strong>100% Platonic Pledge:</strong> I declare this is a non-romantic & non-sexual platform. I will immediately report any inappropriate requests.</>
-                        )}
+                      <span className="text-slate-600 font-normal">
+                        {language === 'bn' ? '১০০% প্ল্যাটোনিক সেবা' : '100% Platonic Service'}
                       </span>
                     </label>
 
-                    <label className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
+                    <label className="flex items-center gap-1.5 p-1.5 rounded-lg bg-slate-50 border border-slate-200/80 cursor-pointer hover:bg-slate-100/70 transition-colors">
                       <input
                         type="checkbox"
                         required
                         checked={formData.agreeToCodeOfConduct}
                         onChange={(e) => setFormData({ ...formData, agreeToCodeOfConduct: e.target.checked })}
-                        className="mt-0.5 rounded accent-blue-600 w-4 h-4"
+                        className="rounded accent-blue-600 w-3.5 h-3.5 shrink-0"
                       />
-                      <span className="text-sm text-slate-700 leading-snug">
-                        {language === 'bn' ? (
-                          <>আমি সর্বদা শুধুমাত্র অনুমোদিত <strong>পাবলিক স্থানে</strong> ক্লায়েন্টের সাথে সাক্ষাৎ করব এবং পেশাদার আচরণবিধি মেনে চলব।</>
-                        ) : (
-                          <>I will always meet clients strictly in verified <strong>public venues</strong> and maintain professional decorum.</>
-                        )}
+                      <span className="text-slate-600 font-normal">
+                        {language === 'bn' ? 'শুধুমাত্র পাবলিক ভেন্যু' : 'Public Venue Only'}
                       </span>
                     </label>
 
-                    <label className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
+                    <label className="flex items-center gap-1.5 p-1.5 rounded-lg bg-slate-50 border border-slate-200/80 cursor-pointer hover:bg-slate-100/70 transition-colors">
                       <input
                         type="checkbox"
                         required
                         checked={formData.agreeToBackgroundCheck}
                         onChange={(e) => setFormData({ ...formData, agreeToBackgroundCheck: e.target.checked })}
-                        className="mt-0.5 rounded accent-blue-600 w-4 h-4"
+                        className="rounded accent-blue-600 w-3.5 h-3.5 shrink-0"
                       />
-                      <span className="text-sm text-slate-700 leading-snug">
-                        {language === 'bn'
-                          ? 'আমি আমার জাতীয় পরিচয়পত্র ও ক্রিমিনাল ব্যাকগ্রাউন্ড যাচাইকরণে সম্মতি প্রদান করছি।'
-                          : 'I consent to NID identity verification & background screening.'}
+                      <span className="text-slate-600 font-normal">
+                        {language === 'bn' ? 'NID যাচাইকরণে সম্মতি' : 'NID & Screening Consent'}
                       </span>
                     </label>
                   </div>

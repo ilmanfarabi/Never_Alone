@@ -37,7 +37,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const [specialNotes, setSpecialNotes] = useState('');
   const [clientName, setClientName] = useState('');
   const [clientPhone, setClientPhone] = useState('');
-  const [paymentMethod, setPaymentMethod] = useState<'bkash' | 'nagad' | 'card' | 'wallet'>('bkash');
+  const [paymentMethod, setPaymentMethod] = useState<'bkash' | 'nagad'>('bkash');
   const [agreePlatonic, setAgreePlatonic] = useState(false);
   const [agreePublicOnly, setAgreePublicOnly] = useState(false);
   
@@ -76,8 +76,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-white border border-slate-200 rounded-3xl max-w-2xl w-full p-6 text-slate-900 shadow-2xl relative overflow-hidden max-h-[92vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="bg-white border border-slate-100 rounded-3xl max-w-xl w-full p-6 text-slate-900 shadow-2xl relative overflow-hidden max-h-[90vh] flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-slate-100 shrink-0">
           <div className="flex items-center gap-3">
@@ -87,15 +87,15 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               className="w-12 h-12 rounded-full object-cover border border-slate-200 shadow-xs"
             />
             <div>
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-2">
                 <h3 className="text-base sm:text-lg font-bold text-slate-900">
                   {language === 'bn' ? companion.nameBn : companion.name}
                 </h3>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-100 font-semibold">
+                <span className="text-[11px] px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-100 font-semibold">
                   {language === 'bn' ? 'ভেরিফায়েড' : 'Verified'}
                 </span>
               </div>
-              <p className="text-xs sm:text-sm text-slate-500 font-normal">
+              <p className="text-xs text-slate-500 font-medium">
                 {language === 'bn' ? `${companion.cityBn} • ৳ ${companion.hourlyRate} / ঘণ্টা` : `${companion.city} • ৳ ${companion.hourlyRate} / hr`}
               </p>
             </div>
@@ -110,7 +110,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         </div>
 
         {/* Modal Body */}
-        <div className="overflow-y-auto flex-1 pr-1 py-3 text-sm">
+        <div className="overflow-y-auto flex-1 py-4 pr-1 space-y-4">
           {bookingConfirmed ? (
             <div className="py-6 text-center space-y-4">
               <div className="w-14 h-14 rounded-full bg-blue-50 text-blue-600 border border-blue-100 mx-auto flex items-center justify-center shadow-xs">
@@ -120,7 +120,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
                   {language === 'bn' ? 'বুকিং সফলভাবে নিশ্চিত করা হয়েছে!' : 'Booking Confirmed Successfully!'}
                 </h3>
-                <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-md mx-auto leading-relaxed font-normal">
+                <p className="text-sm text-slate-600 mt-2 max-w-md mx-auto leading-relaxed font-normal">
                   {language === 'bn' 
                     ? `আপনার বুকিং রিকোয়েস্ট গৃহীত হয়েছে। ${companion.nameBn} এর সাথে পাবলিক স্থানে সাক্ষাতের সময় নিচের সেফটি পিন (PIN) টি প্রদর্শন করুন।`
                     : `Your booking request has been locked in. Please show the 4-digit Safety PIN to ${companion.name} upon arrival at the public venue.`}
@@ -152,7 +152,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 </div>
                 <div className="flex justify-between text-slate-600">
                   <span>{language === 'bn' ? 'পাবলিক ভেন্যু:' : 'Public Venue:'}</span>
-                  <span className="text-slate-900">{venueName}, {venueAddress}</span>
+                  <span className="text-slate-900 font-medium">{venueName}, {venueAddress}</span>
                 </div>
                 <div className="flex justify-between text-slate-600 border-t border-slate-200 pt-2 font-bold">
                   <span>{language === 'bn' ? 'পরিশোধিত মোট:' : 'Total Paid:'}</span>
@@ -170,20 +170,20 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           ) : (
             <form onSubmit={handleBookSession} className="space-y-4">
               {/* Platonic Quick Reminder */}
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 flex items-center gap-2">
+              <div className="p-2.5 rounded-xl bg-blue-50 text-blue-900 flex items-center gap-2 text-xs font-medium border border-blue-100/60">
                 <ShieldCheck className="w-4 h-4 text-blue-600 shrink-0" />
                 <span>
                   {language === 'bn' 
-                    ? 'স্মরণ রাখবেন: এটি কঠোরভাবে একটি অ-রোমান্টিক ও প্ল্যাটোনিক সার্ভিস।' 
-                    : 'Reminder: This booking is strictly non-romantic and platonic.'}
+                    ? 'স্মরণ রাখবেন: এটি ১০০% অ-রোমান্টিক ও নিরাপদ প্ল্যাটোনিক সার্ভিস।' 
+                    : 'Reminder: This service is strictly 100% platonic and safe.'}
                 </span>
               </div>
 
-              {/* Client Name & Phone */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {/* Personal Details */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
-                    {language === 'bn' ? 'আপনার নাম:' : 'Your Full Name:'}
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    {language === 'bn' ? 'আপনার নাম' : 'Full Name'}
                   </label>
                   <input
                     type="text"
@@ -191,12 +191,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     value={clientName}
                     onChange={(e) => setClientName(e.target.value)}
                     placeholder="e.g. Mahir Rahman"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
+                    className="w-full bg-slate-50/70 border border-slate-200/90 rounded-xl px-3.5 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
-                    {language === 'bn' ? 'মোবাইল নম্বর:' : 'Phone Number:'}
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    {language === 'bn' ? 'মোবাইল নম্বর' : 'Phone Number'}
                   </label>
                   <input
                     type="tel"
@@ -204,20 +204,20 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     value={clientPhone}
                     onChange={(e) => setClientPhone(e.target.value)}
                     placeholder="017XXXXXXXX"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
+                    className="w-full bg-slate-50/70 border border-slate-200/90 rounded-xl px-3.5 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all"
                   />
                 </div>
               </div>
 
-              {/* Occasion Selector */}
+              {/* Occasion */}
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">
-                  {language === 'bn' ? 'উপলক্ষ / সার্ভিসের ধরন নির্বাচন করুন:' : 'Select Occasion / Service:'}
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  {language === 'bn' ? 'উপলক্ষ / সার্ভিসের ধরন' : 'Occasion / Service'}
                 </label>
                 <select
                   value={selectedOccasion}
                   onChange={(e) => setSelectedOccasion(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full bg-slate-50/70 border border-slate-200/90 rounded-xl px-3.5 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all cursor-pointer"
                 >
                   {occasionsData.map((occ) => (
                     <option key={occ.id} value={occ.id}>
@@ -230,236 +230,176 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               {/* Date, Time, Duration */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
-                    {language === 'bn' ? 'তারিখ:' : 'Date:'}
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    {language === 'bn' ? 'তারিখ' : 'Date'}
                   </label>
                   <input
                     type="date"
                     required
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
+                    className="w-full bg-slate-50/70 border border-slate-200/90 rounded-xl px-3 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
-                    {language === 'bn' ? 'শুরুর সময়:' : 'Start Time:'}
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    {language === 'bn' ? 'সময়' : 'Time'}
                   </label>
                   <input
                     type="time"
                     required
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
+                    className="w-full bg-slate-50/70 border border-slate-200/90 rounded-xl px-3 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
-                    {language === 'bn' ? 'সময়কাল (ঘণ্টা):' : 'Duration (Hours):'}
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    {language === 'bn' ? 'সময়কাল' : 'Duration'}
                   </label>
                   <select
                     value={durationHours}
                     onChange={(e) => setDurationHours(Number(e.target.value))}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
+                    className="w-full bg-slate-50/70 border border-slate-200/90 rounded-xl px-3 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all cursor-pointer"
                   >
-                    <option value={1}>{language === 'bn' ? '১ ঘণ্টা (1 Hour)' : '1 Hour'}</option>
-                    <option value={2}>{language === 'bn' ? '২ ঘণ্টা (2 Hours - Basic)' : '2 Hours - Basic'}</option>
-                    <option value={3}>{language === 'bn' ? '৩ ঘণ্টা (3 Hours)' : '3 Hours'}</option>
-                    <option value={4}>{language === 'bn' ? '৪ ঘণ্টা (4 Hours - Standard)' : '4 Hours - Standard'}</option>
-                    <option value={6}>{language === 'bn' ? '৬ ঘণ্টা (6 Hours - Half Day)' : '6 Hours - Half Day'}</option>
-                    <option value={8}>{language === 'bn' ? '৮ ঘণ্টা (8 Hours - Full Day Event)' : '8 Hours - Full Day Event'}</option>
+                    <option value={1}>{language === 'bn' ? '১ ঘণ্টা' : '1 Hour'}</option>
+                    <option value={2}>{language === 'bn' ? '২ ঘণ্টা' : '2 Hours'}</option>
+                    <option value={3}>{language === 'bn' ? '৩ ঘণ্টা' : '3 Hours'}</option>
+                    <option value={4}>{language === 'bn' ? '৪ ঘণ্টা' : '4 Hours'}</option>
+                    <option value={6}>{language === 'bn' ? '৬ ঘণ্টা' : '6 Hours'}</option>
+                    <option value={8}>{language === 'bn' ? '৮ ঘণ্টা' : '8 Hours'}</option>
                   </select>
                 </div>
               </div>
 
-              {/* Public Venue Selector */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {/* Public Venue */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
-                    {language === 'bn' ? 'পাবলিক ভেন্যুর নাম:' : 'Public Venue Name:'}
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    {language === 'bn' ? 'পাবলিক ভেন্যুর নাম' : 'Public Venue Name'}
                   </label>
                   <input
                     type="text"
                     required
                     value={venueName}
                     onChange={(e) => setVenueName(e.target.value)}
-                    placeholder="e.g. Gloria Jean's / Star Cineplex"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
+                    placeholder="e.g. Crimson Cup / Star Cineplex"
+                    className="w-full bg-slate-50/70 border border-slate-200/90 rounded-xl px-3.5 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">
-                    {language === 'bn' ? 'ভেন্যুর ঠিকানা ও এলাকা:' : 'Venue Address & Area:'}
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    {language === 'bn' ? 'ভেন্যুর এলাকা' : 'Area & Address'}
                   </label>
                   <input
                     type="text"
                     required
                     value={venueAddress}
                     onChange={(e) => setVenueAddress(e.target.value)}
-                    placeholder="e.g. Dhanmondi 27, Dhaka"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
+                    placeholder="e.g. Gulshan 2, Dhaka"
+                    className="w-full bg-slate-50/70 border border-slate-200/90 rounded-xl px-3.5 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all"
                   />
                 </div>
               </div>
 
               {/* Special Note */}
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">
-                  {language === 'bn' ? 'বিশেষ নির্দেশনা বা বিষয় (ঐচ্ছিক):' : 'Notes / Special Topic (Optional):'}
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  {language === 'bn' ? 'বিশেষ নোট (ঐচ্ছিক)' : 'Notes (Optional)'}
                 </label>
                 <input
                   type="text"
                   value={specialNotes}
                   onChange={(e) => setSpecialNotes(e.target.value)}
-                  placeholder={language === 'bn' ? 'যেমন: বোন এর বিয়েতে প্লাস-ওয়ান / আইইএলটিএস কথা বলা' : 'e.g. Wedding plus-one / IELTS speaking'}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white"
+                  placeholder={language === 'bn' ? 'যেমন: ডিনার / ইভেন্ট প্লাস-ওয়ান' : 'e.g. Dinner / Event Plus-one'}
+                  className="w-full bg-slate-50/70 border border-slate-200/90 rounded-xl px-3.5 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all"
                 />
               </div>
 
-              {/* Payment Methods Selector */}
-              <div>
-                <label className="block font-semibold text-slate-700 mb-1.5">
-                  {language === 'bn' ? 'পেমেন্ট পদ্ধতি নির্বাচন করুন:' : 'Select Payment Method:'}
-                </label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod('bkash')}
-                    className={`p-2.5 rounded-xl border flex flex-col items-center justify-center gap-1 transition-all ${
-                      paymentMethod === 'bkash'
-                        ? 'bg-blue-50 border-blue-600 text-blue-700 font-semibold shadow-xs'
-                        : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300'
-                    }`}
-                  >
-                    <span className="font-bold text-sm">bKash</span>
-                    <span className="text-sm">{language === 'bn' ? 'বিকাশ পেমেন্ট' : 'bKash Direct'}</span>
-                  </button>
+              {/* Payment & Price Summary Box */}
+              <div className="p-3.5 rounded-2xl bg-blue-50/40 border border-blue-100 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-900">
+                    {language === 'bn' ? 'পেমেন্ট মাধ্যম:' : 'Payment Method:'}
+                  </span>
+                  <div className="flex gap-2">
+                    {(['bkash', 'nagad'] as const).map((method) => (
+                      <button
+                        key={method}
+                        type="button"
+                        onClick={() => setPaymentMethod(method)}
+                        className={`py-1 px-3 rounded-lg text-xs font-bold transition-all ${
+                          paymentMethod === method
+                            ? 'bg-blue-600 text-white shadow-2xs'
+                            : 'bg-white border border-slate-200 text-slate-600 hover:border-slate-300'
+                        }`}
+                      >
+                        {method === 'bkash' ? 'bKash' : 'Nagad'}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod('nagad')}
-                    className={`p-2.5 rounded-xl border flex flex-col items-center justify-center gap-1 transition-all ${
-                      paymentMethod === 'nagad'
-                        ? 'bg-blue-50 border-blue-600 text-blue-700 font-semibold shadow-xs'
-                        : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300'
-                    }`}
-                  >
-                    <span className="font-bold text-sm">Nagad</span>
-                    <span className="text-sm">{language === 'bn' ? 'নগদ পেমেন্ট' : 'Nagad Direct'}</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod('card')}
-                    className={`p-2.5 rounded-xl border flex flex-col items-center justify-center gap-1 transition-all ${
-                      paymentMethod === 'card'
-                        ? 'bg-blue-50 border-blue-600 text-blue-700 font-semibold shadow-xs'
-                        : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300'
-                    }`}
-                  >
-                    <span className="font-bold text-sm">Card</span>
-                    <span className="text-sm">Visa / Mastercard</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod('wallet')}
-                    className={`p-2.5 rounded-xl border flex flex-col items-center justify-center gap-1 transition-all ${
-                      paymentMethod === 'wallet'
-                        ? 'bg-blue-50 border-blue-600 text-blue-700 font-semibold shadow-xs'
-                        : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300'
-                    }`}
-                  >
-                    <span className="font-bold text-sm">In-App Wallet</span>
-                    <span className="text-sm">{language === 'bn' ? 'ব্যালেন্স: ৳ ৫,০০০' : 'Bal: ৳ 5,000'}</span>
-                  </button>
+                <div className="pt-2 border-t border-blue-100/80 flex items-center justify-between text-xs sm:text-sm font-bold text-slate-900">
+                  <span className="text-slate-600 font-medium">
+                    {durationHours}h ({companion.hourlyRate}/h) + {language === 'bn' ? 'ফি' : 'Fee'} =
+                  </span>
+                  <span className="text-blue-600 font-mono text-base">৳ {totalAmount.toLocaleString()}</span>
                 </div>
               </div>
 
-              {/* Price Breakdown */}
-              <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
-                <div className="flex justify-between text-slate-600">
-                  <span>
-                    {language === 'bn'
-                      ? `কম্প্যানিয়ন ফি (${durationHours} ঘণ্টা × ৳${companion.hourlyRate}):`
-                      : `Companion Fee (${durationHours} hrs × ৳${companion.hourlyRate}):`}
-                  </span>
-                  <span>৳ {basePrice.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between text-slate-600">
-                  <span>
-                    {language === 'bn'
-                      ? 'প্ল্যাটফর্ম এসক্রো ও সেফটি চার্জ (১৫%):'
-                      : 'Platform Escrow & Safety Fee (15%):'}
-                  </span>
-                  <span>৳ {platformFee.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between text-slate-900 font-bold text-sm pt-2 border-t border-slate-200">
-                  <span>{language === 'bn' ? 'সর্বমোট প্রদেয়:' : 'Total Amount:'}</span>
-                  <span className="text-blue-600 font-mono">৳ {totalAmount.toLocaleString()} BDT</span>
-                </div>
-              </div>
-
-              {/* Compulsory Policy Checkboxes */}
-              <div className="space-y-2 pt-1">
-                <label className="flex items-start gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
+              {/* Compulsory Policy Checkboxes - Vertically Stacked */}
+              <div className="space-y-1.5 text-[11px] pt-1">
+                <label className="flex items-center gap-1.5 cursor-pointer select-none">
                   <input
                     type="checkbox"
                     required
                     checked={agreePlatonic}
                     onChange={(e) => setAgreePlatonic(e.target.checked)}
-                    className="mt-0.5 rounded accent-blue-600 w-4 h-4"
+                    className="rounded accent-blue-600 w-3.5 h-3.5 shrink-0"
                   />
-                  <span className="text-sm text-slate-700 leading-tight">
-                    {language === 'bn' ? (
-                      <><strong>১০০% প্ল্যাটোনিক শর্তে সম্মতি:</strong> আমি নিশ্চিত করছি যে এই সেশনটি সম্পূর্ণ অ-রোমান্টিক ও অ-যৌন। কোনো অনুপযুক্ত আচরণের চেষ্টা করলে আমার অ্যাকাউন্ট অবিলম্বে ব্যান হবে।</>
-                    ) : (
-                      <><strong>100% Platonic Policy:</strong> I confirm this booking is strictly non-romantic and non-sexual. Any misconduct will result in an immediate permanent ban.</>
-                    )}
+                  <span className="text-slate-600 font-normal">
+                    {language === 'bn' ? '১০০% প্ল্যাটোনিক ও অ-রোমান্টিক সেবায় সম্মত' : 'I agree to 100% platonic & non-romantic service'}
                   </span>
                 </label>
 
-                <label className="flex items-start gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
+                <label className="flex items-center gap-1.5 cursor-pointer select-none">
                   <input
                     type="checkbox"
                     required
                     checked={agreePublicOnly}
                     onChange={(e) => setAgreePublicOnly(e.target.checked)}
-                    className="mt-0.5 rounded accent-blue-600 w-4 h-4"
+                    className="rounded accent-blue-600 w-3.5 h-3.5 shrink-0"
                   />
-                  <span className="text-sm text-slate-700 leading-tight">
-                    {language === 'bn' ? (
-                      <>আমি সম্মতি দিচ্ছি যে সাক্ষাৎটি কেবল একটি <strong>পাবলিক স্থানে</strong> অনুষ্ঠিত হবে এবং নগদ লেনদেন করা হবে না।</>
-                    ) : (
-                      <>I agree that the session will strictly take place in a verified <strong>public venue</strong> with zero cash transactions.</>
-                    )}
+                  <span className="text-slate-600 font-normal">
+                    {language === 'bn' ? 'শুধুমাত্র পাবলিক স্থানে সাক্ষাতে সম্মত' : 'I agree to public venue only meeting'}
                   </span>
                 </label>
               </div>
 
-              {/* Submit Button */}
-              <div className="pt-2 flex items-center justify-end gap-2">
+              {/* Action Buttons */}
+              <div className="pt-2 flex items-center justify-end gap-2.5">
                 <button
                   type="button"
                   onClick={handleResetAndClose}
-                  className="py-2.5 px-4 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold apple-pill-btn"
+                  className="py-2.5 px-4 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-colors"
                 >
                   {language === 'bn' ? 'বাতিল' : 'Cancel'}
                 </button>
                 <button
                   type="submit"
                   disabled={isProcessing || !agreePlatonic || !agreePublicOnly}
-                  className="py-2.5 px-6 rounded-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-semibold shadow-md flex items-center gap-2 apple-pill-btn"
+                  className="py-2.5 px-6 rounded-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-semibold text-xs sm:text-sm shadow-md flex items-center gap-1.5 apple-pill-btn transition-all"
                 >
                   {isProcessing ? (
-                    <span className="flex items-center gap-2">
-                      <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                      <span>নিরাপদ পেমেন্ট প্রক্রিয়াধীন...</span>
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                      <span>{language === 'bn' ? 'প্রক্রিয়াধীন...' : 'Processing...'}</span>
                     </span>
                   ) : (
                     <>
-                      <Lock className="w-4 h-4" />
-                      <span>{language === 'bn' ? `পেমেন্ট ও বুকিং কনফার্ম করুন (৳ ${totalAmount.toLocaleString()})` : `Confirm & Pay ৳ ${totalAmount.toLocaleString()}`}</span>
+                      <Lock className="w-3.5 h-3.5" />
+                      <span>{language === 'bn' ? `কনফার্ম করুন (৳ ${totalAmount.toLocaleString()})` : `Confirm (৳ ${totalAmount.toLocaleString()})`}</span>
                     </>
                   )}
                 </button>
